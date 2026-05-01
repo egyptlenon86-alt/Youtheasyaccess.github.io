@@ -1,147 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connected Youth | NYC</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-</head>
-<body class="light-mode">
+<!-- Locate your <main class="container"> and add this below the Job/Map sections -->
 
-    <div class="brand-header">
-        <h1>Connected <span>Youth</span></h1>
+<section id="training" class="card">
+    <div class="section-header">
+        <h2>Work Readiness Hub</h2>
+        <span class="badge" id="progress-total">0% Complete</span>
     </div>
 
-    <!-- Navigation Island -->
-    <nav class="nav-island">
-        <ul class="nav-list">
-            <li class="nav-item">
-                <button class="nav-btn">Explore ▾</button>
-                <div class="dropdown">
-                    <a href="javascript:void(0)" onclick="showSection('job-feed')">Jobs List</a>
-                    <a href="javascript:void(0)" onclick="showSection('map-section')">NYC Job Map</a>
-                    <a href="javascript:void(0)" onclick="showSection('training-hub')">Work Readiness</a>
+    <!-- NEW: Career Lessons Section -->
+    <div class="lesson-section">
+        <h3>Career Lessons</h3>
+        <div class="lesson-grid">
+            <div class="lesson-item" id="lesson-1">
+                <div class="lesson-icon">📚</div>
+                <div class="lesson-text">
+                    <h4>NYC Labor Laws 101</h4>
+                    <p>Know your rights as a young worker in New York.</p>
                 </div>
-            </li>
-            <li class="nav-item"><button class="nav-btn" onclick="openModal('settings-modal')">Settings</button></li>
-            <li class="nav-item"><button class="nav-btn highlight" onclick="openModal('login-modal')">Log In</button></li>
-        </ul>
-    </nav>
-
-    <main class="container">
-        <!-- Job Feed -->
-        <section id="job-feed" class="card">
-            <div class="section-header">
-                <h2>Open Roles</h2>
-                <button class="btn-outline" onclick="showSection('map-section')">📍 Map</button>
+                <button class="btn-outline small" onclick="completeLesson('lesson-1', 15)">Read Lesson</button>
             </div>
-            <div class="job-list">
-                <div class="job-card">
-                    <h3>Community Coordinator</h3>
-                    <p>Bronx, NY • $22/hr</p>
-                    <button class="btn-primary small" onclick="submitApplication('Community Coordinator')">Quick Apply</button>
+
+            <div class="lesson-item" id="lesson-2">
+                <div class="lesson-icon">🤝</div>
+                <div class="lesson-text">
+                    <h4>Networking Basics</h4>
+                    <p>How to talk to professionals at NYC events.</p>
                 </div>
+                <button class="btn-outline small" onclick="completeLesson('lesson-2', 15)">Watch Video</button>
             </div>
-        </section>
+        </div>
+    </div>
 
-        <!-- Map Section -->
-        <section id="map-section" class="card" style="display: none;">
-            <div class="section-header">
-                <h2>NYC Opportunity Map</h2>
-                <button class="btn-outline" onclick="showSection('job-feed')">📋 List</button>
-            </div>
-            <div class="map-placeholder">Interactive Map View</div>
-        </section>
-
-        <!-- Work Readiness Hub -->
-        <section id="training-hub" class="card" style="display: none;">
-            <div class="section-header">
-                <h2>Work Readiness Hub</h2>
-                <span class="badge" id="progress-total">0% Complete</span>
-            </div>
-
-            <div class="lesson-section">
-                <h3>Career Lessons</h3>
-                <div class="lesson-grid">
-                    <div class="lesson-item" id="lesson-1">
-                        <div class="lesson-icon">📚</div>
-                        <div class="lesson-text">
-                            <h4>NYC Labor Laws 101</h4>
-                            <p>Know your rights as a young worker in New York.</p>
-                        </div>
-                        <button class="btn-outline small" onclick="completeLesson('lesson-1', 15)">Read Lesson</button>
-                    </div>
-                    <div class="lesson-item" id="lesson-2">
-                        <div class="lesson-icon">🤝</div>
-                        <div class="lesson-text">
-                            <h4>Networking Basics</h4>
-                            <p>How to talk to professionals at NYC events.</p>
-                        </div>
-                        <button class="btn-outline small" onclick="completeLesson('lesson-2', 15)">Watch Video</button>
-                    </div>
+    <!-- Assignments Section (Kept from previous) -->
+    <div class="assignment-section" style="margin-top: 30px;">
+        <h3>Practical Assignments</h3>
+        <div class="assignment-grid">
+            <div class="assignment-card" id="task-1">
+                <div>
+                    <h4>Resume Check</h4>
+                    <p>Upload your current resume for Luke to review.</p>
                 </div>
+                <button class="btn-outline small" onclick="completeTask('task-1', 20)">Upload</button>
             </div>
-        </section>
-    </main>
-
-    <!-- AUTH MODAL -->
-    <div id="login-modal" class="modal">
-        <div class="modal-content auth-card">
-            <h2>Welcome Back</h2>
-            <div class="auth-buttons">
-                <button class="auth-btn email">Sign in with Email</button>
-                <button class="auth-btn google">Continue with Google</button>
-                <button class="auth-btn apple">Continue with Apple</button>
-            </div>
-            <button class="close-link" onclick="closeModal('login-modal')">Maybe later</button>
         </div>
     </div>
-
-    <!-- SETTINGS MODAL -->
-    <div id="settings-modal" class="modal">
-        <div class="modal-content">
-            <h2>Settings</h2>
-            <div class="setting-item">
-                <span>Display Mode</span>
-                <button id="theme-toggle" class="btn-outline">🌙 Switch Mode</button>
-            </div>
-            <div class="setting-item">
-                <span>Luke's Voice</span>
-                <button id="voice-toggle" class="btn-outline">🔊 On</button>
-            </div>
-            <button class="btn-primary" onclick="closeModal('settings-modal')" style="margin-top:20px;">Save & Close</button>
-        </div>
-    </div>
-
-    <!-- SUCCESS MODAL (Screenshot 2026-05-01 at 4.24.20 PM.png) -->
-    <div id="success-modal" class="modal">
-        <div class="modal-content success-card">
-            <div class="confetti-container">🎉 🎊 🎉</div>
-            <h2 class="success-title">🎉 YOU DID IT! 🎉</h2>
-            <p>Application sent. Check your dashboard for updates.</p>
-            <button class="btn-primary" onclick="closeModal('success-modal')">Awesome!</button>
-        </div>
-    </div>
-
-    <!-- Luke AI Widget -->
-    <div class="ai-widget">
-        <div class="ai-header">
-            <div class="luke-avatar" id="luke-avatar">L</div>
-            <div class="luke-status">
-                <span class="luke-name">Luke</span>
-                <span class="status-tag">Online ⚡</span>
-            </div>
-        </div>
-        <div class="ai-body" id="chat-history">
-            <div class="ai-msg-luke">Yo! Go to Settings to turn my voice on! 🗽</div>
-        </div>
-        <div class="ai-input">
-            <input type="text" placeholder="Chat with Luke..." id="ai-user-input">
-            <button id="send-ai-btn">Send</button>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
-</body>
-</html>
+</section>
