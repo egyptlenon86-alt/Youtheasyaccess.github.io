@@ -1,18 +1,17 @@
+/* --- EXISTING BASE STYLES --- */
 :root {
     --primary: #6366f1;
     --bg: #f8fafc;
     --card: #ffffff;
     --text: #1e293b;
     --border: #e2e8f0;
-    --glass: rgba(255, 255, 255, 0.85);
 }
 
 .dark-mode {
     --bg: #0f172a;
     --card: #1e293b;
-    --text: #f8fafc;
+    --text: #f1f5f9;
     --border: #334155;
-    --glass: rgba(30, 41, 59, 0.85);
 }
 
 body {
@@ -20,66 +19,106 @@ body {
     background-color: var(--bg);
     color: var(--text);
     margin: 0;
+    transition: 0.3s ease;
+}
+
+/* --- NEW AUTH & MODAL STYLES --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: var(--card);
+    margin: 10% auto;
+    padding: 30px;
+    max-width: 400px;
+    border-radius: 24px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.auth-buttons { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
+
+.auth-btn {
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+    background: white;
+    color: #1e293b;
+}
+
+.auth-btn.google { border-color: #4285F4; color: #4285F4; }
+.auth-btn.apple { background: #000; color: #fff; border: none; }
+.auth-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+
+/* --- SETTINGS STYLES --- */
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+/* --- SUCCESS MODAL (From Screenshot) --- */
+.success-card {
+    border-top: 8px solid #10b981;
+    padding: 40px;
+}
+
+.success-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--text);
+    margin: 15px 0;
+    letter-spacing: -1px;
+}
+
+.confetti-container {
+    font-size: 3rem;
+    animation: bounce 0.5s infinite alternate;
+}
+
+@keyframes bounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10px); }
+}
+
+/* --- WORK READINESS LESSONS --- */
+.lesson-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.lesson-item {
+    background: var(--bg);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid var(--border);
     transition: 0.3s;
 }
 
-/* Header & Nav */
-.brand-header { text-align: center; padding: 30px 0 10px; }
-.brand-header h1 { font-weight: 800; font-size: 2.2rem; margin: 0; }
-.brand-header span { color: var(--primary); }
-
-.nav-island {
-    position: sticky; top: 20px; z-index: 1000;
-    background: var(--glass); backdrop-filter: blur(10px);
-    border: 1px solid var(--border); border-radius: 50px;
-    width: fit-content; margin: 0 auto; padding: 5px 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+.lesson-item.completed {
+    border-color: #10b981;
+    background: rgba(16, 185, 129, 0.05);
 }
 
-.nav-list { display: flex; list-style: none; margin: 0; padding: 0; gap: 5px; }
-.nav-item { position: relative; }
-.nav-btn {
-    background: transparent; border: none; color: var(--text);
-    padding: 12px 18px; font-weight: 600; cursor: pointer; border-radius: 25px;
-}
-.nav-btn:hover { background: rgba(99, 102, 241, 0.1); }
+.lesson-icon { font-size: 2rem; margin-bottom: 10px; }
 
-.dropdown {
-    display: none; position: absolute; top: 100%; left: 0;
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 12px; min-width: 160px; box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-}
-.dropdown a { display: block; padding: 10px 15px; text-decoration: none; color: var(--text); font-size: 0.9rem; }
-.nav-item:hover .dropdown { display: block; }
-
-/* Main UI */
-.container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
-.card { background: var(--card); padding: 25px; border-radius: 20px; border: 1px solid var(--border); margin-bottom: 25px; }
-.section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-
-/* Luke AI Widget */
-.ai-widget {
-    position: fixed; bottom: 20px; right: 20px; width: 320px;
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); overflow: hidden;
-}
-.ai-header { background: var(--primary); color: white; padding: 12px 15px; display: flex; align-items: center; }
-.luke-avatar {
-    width: 38px; height: 38px; background: #f59e0b; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center; font-weight: 800; margin-right: 12px;
-}
-.luke-avatar.speaking { animation: pulse 0.4s infinite alternate; }
-@keyframes pulse { from { transform: scale(1); } to { transform: scale(1.15); } }
-
-.ai-body { height: 250px; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
-.ai-msg-luke { background: var(--primary); color: white; padding: 10px 14px; border-radius: 15px 15px 15px 0; align-self: flex-start; font-size: 0.9rem; }
-.user-msg { background: var(--border); color: var(--text); padding: 10px 14px; border-radius: 15px 15px 0 15px; align-self: flex-end; font-size: 0.9rem; }
-
-.ai-input { display: flex; padding: 10px; border-top: 1px solid var(--border); }
-.ai-input input { flex: 1; border: none; background: transparent; color: var(--text); padding: 5px; outline: none; }
-
-/* Buttons & Extras */
-.btn-primary { background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 10px; cursor: pointer; }
-.btn-outline { background: transparent; border: 1px solid var(--primary); color: var(--primary); padding: 8px 16px; border-radius: 10px; cursor: pointer; }
-.badge { background: #10b981; color: white; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; }
-.assignment-card.completed { border-left: 5px solid #10b981; opacity: 0.8; }
+/* --- UTILITY --- */
+.btn-primary.small { padding: 8px 16px; font-size: 0.85rem; }
+.btn-outline.small { padding: 6px 12px; font-size: 0.8rem; }
