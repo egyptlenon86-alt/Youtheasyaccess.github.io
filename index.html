@@ -3,62 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connected Youth | NYC</title>
+    <title>Connected Youth | NYC Portal</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body class="light-mode">
-    <header class="main-header">
-        <div class="header-container">
-            <div class="logo">Connected<span>Youth</span></div>
-            <nav class="horizontal-nav">
-                <ul class="nav-links">
-                    <li class="nav-item">
-                        <a href="javascript:void(0)" class="nav-link">Opportunities ▾</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="javascript:void(0)" onclick="showSection('job-feed')">Jobs List</a></li>
-                            <li><a href="javascript:void(0)" onclick="showSection('map-section')">NYC Job Map</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="javascript:void(0)" class="nav-link">Work Readiness ▾</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#training">Assignments</a></li>
-                            <li><a href="javascript:void(0)">Resume Dropbox</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-            <button id="theme-toggle" class="theme-switch">🌙</button>
-        </div>
-    </header>
+
+    <!-- Brand Header -->
+    <div class="brand-header">
+        <h1>Connected <span>Youth</span></h1>
+    </div>
+
+    <!-- Floating Horizontal Navigation -->
+    <nav class="nav-island">
+        <ul class="nav-list">
+            <li class="nav-item">
+                <button class="nav-btn">Opportunities ▾</button>
+                <div class="dropdown">
+                    <a href="javascript:void(0)" onclick="showSection('job-feed')">Jobs List</a>
+                    <a href="javascript:void(0)" onclick="showSection('map-section')">NYC Job Map</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <button class="nav-btn">Readiness ▾</button>
+                <div class="dropdown">
+                    <a href="#training">Assignments</a>
+                    <a href="javascript:void(0)">Resume Tips</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <button id="theme-toggle" class="nav-btn">🌙 Mode</button>
+            </li>
+        </ul>
+    </nav>
 
     <main class="container">
-        <!-- Job Feed and Map Sections as previously defined -->
-        
+        <!-- Job Feed Section -->
+        <section id="job-feed" class="card">
+            <div class="section-header">
+                <h2>Open Roles</h2>
+                <button class="btn-outline" onclick="showSection('map-section')">📍 Map View</button>
+            </div>
+            <div class="job-list">
+                <div class="job-card">
+                    <h3>Community Coordinator</h3>
+                    <p>Bronx, NY • $22/hr</p>
+                    <button class="btn-primary small" onclick="openApply()">Quick Apply</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section id="map-section" class="card" style="display: none;">
+            <div class="section-header">
+                <h2>NYC Opportunity Map</h2>
+                <button class="btn-outline" onclick="showSection('job-feed')">📋 List View</button>
+            </div>
+            <div class="map-placeholder">Interactive Map (Simulation)</div>
+        </section>
+
+        <!-- Work Readiness Section -->
         <section id="training" class="card">
-            <h2>Work Readiness Assignments</h2>
+            <div class="section-header">
+                <h2>Work Readiness</h2>
+                <span class="badge" id="progress-total">0% Complete</span>
+            </div>
             <div class="assignment-grid">
                 <div class="assignment-card" id="task-1">
-                    <p><strong>Resume Builder</strong></p>
-                    <button class="btn-outline small" onclick="completeTask('task-1', 25)">Start</button>
+                    <div>
+                        <h3>Resume Check</h3>
+                        <p>Upload your current resume for Luke to review.</p>
+                    </div>
+                    <button class="btn-outline small" onclick="completeTask('task-1', 50)">Complete</button>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- AI ASSISTANT: LUKE -->
+    <!-- Luke AI Assistant -->
     <div class="ai-widget">
         <div class="ai-header">
-            <div class="luke-avatar">L</div>
-            <span>Chat with Luke</span>
+            <div class="luke-avatar" id="luke-avatar">L</div>
+            <div class="luke-status">
+                <span class="luke-name">Luke</span>
+                <span class="status-tag">Online & Hyped ⚡</span>
+            </div>
+            <button id="voice-toggle" class="voice-btn">🔊</button>
         </div>
         <div class="ai-body" id="chat-history">
-            <p class="ai-msg">Hey! I'm <strong>Luke</strong>, your career wingman. Need help applying or just have a question about NYC jobs? Let's get to work! 🚀</p>
+            <div class="ai-msg-luke">Yo! I'm Luke. I'm here to help you navigate NYC's job scene. Want me to talk? Hit that speaker icon! 🗽</div>
         </div>
         <div class="ai-input">
-            <input type="text" placeholder="Type here..." id="ai-user-input">
+            <input type="text" placeholder="Chat with your wingman..." id="ai-user-input">
             <button id="send-ai-btn">Send</button>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content">
+            <h1>🎉 YOU DID IT! 🎉</h1>
+            <p>Application sent. Check your dashboard for updates.</p>
+            <button class="btn-primary" onclick="closeModal()">Back to Jobs</button>
         </div>
     </div>
 
