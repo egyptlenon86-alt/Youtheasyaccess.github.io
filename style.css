@@ -1,121 +1,51 @@
-:root {
-    --bg-color: #f8fafc;
-    --card-bg: #ffffff;
-    --text-color: #1e293b;
-    --primary-color: #6366f1;
-    --border-color: #e2e8f0;
-    --nav-height: 70px;
+/* Luke Avatar Styling */
+.luke-avatar {
+    width: 35px;
+    height: 35px;
+    background: #f59e0b; /* Fun orange color */
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    margin-right: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.dark-mode {
-    --bg-color: #0f172a;
-    --card-bg: #1e293b;
-    --text-color: #f8fafc;
-    --border-color: #334155;
+.ai-header {
+    background: var(--primary-color);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 12px 12px 0 0;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
 }
 
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    margin: 0;
-    transition: 0.3s;
-}
-
-/* Horizontal Header Styles */
+/* Horizontal Nav */
 .main-header {
     background: var(--card-bg);
     border-bottom: 1px solid var(--border-color);
-    height: var(--nav-height);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    position: sticky; top: 0; z-index: 1000;
 }
 
 .header-container {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 100%;
-    padding: 0 20px;
+    max-width: 1000px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 70px; padding: 0 20px;
 }
 
-.logo { font-weight: 800; font-size: 1.4rem; cursor: default; }
-.logo span { color: var(--primary-color); }
+.nav-links { display: flex; gap: 25px; list-style: none; }
+.nav-item { position: relative; }
+.nav-link { text-decoration: none; color: var(--text-color); font-weight: 600; }
 
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-item {
-    position: relative; /* Anchor for the dropdown */
-    height: var(--nav-height);
-    display: flex;
-    align-items: center;
-}
-
-.nav-link {
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: color 0.2s;
-}
-
-.nav-link:hover { color: var(--primary-color); }
-
-/* Dropdown Menu */
 .dropdown-menu {
-    position: absolute;
-    top: var(--nav-height);
-    left: 0;
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 0 0 8px 8px;
-    list-style: none;
-    padding: 10px 0;
-    min-width: 180px;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    display: none; /* Hidden by default */
+    display: none; position: absolute; top: 100%; left: 0;
+    background: var(--card-bg); border: 1px solid var(--border-color);
+    padding: 10px; border-radius: 8px; min-width: 160px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.dropdown-menu li a {
-    display: block;
-    padding: 10px 20px;
-    text-decoration: none;
-    color: var(--text-color);
-    font-size: 0.9rem;
-}
-
-.dropdown-menu li a:hover {
-    background: var(--bg-color);
-    color: var(--primary-color);
-}
-
-/* Show Dropdown on Hover */
-.nav-item:hover .dropdown-menu {
-    display: block;
-}
-
-.theme-switch {
-    background: none;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 5px 10px;
-    cursor: pointer;
-    font-size: 1.1rem;
-    color: var(--text-color);
-}
-
-/* UI Cards */
-.container { max-width: 800px; margin: 40px auto; padding: 20px; }
-.card {
-    background: var(--card-bg); padding: 2rem; border-radius: 16px;
-    border: 1px solid var(--border-color); margin-bottom: 2rem;
-}
+.nav-item:hover .dropdown-menu { display: block; }
