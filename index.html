@@ -17,7 +17,7 @@
     <nav class="nav-island">
         <ul class="nav-list">
             <li class="nav-item">
-                <button class="nav-btn">Opportunities ▾</button>
+                <button class="nav-btn">Explore ▾</button>
                 <div class="dropdown">
                     <a href="javascript:void(0)" onclick="showSection('job-feed')">Jobs List</a>
                     <a href="javascript:void(0)" onclick="showSection('map-section')">NYC Job Map</a>
@@ -30,7 +30,7 @@
     </nav>
 
     <main class="container">
-        <!-- Section 1: Job Feed -->
+        <!-- Job Feed -->
         <section id="job-feed" class="card">
             <div class="section-header">
                 <h2>Open Roles</h2>
@@ -45,7 +45,7 @@
             </div>
         </section>
 
-        <!-- Section 2: NYC Map -->
+        <!-- Map Section -->
         <section id="map-section" class="card" style="display: none;">
             <div class="section-header">
                 <h2>NYC Opportunity Map</h2>
@@ -54,7 +54,7 @@
             <div class="map-placeholder">Interactive Map View</div>
         </section>
 
-        <!-- Section 3: Work Readiness Hub (Lessons + Assignments) -->
+        <!-- Work Readiness Hub -->
         <section id="training-hub" class="card" style="display: none;">
             <div class="section-header">
                 <h2>Work Readiness Hub</h2>
@@ -82,27 +82,13 @@
                     </div>
                 </div>
             </div>
-
-            <div class="assignment-section" style="margin-top: 30px;">
-                <h3>Practical Assignments</h3>
-                <div class="assignment-grid">
-                    <div class="assignment-card" id="task-1">
-                        <div>
-                            <h4>Resume Check</h4>
-                            <p>Upload your current resume for Luke to review.</p>
-                        </div>
-                        <button class="btn-outline small" onclick="completeTask('task-1', 20)">Upload</button>
-                    </div>
-                </div>
-            </div>
         </section>
     </main>
 
-    <!-- MODAL: LOGIN -->
+    <!-- AUTH MODAL -->
     <div id="login-modal" class="modal">
         <div class="modal-content auth-card">
             <h2>Welcome Back</h2>
-            <p>Join the community to track your progress.</p>
             <div class="auth-buttons">
                 <button class="auth-btn email">Sign in with Email</button>
                 <button class="auth-btn google">Continue with Google</button>
@@ -112,7 +98,7 @@
         </div>
     </div>
 
-    <!-- MODAL: SETTINGS -->
+    <!-- SETTINGS MODAL -->
     <div id="settings-modal" class="modal">
         <div class="modal-content">
             <h2>Settings</h2>
@@ -128,7 +114,7 @@
         </div>
     </div>
 
-    <!-- MODAL: SUCCESS (From Screenshot 2026-05-01 at 4.24.20 PM.png) -->
+    <!-- SUCCESS MODAL (Screenshot 2026-05-01 at 4.24.20 PM.png) -->
     <div id="success-modal" class="modal">
         <div class="modal-content success-card">
             <div class="confetti-container">🎉 🎊 🎉</div>
@@ -144,11 +130,11 @@
             <div class="luke-avatar" id="luke-avatar">L</div>
             <div class="luke-status">
                 <span class="luke-name">Luke</span>
-                <span class="status-tag">Online & Hyped ⚡</span>
+                <span class="status-tag">Online ⚡</span>
             </div>
         </div>
         <div class="ai-body" id="chat-history">
-            <div class="ai-msg-luke">Yo! I'm Luke. Go to <strong>Settings</strong> if you want me to talk out loud! 🗽</div>
+            <div class="ai-msg-luke">Yo! Go to Settings to turn my voice on! 🗽</div>
         </div>
         <div class="ai-input">
             <input type="text" placeholder="Chat with Luke..." id="ai-user-input">
