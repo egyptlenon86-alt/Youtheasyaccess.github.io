@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpportunityNYC | Youth Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body class="light-mode">
+    <nav class="navbar">
+        <div class="logo">Opportunity<span>NYC</span></div>
+        <div class="nav-controls">
+            <div class="dropdown">
+                <button class="dropbtn" onclick="toggleDropdown()">Menu ▾</button>
+                <div id="navDropdown" class="dropdown-content">
+                    <a href="javascript:void(0)" onclick="showSection('job-feed')">Jobs List</a>
+                    <a href="javascript:void(0)" onclick="showSection('map-section')">Job Map</a>
+                    <a href="#training">Work Readiness</a>
+                    <a href="#settings">Settings</a>
+                </div>
+            </div>
+            <button id="theme-toggle" class="theme-switch">🌙</button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <header class="hero">
+            <h1>Find Your Next Opportunity</h1>
+            <p>Connecting New Yorkers ages 18-25 with career-starting roles.</p>
+            <div class="search-container">
+                <input type="text" placeholder="Search for jobs or training..." id="job-search">
+                <button class="btn-primary">Search</button>
+            </div>
+        </header>
+
+        <!-- JOB FEED (Primary View) -->
+        <section id="job-feed" class="card">
+            <div class="section-header">
+                <h2>Open Opportunities</h2>
+                <button class="btn-outline" onclick="showSection('map-section')">📍 View Map</button>
+            </div>
+            <div class="job-list">
+                <div class="job-card">
+                    <h3>Retail Associate</h3>
+                    <p>Brooklyn, NY • Entry Level</p>
+                    <button class="btn-primary small" onclick="openApply()">Quick Apply</button>
+                </div>
+                <div class="job-card">
+                    <h3>Junior Web Developer</h3>
+                    <p>Queens, NY • Paid Internship</p>
+                    <button class="btn-primary small" onclick="openApply()">Quick Apply</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- MAP SECTION (Hidden by default) -->
+        <section id="map-section" class="card" style="display: none;">
+            <div class="section-header">
+                <h2>NYC Job Map</h2>
+                <button class="btn-outline" onclick="showSection('job-feed')">📋 View List</button>
+            </div>
+            <div class="map-placeholder">
+                <div class="map-overlay">
+                    <span class="map-pin" style="top: 40%; left: 45%;" title="Brooklyn Job"></span>
+                    <span class="map-pin" style="top: 30%; left: 30%;" title="Manhattan Job"></span>
+                </div>
+                <p>Interactive Map View</p>
+            </div>
+        </section>
+
+        <!-- APPLICATION FLOW -->
+        <section id="application-flow" class="card" style="display: none;">
+            <h2>Quick Apply</h2>
+            <form id="job-app-form">
+                <div class="drop-box" id="resume-drop">
+                    <p>Click to Upload Resume</p>
+                    <input type="file" id="resume-file" hidden>
+                </div>
+                <button type="submit" class="btn-primary large">Submit Application</button>
+            </form>
+        </section>
+
+        <section id="training" class="card">
+            <h2>Work Readiness Progress</h2>
+            <div class="training-item">Resume Building: <strong>Completed</strong></div>
+        </section>
+    </main>
+
+    <!-- AI ASSISTANT -->
+    <div class="ai-widget">
+        <div class="ai-header">Career AI Assistant</div>
+        <div class="ai-body" id="chat-history">
+            <p>Hi! How can I help you apply today?</p>
+        </div>
+        <div class="ai-input">
+            <input type="text" placeholder="Ask AI..." id="ai-user-input">
+            <button id="send-ai-btn">Send</button>
+        </div>
+    </div>
+
+    <!-- SUCCESS MODAL -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content animate-pop">
+            <h1 class="giant-text">🎉 YOU DID IT! 🎉</h1>
+            <p>Your application was successfully submitted.</p>
+            <button class="btn-primary" onclick="closeModal()">Keep Searching</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
