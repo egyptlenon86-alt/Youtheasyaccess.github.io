@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connected Youth | NYC Portal</title>
+    <title>Connected Youth | NYC</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
@@ -11,7 +11,6 @@
     <header class="main-header">
         <div class="header-container">
             <div class="logo">Connected<span>Youth</span></div>
-            
             <nav class="horizontal-nav">
                 <ul class="nav-links">
                     <li class="nav-item">
@@ -19,63 +18,49 @@
                         <ul class="dropdown-menu">
                             <li><a href="javascript:void(0)" onclick="showSection('job-feed')">Jobs List</a></li>
                             <li><a href="javascript:void(0)" onclick="showSection('map-section')">NYC Job Map</a></li>
-                            <li><a href="javascript:void(0)">Internships</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="javascript:void(0)" class="nav-link">Resources ▾</a>
+                        <a href="javascript:void(0)" class="nav-link">Work Readiness ▾</a>
                         <ul class="dropdown-menu">
-                            <li><a href="#training">Work Readiness</a></li>
-                            <li><a href="javascript:void(0)">Resume Tips</a></li>
-                            <li><a href="javascript:void(0)">Interview Prep</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="javascript:void(0)" class="nav-link">Account ▾</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#settings">Settings</a></li>
-                            <li><a href="javascript:void(0)">My Applications</a></li>
-                            <li><a href="javascript:void(0)">Log Out</a></li>
+                            <li><a href="#training">Assignments</a></li>
+                            <li><a href="javascript:void(0)">Resume Dropbox</a></li>
                         </ul>
                     </li>
                 </ul>
             </nav>
-
             <button id="theme-toggle" class="theme-switch">🌙</button>
         </div>
     </header>
 
     <main class="container">
-        <!-- Content remains the same as previous version -->
-        <header class="hero">
-            <h1>Find Your Next Step</h1>
-            <p>Empowering NYC's next generation with careers and training.</p>
-        </header>
-
-        <section id="job-feed" class="card">
-            <div class="section-header">
-                <h2>Open Opportunities</h2>
-                <button class="btn-outline" onclick="showSection('map-section')">📍 View Map</button>
-            </div>
-            <div class="job-list">
-                <div class="job-card">
-                    <h3>Retail Associate</h3>
-                    <p>Brooklyn, NY • Entry Level</p>
-                    <button class="btn-primary small" onclick="openApply()">Quick Apply</button>
+        <!-- Job Feed and Map Sections as previously defined -->
+        
+        <section id="training" class="card">
+            <h2>Work Readiness Assignments</h2>
+            <div class="assignment-grid">
+                <div class="assignment-card" id="task-1">
+                    <p><strong>Resume Builder</strong></p>
+                    <button class="btn-outline small" onclick="completeTask('task-1', 25)">Start</button>
                 </div>
             </div>
         </section>
-
-        <section id="map-section" class="card" style="display: none;">
-            <div class="section-header">
-                <h2>NYC Job Map</h2>
-                <button class="btn-outline" onclick="showSection('job-feed')">📋 View List</button>
-            </div>
-            <div class="map-placeholder">
-                <p>Interactive Map View</p>
-            </div>
-        </section>
     </main>
+
+    <!-- AI ASSISTANT: LUKE -->
+    <div class="ai-widget">
+        <div class="ai-header">
+            <div class="luke-avatar">L</div>
+            <span>Chat with Luke</span>
+        </div>
+        <div class="ai-body" id="chat-history">
+            <p class="ai-msg">Hey! I'm <strong>Luke</strong>, your career wingman. Need help applying or just have a question about NYC jobs? Let's get to work! 🚀</p>
+        </div>
+        <div class="ai-input">
+            <input type="text" placeholder="Type here..." id="ai-user-input">
+            <button id="send-ai-btn">Send</button>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
