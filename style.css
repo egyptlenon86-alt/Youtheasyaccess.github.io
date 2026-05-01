@@ -1,4 +1,3 @@
-/* --- EXISTING BASE STYLES --- */
 :root {
     --primary: #6366f1;
     --bg: #f8fafc;
@@ -19,20 +18,18 @@ body {
     background-color: var(--bg);
     color: var(--text);
     margin: 0;
-    transition: 0.3s ease;
+    transition: 0.3s;
 }
 
-/* --- NEW AUTH & MODAL STYLES --- */
+/* Modal System */
 .modal {
     display: none;
     position: fixed;
     z-index: 2000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
     background: rgba(0,0,0,0.6);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(4px);
 }
 
 .modal-content {
@@ -42,66 +39,18 @@ body {
     max-width: 400px;
     border-radius: 24px;
     text-align: center;
-    position: relative;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
-.auth-buttons { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
+/* Success Styles (from Screenshot 2026-05-01 at 4.24.20 PM.png) */
+.success-card { border-top: 8px solid #10b981; }
+.success-title { font-size: 2.2rem; font-weight: 800; margin: 15px 0; }
+.confetti-container { font-size: 3rem; animation: bounce 0.5s infinite alternate; }
 
-.auth-btn {
-    padding: 12px;
-    border-radius: 12px;
-    border: 1px solid var(--border);
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.2s;
-    background: white;
-    color: #1e293b;
-}
-
-.auth-btn.google { border-color: #4285F4; color: #4285F4; }
-.auth-btn.apple { background: #000; color: #fff; border: none; }
-.auth-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-
-/* --- SETTINGS STYLES --- */
-.setting-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 0;
-    border-bottom: 1px solid var(--border);
-}
-
-/* --- SUCCESS MODAL (From Screenshot) --- */
-.success-card {
-    border-top: 8px solid #10b981;
-    padding: 40px;
-}
-
-.success-title {
-    font-size: 2.2rem;
-    font-weight: 800;
-    color: var(--text);
-    margin: 15px 0;
-    letter-spacing: -1px;
-}
-
-.confetti-container {
-    font-size: 3rem;
-    animation: bounce 0.5s infinite alternate;
-}
-
-@keyframes bounce {
-    from { transform: translateY(0); }
-    to { transform: translateY(-10px); }
-}
-
-/* --- WORK READINESS LESSONS --- */
+/* Lesson Grid */
 .lesson-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 15px;
-    margin-top: 15px;
 }
 
 .lesson-item {
@@ -109,16 +58,14 @@ body {
     padding: 20px;
     border-radius: 15px;
     border: 1px solid var(--border);
-    transition: 0.3s;
 }
 
-.lesson-item.completed {
-    border-color: #10b981;
-    background: rgba(16, 185, 129, 0.05);
-}
+.lesson-item.completed { border-color: #10b981; opacity: 0.8; }
 
-.lesson-icon { font-size: 2rem; margin-bottom: 10px; }
+/* Auth Buttons */
+.auth-buttons { display: flex; flex-direction: column; gap: 10px; margin: 20px 0; }
+.auth-btn { padding: 12px; border-radius: 12px; border: 1px solid var(--border); cursor: pointer; font-weight: 600; }
+.auth-btn.google { color: #4285F4; }
+.auth-btn.apple { background: #000; color: #fff; }
 
-/* --- UTILITY --- */
-.btn-primary.small { padding: 8px 16px; font-size: 0.85rem; }
-.btn-outline.small { padding: 6px 12px; font-size: 0.8rem; }
+@keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-10px); } }
