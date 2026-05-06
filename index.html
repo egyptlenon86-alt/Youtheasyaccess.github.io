@@ -3,88 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouthConnect NYC | Opportunity Hub</title>
+    <title>YouthConnect NYC | Opportunity Hub V2</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body class="light-theme">
-
-    <!-- Header / Navigation -->
-    <header class="navbar">
-        <div class="nav-container">
-            <div class="logo-group">
-                <div class="logo">YouthConnect</div>
-                <div class="dropdown">
-                    <button class="dropbtn" id="menuToggle">Menu <i class="fas fa-chevron-down"></i></button>
-                    <div class="dropdown-content" id="myDropdown">
-                        <a href="#"><i class="fas fa-briefcase"></i> Job Board</a>
-                        <a href="#"><i class="fas fa-graduation-cap"></i> Training</a>
-                        <a href="#"><i class="fas fa-map-marked-alt"></i> NYC Map</a>
-                        <a href="#"><i class="fas fa-envelope"></i> Message Center</a>
-                    </div>
-                </div>
+<body class="light-mode">
+    <header class="main-header">
+        <div class="header-container">
+            <!-- Header Nav matching referance photo image_5.png -->
+            <div class="header-nav-items">
+                <a href="#top-content" class="nav-item">
+                    <i class="fas fa-rocket"></i>
+                    <span>Top Content</span>
+                </a>
+                <a href="#people" class="nav-item">
+                    <i class="fas fa-users"></i>
+                    <span>People</span>
+                </a>
+                <a href="#learning" class="nav-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Learning</span>
+                </a>
+                <a href="#jobs" class="nav-item active">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Jobs</span>
+                </a>
+                <a href="#games" class="nav-item">
+                    <i class="fas fa-puzzle-piece"></i>
+                    <span>Games</span>
+                </a>
             </div>
 
-            <div class="search-bar">
-                <input type="text" placeholder="Search jobs, skills, or locations...">
-                <button><i class="fas fa-search"></i></button>
-            </div>
+            <div class="header-divider"></div>
 
-            <div class="nav-actions">
-                <button class="ai-trigger" onclick="toggleLuke()">
-                    <i class="fas fa-robot"></i> Ask Luke
-                </button>
-                <div class="profile-preview" onclick="toggleSettings()">
-                    <img src="https://ui-avatars.com/api/?name=Egypt+Lenon&background=6C63FF&color=fff" alt="User">
-                </div>
+            <div class="header-auth">
+                <button class="btn-signin" onclick="simulateSignIn()">Sign in</button>
+                <button class="btn-join">Join now</button>
             </div>
         </div>
     </header>
 
-    <main class="dashboard">
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Ready to take the next step?</h1>
-                <p>Connecting NYC youth (18-25) to jobs and growth opportunities.</p>
-                <div class="auth-options">
-                    <button class="btn-auth google"><i class="fab fa-google"></i> Continue with Google</button>
-                    <button class="btn-auth apple"><i class="fab fa-apple"></i> Continue with Apple</button>
-                </div>
+    <!-- Content Sections (Refactored to support filtering) -->
+    <main class="content-grid">
+        <section class="hero-card">
+            <h1>Ready to take the next step?</h1>
+            <p>Connecting NYC youth to their best opportunities.</p>
+            <!-- Moved search into hero for more presence -->
+            <div class="search-container">
+                <input type="text" id="mainSearch" placeholder="Search jobs, internships, training...">
+                <button type="submit" onclick="filterJobs()"><i class="fas fa-search"></i></button>
             </div>
         </section>
 
-        <!-- Main Content Grid -->
-        <div class="grid-container">
-            <!-- Job Recommendations -->
-            <section class="job-feed card">
-                <h2>Recommended for You</h2>
-                <div class="job-list" id="jobList">
-                    <!-- Jobs populated by JS -->
-                </div>
-            </section>
+        <section class="job-feed" id="jobFeed">
+            <h2>Recommended for You</h2>
+            <div id="jobCards">
+                <!-- Dynamically generated jobs -->
+            </div>
+        </section>
 
-            <!-- Map View -->
-            <section class="map-section card">
-                <h2>Jobs Near You</h2>
-                <div class="map-placeholder">
-                    <div class="map-overlay">NYC Job Map View</div>
-                </div>
-            </section>
-        </div>
+        <section class="map-preview" id="map">
+            <h2>NYC Opportunity Map</h2>
+            <div class="fake-map" onclick="interactMap()">
+                <div class="pin active" style="top: 40%; left: 30%;"></div>
+                <div class="pin" style="top: 60%; left: 70%;"></div>
+                <p>Interactive Map View (Mock)</p>
+            </div>
+        </section>
+
+        <!-- New sections based on V2 requirements -->
+        <section class="message-center" id="messages">
+            <h2>Message Center</h2>
+            <div class="message-feed" id="messageFeed">
+                <p>Sign in to view your messages.</p>
+            </div>
+        </section>
+
+        <!-- Unified Profile/Settings Button and Panel -->
+        <button class="profile-btn-fixed" onclick="toggleSettings()" id="profileTrigger" style="display:none">
+            <img src="https://via.placeholder.com/40" alt="Profile" id="userAvatarSmall">
+        </button>
+
     </main>
 
-    <!-- Account Settings / Profile Sidebar -->
-    <div class="settings-sidebar" id="settingsSidebar">
+    <!-- Dynamic Settings Sidebar (Removed Dropdown, Unified Profile) -->
+    <div id="settingsSidebar" class="sidebar">
         <div class="sidebar-header">
-            <h3>My Account</h3>
+            <h3>My Profile & Settings</h3>
             <button class="close-btn" onclick="toggleSettings()">&times;</button>
         </div>
-        <div class="sidebar-body">
-            <div class="profile-card">
-                <img src="https://ui-avatars.com/api/?name=Egypt+Lenon&size=100" alt="Egypt">
-                <h4>Egypt Lenon</h4>
-                <p>Frontend Developer / UI Designer</p>
+        <div class="sidebar-content">
+            <div class="profile-section">
+                <img src="https://via.placeholder.com/80" alt="Profile Picture" class="large-avatar" id="sidebarAvatar">
+                <h4 id="display-name">Guest</h4>
+                <p id="member-since">Member since 2026</p>
             </div>
 
             <div class="setting-item">
@@ -95,46 +108,49 @@
                 </label>
             </div>
 
-            <div class="profile-form">
+            <!-- Profile and Data Form -->
+            <div class="profile-data-form">
                 <label>Job Interest Survey</label>
-                <select>
-                    <option>UI/UX Design</option>
-                    <option>Frontend Dev</option>
-                    <option>Direct Support</option>
-                </select>
-
-                <label>Resume Drop</label>
-                <div class="drop-box" id="dropBox">
+                <div class="multi-select" id="interestSelect">
+                    <div class="interest-tag" onclick="toggleInterest(this, 'frontend')">Frontend</div>
+                    <div class="interest-tag" onclick="toggleInterest(this, 'ux')">UI/UX</div>
+                    <div class="interest-tag" onclick="toggleInterest(this, 'community')">Community</div>
+                </div>
+                <label>Upload Resume (PDF/Word)</label>
+                <div class="drop-zone" id="dropZone">
                     <i class="fas fa-cloud-upload-alt"></i>
-                    <p>Drop PDF or Click to Upload</p>
+                    <p id="dropZoneStatus">Drag & drop or click</p>
+                    <input type="file" id="resumeFile" style="display:none">
                 </div>
             </div>
 
-            <div class="user-stats">
-                <h5>Completed Training: 85%</h5>
-                <div class="progress-bar"><div class="progress" style="width: 85%"></div></div>
-            </div>
+            <button class="logout-btn" onclick="simulateSignOut()">Sign Out</button>
         </div>
     </div>
 
     <!-- Luke AI Assistant -->
-    <div class="luke-ai" id="lukeAI">
-        <div class="luke-header">
-            <div class="luke-status">
-                <i class="fas fa-circle active"></i>
-                <span>Luke AI Assistant</span>
+    <div id="lukeAI" class="ai-modal">
+        <div class="ai-header">
+            <div class="ai-user-info">
+                <i class="fas fa-robot"></i>
+                <span>Luke - AI Guide</span>
             </div>
             <button onclick="toggleLuke()">&times;</button>
         </div>
-        <div class="luke-body" id="chatHistory">
-            <div class="msg bot">Hi! I'm Luke. I can help you apply for jobs or answer questions. Need me to read anything out loud?</div>
+        <div class="ai-chat-body" id="chatBody">
+            <p class="ai-msg bot">Hi! I'm Luke, your guide to YouthConnect. How can I help you with your job search today?</p>
         </div>
-        <div class="luke-footer">
-            <button class="audio-btn"><i class="fas fa-microphone"></i></button>
-            <input type="text" placeholder="Type your question...">
-            <button class="send-btn"><i class="fas fa-paper-plane"></i></button>
+        <div class="ai-footer">
+            <button class="audio-btn" id="audioBtn" onclick="activateLukeAudio()"><i class="fas fa-microphone"></i></button>
+            <input type="text" id="lukeInput" placeholder="How do I find my interest?">
+            <button class="send-btn" onclick="sendLukeMessage()"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
+
+    <!-- Loop AI Floating Trigger -->
+    <button class="ai-floating-btn" onclick="toggleLuke()">
+        <i class="fas fa-robot"></i> Ask Luke
+    </button>
 
     <script src="script.js"></script>
 </body>
