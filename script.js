@@ -1,71 +1,82 @@
-// Theme Toggle Logic
-const themeToggle = document.getElementById('theme-toggle');
-const body = document.body;
-
-themeToggle.addEventListener('change', () => {
-    body.classList.toggle('dark-mode');
-});
-
-// Modal Controls
-const settingsTrigger = document.getElementById('settings-trigger');
-const settingsModal = document.getElementById('settings-modal');
-const closeSettings = document.getElementById('close-settings');
-
-settingsTrigger.onclick = () => settingsModal.classList.remove('hidden');
-closeSettings.onclick = () => settingsModal.classList.add('hidden');
-
-// Resume Upload Mock
-const dropZone = document.getElementById('drop-zone');
-const fileInput = document.getElementById('file-input');
-
-dropZone.onclick = () => fileInput.click();
-fileInput.onchange = (e) => {
-    const fileName = e.target.files[0].name;
-    dropZone.querySelector('p').innerText = `Uploaded: ${fileName}`;
-    dropZone.style.borderColor = 'var(--secondary)';
-};
-
-// Application Celebration
-const applyBtn = document.getElementById('apply-trigger');
-const overlay = document.getElementById('success-overlay');
-
-applyBtn.onclick = () => {
-    overlay.classList.remove('hidden');
-    triggerConfetti();
-};
-
-function closeOverlay() {
-    overlay.classList.add('hidden');
+/ UI Toggles
+function toggleDropdown() {
+    document.getElementById("myDropdown").classList.toggle("show");
 }
 
-function triggerConfetti() {
-    const container = document.getElementById('confetti');
-    container.innerHTML = '';
-    for (let i = 0; i < 50; i++) {
-        const div = document.createElement('div');
-        div.style.cssText = `
-            position: absolute;
-            width: 10px; height: 10px;
-            background: ${['#6366f1', '#ec4899', '#06b6d4'][Math.floor(Math.random()*3)]};
-            left: ${Math.random()*100}%;
-            top: ${Math.random()*100}%;
-            border-radius: 50%;
-            animation: fall 1s ease-out forwards;
+document.getElementById('menuToggle').onclick = toggleDropdown;
+
+function toggleSettings() {
+    document.getElementById('settingsSidebar').classList.toggle('active');
+}
+
+function toggleLuke() {
+    document.getElementById('lukeAI').classList.toggle('active');
+}
+
+// Dark/Light Mode
+const themeToggle = document.getElementById('themeToggle');
+themeToggle.addEventListener('change', () => {
+    if(themeToggle.checked) {
+        document.body.classList.remove('light-theme');
+        document.body.classList.add('dark-theme');
+    } else {
+        document.body.classList.remove('dark-theme');
+        document.body.classList.add('light-theme');
+    }
+});
+
+// Mock Job Data Generation
+const jobs = [
+    { title: "Junior Web Designer", location: "Brooklyn, NY", type: "Full-time", tags: ["UI/UX", "Teens"] },
+    { title: "Social Media Assistant", location: "Manhattan, NY", type: "Internship", tags: ["Creative", "Part-time"] },
+    { title: "Direct Support Aide", location: "Queens, NY", type: "Entry Level", tags: ["Community", "Social Work"] }
+];
+
+function loadJobs() {
+    const list = document.getElementById('jobList');
+    jobs.forEach(job => {
+        const item = document.createElement('div');
+        item.style.borderBottom = "1px solid #f0f0f0";
+        item.style.padding = "15px 0";
+        item.innerHTML = `
+            <h4 style="color: var(--primary)">${job.title}</h4>
+            <p>${job.location} • ${job.type}</p>
+            <div style="margin-top:5px">
+                ${job.tags.map(t => `<span style="background:#E3F2FD; color:#1565C0; padding:2px 8px; border-radius:10px; font-size:12px; margin-right:5px">${t}</span>`).join('')}
+            </div>
         `;
-        container.appendChild(div);
+        list.appendChild(item);
+    });
+}
+
+// Audio Button Logic (Simulated)
+document.querySelector('.audio-btn').addEventListener('click', () => {
+    alert("Voice Mode Activated: Luke is listening...");
+});
+
+// Drag and Drop Logic
+const dropBox = document.getElementById('dropBox');
+dropBox.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    dropBox.style.background = "#f0f0ff";
+});
+dropBox.addEventListener('drop', (e) => {
+    e.preventDefault();
+    alert("Resume saved to your database!");
+    dropBox.style.background = "transparent";
+});
+
+// Close dropdowns when clicking outside
+window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        for (var i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
     }
 }
 
-// Voice Assistant Mock
-const voiceBtn = document.getElementById('voice-btn');
-const chatArea = document.getElementById('chat-area');
-
-voiceBtn.onclick = () => {
-    voiceBtn.style.background = '#f43f5e'; // pulsing color
-    chatArea.innerHTML += `<p style="color:var(--secondary); margin-top:10px;"><i>Listening...</i></p>`;
-    
-    setTimeout(() => {
-        voiceBtn.style.background = 'var(--secondary)';
-        chatArea.innerHTML = `<p><b>Luke:</b> I've highlighted 3 summer programs in Brooklyn that match your interest in coding!</p>`;
-    }, 2000);
-};
+document.addEventListener('DOMContentLoaded', loadJobs);
