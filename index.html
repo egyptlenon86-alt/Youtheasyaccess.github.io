@@ -2,61 +2,79 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YouthConnect NYC | Opportunity Hub</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body class="light-mode">
+<body>
     <header class="main-header">
         <div class="header-container">
-            <div class="header-nav-items">
-                <a href="#" class="nav-item"><i class="fas fa-rocket"></i><span>Top Content</span></a>
-                <a href="#" class="nav-item"><i class="fas fa-users"></i><span>People</span></a>
-                <a href="#" class="nav-item"><i class="fas fa-graduation-cap"></i><span>Learning</span></a>
-                <a href="#" class="nav-item active"><i class="fas fa-briefcase"></i><span>Jobs</span></a>
-                <a href="#" class="nav-item"><i class="fas fa-puzzle-piece"></i><span>Games</span></a>
-            </div>
-            <div class="header-divider"></div>
-            <div class="header-auth" id="authSection">
-                <button class="btn-signin" onclick="openLogin()">Sign in</button>
-                <button class="btn-join" onclick="openLogin()">Join now</button>
+            <div class="header-logo"><div class="logo-icon">S</div> Superio</div>
+            <nav class="header-nav">
+                <a href="#"><i class="fas fa-rocket"></i> Top Content</a>
+                <a href="#"><i class="fas fa-users"></i> People</a>
+                <a href="#"><i class="fas fa-graduation-cap"></i> Learning</a>
+                <a href="#" class="active"><i class="fas fa-briefcase"></i> Jobs</a>
+                <a href="#"><i class="fas fa-puzzle-piece"></i> Games</a>
+            </nav>
+            <div class="header-auth" id="headerAuth">
+                <button class="btn-signin-outline" onclick="openLogin()">Sign in</button>
+                <button class="btn-join-solid" onclick="openLogin()">Join now</button>
             </div>
         </div>
     </header>
 
-    <main class="content-grid">
-        <section class="hero-card">
-            <h1>Ready to take the next step?</h1>
-            <p>Connecting NYC youth to their best opportunities.</p>
-            <div class="search-container">
-                <input type="text" placeholder="Search jobs, internships, training...">
-                <button><i class="fas fa-search"></i></button>
+    <main>
+        <section class="hero-section">
+            <div class="hero-container">
+                <h1>Create Job Posting Website Job Board</h1>
+                <p>Find Jobs, Employment & Career Opportunities</p>
+                <div class="search-bar">
+                    <div class="search-group"><i class="fas fa-search"></i> <input type="text" placeholder="Job title, keywords..."></div>
+                    <div class="search-group"><i class="fas fa-map-marker-alt"></i> <input type="text" placeholder="City or zip code"></div>
+                    <button class="btn-search">Find Jobs</button>
+                </div>
+                <div class="popular-searches">
+                    Popular Searches: <a href="#">Designer</a>, <a href="#">Developer</a>, <a href="#">Web</a>, <a href="#">IOS</a>
+                </div>
             </div>
+            <div class="hero-accent"></div>
         </section>
 
-        <section class="job-feed">
-            <h2>Recommended for You</h2>
-            <div id="jobCards"></div>
+        <section class="main-content">
+            <div class="feed-area">
+                <h2>Recommended Jobs</h2>
+                <div id="jobFeed"></div>
+            </div>
+            <aside class="sidebar">
+                <div class="map-card">
+                    <h3>NYC Opportunity Map</h3>
+                    <div class="map-mock">Interactive Map View</div>
+                </div>
+            </aside>
         </section>
     </main>
 
     <div id="loginModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeLogin()">&times;</span>
+        <div class="modal-card">
+            <span class="close-modal" onclick="closeLogin()">&times;</span>
             <h2>Ready to take the next step?</h2>
+            <p>Create an account or sign in.</p>
             <button class="social-btn"><i class="fab fa-google"></i> Continue with Google</button>
+            <button class="social-btn"><i class="fab fa-apple"></i> Continue with Apple</button>
             <div class="divider"><span>or</span></div>
-            <input type="email" placeholder="Email address *">
-            <button class="btn-continue" onclick="handleSignIn()">Continue <i class="fas fa-arrow-right"></i></button>
+            <div class="input-wrap">
+                <label>Email address *</label>
+                <input type="email" id="loginEmail">
+            </div>
+            <button class="btn-modal-continue" onclick="handleSignIn()">Continue <i class="fas fa-arrow-right"></i></button>
         </div>
     </div>
 
-    <button class="ai-floating-btn" onclick="toggleLuke()"><i class="fas fa-robot"></i> Ask Luke</button>
-    <div id="lukeAI" class="ai-modal">
-        <div class="ai-header"><span>Luke - AI Guide</span><button onclick="toggleLuke()">&times;</button></div>
-        <div class="ai-chat-body" id="chatBody"></div>
-        <div class="ai-footer"><input type="text" id="lukeInput"><button onclick="sendLukeMessage()">Send</button></div>
-    </div>
+    <button class="ai-fab" onclick="toggleLuke()">
+        <i class="fas fa-robot"></i> Ask Luke
+    </button>
 
     <script src="script.js"></script>
 </body>
