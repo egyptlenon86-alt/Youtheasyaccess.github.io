@@ -3,108 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouthConnect NYC | Job Board</title>
+    <title>YouthConnect NYC | Opportunity Hub</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="light-mode">
-    <header>
-        <nav class="navbar">
-            <div class="logo">YouthConnect<span>NYC</span></div>
-            <div class="nav-links">
+<body class="light-theme">
+
+    <!-- Header / Navigation -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo-group">
+                <div class="logo">YouthConnect</div>
                 <div class="dropdown">
-                    <button class="dropbtn">Menu <i class="fa fa-caret-down"></i></button>
-                    <div class="dropdown-content">
-                        <a href="#"><i class="fa fa-map-marked-alt"></i> NYC Job Map</a>
-                        <a href="#"><i class="fa fa-laptop-code"></i> Work Readiness</a>
-                        <a href="#"><i class="fa fa-envelope"></i> Message Center</a>
-                        <a href="#" id="settings-trigger"><i class="fa fa-cog"></i> Account Settings</a>
+                    <button class="dropbtn" id="menuToggle">Menu <i class="fas fa-chevron-down"></i></button>
+                    <div class="dropdown-content" id="myDropdown">
+                        <a href="#"><i class="fas fa-briefcase"></i> Job Board</a>
+                        <a href="#"><i class="fas fa-graduation-cap"></i> Training</a>
+                        <a href="#"><i class="fas fa-map-marked-alt"></i> NYC Map</a>
+                        <a href="#"><i class="fas fa-envelope"></i> Message Center</a>
                     </div>
                 </div>
             </div>
-            <div class="auth-btns">
-                <button class="btn-auth"><i class="fab fa-google"></i></button>
-                <button class="btn-auth"><i class="fab fa-apple"></i></button>
-                <button class="btn-signup">Sign Up</button>
+
+            <div class="search-bar">
+                <input type="text" placeholder="Search jobs, skills, or locations...">
+                <button><i class="fas fa-search"></i></button>
             </div>
-        </nav>
+
+            <div class="nav-actions">
+                <button class="ai-trigger" onclick="toggleLuke()">
+                    <i class="fas fa-robot"></i> Ask Luke
+                </button>
+                <div class="profile-preview" onclick="toggleSettings()">
+                    <img src="https://ui-avatars.com/api/?name=Egypt+Lenon&background=6C63FF&color=fff" alt="User">
+                </div>
+            </div>
+        </div>
     </header>
 
-    <main>
+    <main class="dashboard">
+        <!-- Hero Section -->
         <section class="hero">
-            <div class="hero-text">
-                <h1>Find Your First Step in NYC.</h1>
-                <p>Exclusive opportunities for ages 18-25. Connect with employers who value young talent.</p>
-                
-                <div class="search-bar">
-                    <div class="input-group">
-                        <i class="fa fa-search"></i>
-                        <input type="text" placeholder="Job title or interests...">
-                    </div>
-                    <div class="input-group">
-                        <i class="fa fa-location-arrow"></i>
-                        <select>
-                            <option>Brooklyn</option>
-                            <option>Queens</option>
-                            <option>Manhattan</option>
-                            <option>The Bronx</option>
-                            <option>Staten Island</option>
-                        </select>
-                    </div>
-                    <button class="btn-search" id="apply-trigger">Find Jobs</button>
+            <div class="hero-content">
+                <h1>Ready to take the next step?</h1>
+                <p>Connecting NYC youth (18-25) to jobs and growth opportunities.</p>
+                <div class="auth-options">
+                    <button class="btn-auth google"><i class="fab fa-google"></i> Continue with Google</button>
+                    <button class="btn-auth apple"><i class="fab fa-apple"></i> Continue with Apple</button>
                 </div>
-
-                <div class="resume-drop" id="drop-zone">
-                    <i class="fa fa-cloud-upload-alt"></i>
-                    <p>Drop Resume or Click to Upload</p>
-                    <input type="file" id="file-input" hidden>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="floating-card c1"><i class="fa fa-briefcase"></i> Hiring</div>
-                <div class="floating-card c2"><i class="fa fa-star"></i> Entry Level</div>
-                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=500" alt="Youth Working">
             </div>
         </section>
+
+        <!-- Main Content Grid -->
+        <div class="grid-container">
+            <!-- Job Recommendations -->
+            <section class="job-feed card">
+                <h2>Recommended for You</h2>
+                <div class="job-list" id="jobList">
+                    <!-- Jobs populated by JS -->
+                </div>
+            </section>
+
+            <!-- Map View -->
+            <section class="map-section card">
+                <h2>Jobs Near You</h2>
+                <div class="map-placeholder">
+                    <div class="map-overlay">NYC Job Map View</div>
+                </div>
+            </section>
+        </div>
     </main>
 
-    <!-- AI Assistant Luke -->
-    <div class="luke-bot" id="luke-bot">
-        <div class="bot-header">
-            <div class="avatar">L</div>
-            <span>Luke AI Assistant</span>
+    <!-- Account Settings / Profile Sidebar -->
+    <div class="settings-sidebar" id="settingsSidebar">
+        <div class="sidebar-header">
+            <h3>My Account</h3>
+            <button class="close-btn" onclick="toggleSettings()">&times;</button>
         </div>
-        <div class="bot-chat" id="chat-area">
-            <p>Hey! I'm Luke. Need help applying or have questions about programs in NYC?</p>
-        </div>
-        <div class="bot-input">
-            <button class="btn-voice" id="voice-btn"><i class="fa fa-microphone"></i></button>
-            <input type="text" placeholder="Ask Luke something...">
-        </div>
-    </div>
+        <div class="sidebar-body">
+            <div class="profile-card">
+                <img src="https://ui-avatars.com/api/?name=Egypt+Lenon&size=100" alt="Egypt">
+                <h4>Egypt Lenon</h4>
+                <p>Frontend Developer / UI Designer</p>
+            </div>
 
-    <!-- Success Overlay -->
-    <div id="success-overlay" class="overlay hidden">
-        <div class="celebration-box">
-            <div id="confetti"></div>
-            <h2>YOU DID IT! 🚀</h2>
-            <p>Your application is on its way. Great job!</p>
-            <button onclick="closeOverlay()">Keep Exploring</button>
-        </div>
-    </div>
-
-    <!-- Settings Modal -->
-    <div id="settings-modal" class="modal hidden">
-        <div class="modal-content">
-            <h3>Display Settings</h3>
-            <div class="toggle-row">
+            <div class="setting-item">
                 <span>Dark Mode</span>
                 <label class="switch">
-                    <input type="checkbox" id="theme-toggle">
+                    <input type="checkbox" id="themeToggle">
                     <span class="slider round"></span>
                 </label>
             </div>
-            <button class="btn-close" id="close-settings">Close</button>
+
+            <div class="profile-form">
+                <label>Job Interest Survey</label>
+                <select>
+                    <option>UI/UX Design</option>
+                    <option>Frontend Dev</option>
+                    <option>Direct Support</option>
+                </select>
+
+                <label>Resume Drop</label>
+                <div class="drop-box" id="dropBox">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drop PDF or Click to Upload</p>
+                </div>
+            </div>
+
+            <div class="user-stats">
+                <h5>Completed Training: 85%</h5>
+                <div class="progress-bar"><div class="progress" style="width: 85%"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Luke AI Assistant -->
+    <div class="luke-ai" id="lukeAI">
+        <div class="luke-header">
+            <div class="luke-status">
+                <i class="fas fa-circle active"></i>
+                <span>Luke AI Assistant</span>
+            </div>
+            <button onclick="toggleLuke()">&times;</button>
+        </div>
+        <div class="luke-body" id="chatHistory">
+            <div class="msg bot">Hi! I'm Luke. I can help you apply for jobs or answer questions. Need me to read anything out loud?</div>
+        </div>
+        <div class="luke-footer">
+            <button class="audio-btn"><i class="fas fa-microphone"></i></button>
+            <input type="text" placeholder="Type your question...">
+            <button class="send-btn"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
 
