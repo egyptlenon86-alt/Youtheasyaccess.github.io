@@ -1,88 +1,74 @@
 <!DOCTYPE html>
-
-    <div class="luke-container">
-
-      <div class="chat-window">
-        <div class="chat-message bot">
-          Hello! I'm Luke 👋
-          <br>
-          How can I help with your career journey today?
-        </div>
-
-        <div class="chat-message user">
-          Help me improve my resume.
-        </div>
-      </div>
-
-      <div class="chat-controls">
-        <input type="text" placeholder="Ask Luke something..." />
-
-        <button id="voiceBtn">
-          <i class="fas fa-microphone"></i>
-        </button>
-
-        <button id="speakBtn">
-          <i class="fas fa-volume-up"></i>
-        </button>
-      </div>
-
+      <p>Interactive map integration placeholder.</p>
     </div>
   </section>
 
-  <!-- ============================ -->
-  <!-- SETTINGS SECTION -->
-  <!-- ============================ -->
-
-  <section class="settings-section" id="settings">
+  <!-- SETTINGS -->
+  <section class="settings" id="settings">
 
     <div class="section-title">
       <h2>Account Settings</h2>
+      <p>Manage your account and preferences.</p>
     </div>
 
     <div class="settings-grid">
 
       <div class="settings-card">
         <h3>My Profile</h3>
-        <input type="text" placeholder="Full Name" />
-        <input type="email" placeholder="Email Address" />
-        <input type="file" />
-      </div>
-
-      <div class="settings-card">
-        <h3>Appearance</h3>
-        <button id="themeToggle">Toggle Dark Mode</button>
+        <p>Edit personal information and career interests.</p>
       </div>
 
       <div class="settings-card">
         <h3>Saved Information</h3>
-        <ul>
-          <li>Saved Jobs</li>
-          <li>Completed Lessons</li>
-          <li>Uploaded Resumes</li>
-          <li>Career Preferences</li>
-        </ul>
+        <p>Manage saved jobs, completed lessons, and uploads.</p>
       </div>
 
       <div class="settings-card">
-        <h3>Privacy & Notifications</h3>
-        <label>
-          <input type="checkbox" checked /> Email Notifications
-        </label>
+        <h3>Notifications</h3>
+        <p>Customize notification and privacy settings.</p>
+      </div>
+
+      <div class="settings-card dark-toggle-card">
+        <h3>Appearance</h3>
+        <button id="themeToggle">Toggle Dark Mode</button>
       </div>
 
     </div>
   </section>
 
-  <!-- ============================ -->
-  <!-- FOOTER -->
-  <!-- ============================ -->
+  <!-- AI ASSISTANT -->
+  <div class="ai-assistant">
 
+    <div class="assistant-header">
+      <h3>Luke AI Assistant</h3>
+      <span class="online-status">Online</span>
+    </div>
+
+    <div class="assistant-body" id="chatBox">
+      <div class="message bot-message">
+        Hi! I'm Luke. I can help you with resumes, jobs, interview prep, and lessons.
+      </div>
+    </div>
+
+    <div class="assistant-controls">
+      <input type="text" id="userInput" placeholder="Ask Luke a question..." />
+
+      <button id="sendBtn">
+        <i class="fas fa-paper-plane"></i>
+      </button>
+
+      <button id="voiceBtn">
+        <i class="fas fa-microphone"></i>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
   <footer>
     <p>© 2026 YouthConnect NYC — Empowering Young Careers</p>
   </footer>
 
-  <!-- JavaScript -->
   <script src="script.js"></script>
-
 </body>
 </html>
