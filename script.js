@@ -1,79 +1,67 @@
-// =========================
-// DARK MODE TOGGLE
-// =========================
-
 const themeToggle = document.getElementById("themeToggle");
+      "I heard you say " + transcript + ". I will help you with that."
+    );
+  };
 
-themeToggle.addEventListener("click", () => {
-
-  document.body.classList.toggle("dark-mode");
-
-  // Change icon
-  if (document.body.classList.contains("dark-mode")) {
-    themeToggle.innerHTML = "☀️";
-  } else {
-    themeToggle.innerHTML = "🌙";
-  }
-
-});
-
-// =========================
-// AI CHAT ASSISTANT
-// =========================
-
-function sendMessage() {
-
-  const input = document.getElementById("userInput");
-  const chatBox = document.getElementById("chatBox");
-
-  const userMessage = input.value.trim();
-
-  // Prevent empty message
-  if (userMessage === "") {
-    return;
-  }
-
-  // Create user message
-  const userDiv = document.createElement("div");
-
-  userDiv.classList.add("message", "user");
-
-  userDiv.textContent = userMessage;
-
-  chatBox.appendChild(userDiv);
-
-  // Simulated AI Response
-  setTimeout(() => {
-
-    const lukeDiv = document.createElement("div");
-
-    lukeDiv.classList.add("message", "luke");
-
-    lukeDiv.textContent =
-      "Luke: I can help you find jobs, improve your resume, or recommend career programs!";
-
-    chatBox.appendChild(lukeDiv);
-
-    // Auto scroll
-    chatBox.scrollTop = chatBox.scrollHeight;
-
-  }, 1000);
-
-  // Clear input
-  input.value = "";
-
+  recognition.onerror = function(event) {
+    console.error(event.error);
+  };
 }
 
-// =========================
-// ENTER KEY SUPPORT
-// =========================
+// ============================
+// LESSON PROGRESS SIMULATION
+// ============================
 
-document
-  .getElementById("userInput")
-  .addEventListener("keypress", function(event) {
+const lessonButtons = document.querySelectorAll('.lesson-btn');
 
-    if (event.key === "Enter") {
-      sendMessage();
-    }
+lessonButtons.forEach(button => {
+
+  button.addEventListener('click', () => {
+
+    button.innerText = 'Lesson In Progress';
+
+    setTimeout(() => {
+      button.innerText = 'Lesson Completed ✔';
+    }, 3000);
+
+  });
 
 });
+
+// ============================
+// SIMPLE JOIN NOW INTERACTION
+// ============================
+
+const joinButton = document.querySelector('.join-btn');
+
+joinButton.addEventListener('click', () => {
+  alert('Welcome to YouthConnect NYC! Account creation coming soon.');
+});
+
+// ============================
+// FUTURE BACKEND FEATURES
+// ============================
+
+/*
+Future Development Ideas:
+
+1. Connect Firebase Authentication
+2. Add Google Login API
+3. Add Apple Sign-In
+4. Connect MongoDB or PostgreSQL
+5. Store lesson progress in database
+6. Save resumes and profile data
+7. AI backend integration for Luke
+8. Real-time messaging system
+9. Notifications system
+10. Personalized job recommendation engine
+
+Security Requirements:
+
+- Encrypt passwords using bcrypt
+- Use HTTPS
+- Validate user input
+- Add secure authentication tokens
+- Protect API routes
+
+*/
