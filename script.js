@@ -1,566 +1,211 @@
-```javascript
-// ===============================
-// YOUTHCONNECT NYC - SCRIPT.JS
-// ===============================
+/**
+ * YOUTHCONNECT NYC - Core Application Script
+ * Handles: Navigation, Theme, Onboarding, AI Assistant, and Lessons
+ */
 
-// -------------------------------
-// MOBILE MENU TOGGLE
-// -------------------------------
-const menuToggle = document.querySelector('.menu-toggle');
-const navLinks = document.querySelector('.nav-links');
-
-if (menuToggle) {
-  menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-  });
-}
-
-// -------------------------------
-// DARK MODE TOGGLE
-// -------------------------------
-const themeToggle = document.getElementById('themeToggle');
-
-if (themeToggle) {
-  themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('light-mode');
-
-    // Save Theme Preference
-    const isLightMode = document.body.classList.contains('light-mode');
-
-    localStorage.setItem(
-      'theme',
-      isLightMode ? 'light' : 'dark'
-    );
-  });
-}
-
-// Load Saved Theme
-window.addEventListener('DOMContentLoaded', () => {
-  const savedTheme = localStorage.getItem('theme');
-
-  if (savedTheme === 'light') {
-    document.body.classList.add('light-mode');
-  }
+document.addEventListener('DOMContentLoaded', () => {
+    initApp();
 });
 
-// -------------------------------
-// SEARCH FUNCTIONALITY
-// -------------------------------
-const jobSearchInput = document.getElementById('jobSearch');
-
-if (jobSearchInput) {
-  jobSearchInput.addEventListener('keyup', () => {
-    const searchValue = jobSearchInput.value.toLowerCase();
-
-    console.log('Searching for:', searchValue);
-
-    // Future API integration placeholder
-  });
+function initApp() {
+    setupNavigation();
+    setupTheme();
+    setupSearch();
+    setupOnboarding();
+    setupAuth();
+    setupLessons();
+    setupResumeUpload();
+    setupLukeAI();
+    console.log('🚀 YouthConnect NYC: Fully Initialized');
 }
 
-// -------------------------------
-// ONBOARDING FORM
-// -------------------------------
-const onboardingForm = document.querySelector('.onboarding-form');
+// --- 1. NAVIGATION & UI ---
+function setupNavigation() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
 
-if (onboardingForm) {
-  onboardingForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => {
+            const isActive = navLinks.classList.toggle('active');
+            menuToggle.setAttribute('aria-expanded', isActive);
+        });
+    }
+}
 
-    const formInputs = onboardingForm.querySelectorAll(
-      'input, select'
-    );
+// --- 2. THEME MANAGEMENT ---
+function setupTheme() {
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('theme') || 'dark';
 
-    const onboardingData = {};
+    // Apply saved theme on load
+    if (savedTheme === 'light') {
+        document.body.classList.add('light-mode');
+    }
 
-    formInputs.forEach((input) => {
-      onboardingData[input.placeholder || input.name] =
-        input.value;
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const isLight = document.body.classList.toggle('light-mode');
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        });
+    }
+}
+
+// --- 3. SEARCH & JOBS ---
+function setupSearch() {
+    const jobSearchInput = document.getElementById('jobSearch');
+    if (!jobSearchInput) return;
+
+    jobSearchInput.addEventListener('keyup', (e) => {
+        const query = e.target.value.toLowerCase();
+        // Placeholder for future logic: filterJobCards(query);
+        console.log(`Filtering for: ${query}`);
+    });
+}
+
+// --- 4. ONBOARDING & STORAGE ---
+function setupOnboarding() {
+    const onboardingForm = document.querySelector('.onboarding-form');
+    if (!onboardingForm) return;
+
+    onboardingForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const formData = new FormData(onboardingForm);
+        const data = Object.fromEntries(formData.entries());
+
+        localStorage.setItem('onboardingData', JSON.stringify(data));
+        alert('Career preferences saved successfully!');
+    });
+}
+
+// --- 5. AUTHENTICATION PLACEHOLDERS ---
+function setupAuth() {
+    const signInBtn = document.querySelector('.signin-btn');
+    const joinBtn = document.querySelector('.join-btn');
+
+    signInBtn?.addEventListener('click', () => alert('Opening Sign In...'));
+    joinBtn?.addEventListener('click', () => alert('Opening Registration...'));
+}
+
+// --- 6. LESSON SYSTEM ---
+function setupLessons() {
+    const lessonButtons = document.querySelectorAll('.lesson-btn');
+    if (lessonButtons.length === 0) return;
+
+    const getCompleted = () => JSON.parse(localStorage.getItem('completedLessons')) || [];
+
+    const updateUI = () => {
+        const completed = getCompleted();
+        lessonButtons.forEach((btn, index) => {
+            if (completed.includes(index)) {
+                btn.innerText = 'Lesson Completed ✓';
+                btn.classList.add('completed');
+            }
+        });
+        updateProgressBar(completed.length);
+    };
+
+    lessonButtons.forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+            btn.disabled = true;
+            btn.innerText = 'Processing...';
+
+            setTimeout(() => {
+                const completed = getCompleted();
+                if (!completed.includes(index)) completed.push(index);
+                localStorage.setItem('completedLessons', JSON.stringify(completed));
+                
+                btn.disabled = false;
+                updateUI();
+            }, 1500);
+        });
     });
 
-    // Save onboarding data
-    localStorage.setItem(
-      'onboardingData',
-      JSON.stringify(onboardingData)
-    );
-
-    alert(
-      'Career preferences saved successfully!'
-    );
-
-    console.log(onboardingData);
-  });
+    updateUI();
 }
 
-// -------------------------------
-// PASSWORD VALIDATION
-// -------------------------------
-function validatePassword(password) {
-  const minLength = 8;
-  const uppercaseRegex = /[A-Z]/;
-  const lowercaseRegex = /[a-z]/;
-  const numberRegex = /[0-9]/;
-  const specialRegex =
-    /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
-
-  return (
-    password.length >= minLength &&
-    uppercaseRegex.test(password) &&
-    lowercaseRegex.test(password) &&
-    numberRegex.test(password) &&
-    specialRegex.test(password)
-  );
-}
-
-// Example Password Check
-const examplePassword = 'Password123!';
-
-console.log(
-  'Password Valid:',
-  validatePassword(examplePassword)
-);
-
-// -------------------------------
-// AUTH BUTTONS
-// -------------------------------
-const signInBtn =
-  document.querySelector('.signin-btn');
-
-const joinBtn =
-  document.querySelector('.join-btn');
-
-if (signInBtn) {
-  signInBtn.addEventListener('click', () => {
-    alert('Open Sign In Modal');
-  });
-}
-
-if (joinBtn) {
-  joinBtn.addEventListener('click', () => {
-    alert('Open Join Now Registration');
-  });
-}
-
-// -------------------------------
-// LESSON SYSTEM
-// -------------------------------
-const lessonButtons =
-  document.querySelectorAll('.lesson-btn');
-
-lessonButtons.forEach((button, index) => {
-  button.addEventListener('click', () => {
-
-    button.innerText = 'Lesson In Progress...';
-
-    button.disabled = true;
-
-    // Simulate Lesson Completion
-    setTimeout(() => {
-
-      button.innerText =
-        'Lesson Completed ✓';
-
-      // Save Progress
-      saveLessonProgress(index);
-
-      button.disabled = false;
-
-    }, 3000);
-  });
-});
-
-// Save Lesson Progress
-function saveLessonProgress(lessonId) {
-
-  let completedLessons =
-    JSON.parse(
-      localStorage.getItem('completedLessons')
-    ) || [];
-
-  if (!completedLessons.includes(lessonId)) {
-    completedLessons.push(lessonId);
-  }
-
-  localStorage.setItem(
-    'completedLessons',
-    JSON.stringify(completedLessons)
-  );
-
-  console.log(
-    'Completed Lessons:',
-    completedLessons
-  );
-}
-
-// Load Lesson Progress
-function loadLessonProgress() {
-
-  const completedLessons =
-    JSON.parse(
-      localStorage.getItem('completedLessons')
-    ) || [];
-
-  lessonButtons.forEach((button, index) => {
-
-    if (completedLessons.includes(index)) {
-
-      button.innerText =
-        'Lesson Completed ✓';
+function updateProgressBar(count) {
+    const progressBar = document.querySelector('.dashboard-progress');
+    if (progressBar) {
+        const progress = Math.min(count * 20, 100);
+        progressBar.style.width = `${progress}%`;
     }
-  });
 }
 
-loadLessonProgress();
+// --- 7. RESUME UPLOAD ---
+function setupResumeUpload() {
+    const uploadBtn = document.querySelector('.upload-btn');
+    if (!uploadBtn) return;
 
-// -------------------------------
-// RESUME UPLOAD SYSTEM
-// -------------------------------
-const uploadBtn =
-  document.querySelector('.upload-btn');
-
-if (uploadBtn) {
-
-  uploadBtn.addEventListener('click', () => {
-
-    const fileInput =
-      document.createElement('input');
-
-    fileInput.type = 'file';
-
-    fileInput.accept =
-      '.pdf,.doc,.docx';
-
-    fileInput.click();
-
-    fileInput.addEventListener(
-      'change',
-      () => {
-
-        const file = fileInput.files[0];
-
-        if (file) {
-
-          localStorage.setItem(
-            'resumeName',
-            file.name
-          );
-
-          alert(
-            `Resume Uploaded: ${file.name}`
-          );
-
-          console.log(
-            'Uploaded Resume:',
-            file.name
-          );
-        }
-      }
-    );
-  });
+    uploadBtn.addEventListener('click', () => {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = '.pdf,.doc,.docx';
+        
+        input.onchange = (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                localStorage.setItem('resumeName', file.name);
+                alert(`Uploaded: ${file.name}`);
+            }
+        };
+        input.click();
+    });
 }
 
-// -------------------------------
-// LUKE AI ASSISTANT
-// -------------------------------
-const sendBtn =
-  document.getElementById('sendBtn');
+// --- 8. LUKE AI ASSISTANT ---
+function setupLukeAI() {
+    const sendBtn = document.getElementById('sendBtn');
+    const userInput = document.getElementById('userInput');
+    const chatBox = document.getElementById('chatBox');
+    const voiceBtn = document.getElementById('voiceBtn');
 
-const userInput =
-  document.getElementById('userInput');
+    if (!sendBtn || !userInput || !chatBox) return;
 
-const chatBox =
-  document.getElementById('chatBox');
+    const addMessage = (text, sender) => {
+        const msg = document.createElement('div');
+        msg.className = `message ${sender}-message`;
+        msg.textContent = text;
+        chatBox.appendChild(msg);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    };
 
-const voiceBtn =
-  document.getElementById('voiceBtn');
+    const getLukeResponse = (msg) => {
+        const input = msg.toLowerCase();
+        if (input.includes('resume')) return 'Include your skills and achievements!';
+        if (input.includes('interview')) return 'Confidence is key! Prepare specific examples.';
+        if (input.includes('job')) return 'Look into tech and retail internships in NYC.';
+        return "I'm Luke! Ask me about resumes, jobs, or lessons.";
+    };
 
-// Add Chat Message
-function addMessage(message, sender) {
+    const handleSend = () => {
+        const text = userInput.value.trim();
+        if (!text) return;
 
-  const messageDiv =
-    document.createElement('div');
+        addMessage(text, 'user');
+        userInput.value = '';
 
-  messageDiv.classList.add('message');
+        setTimeout(() => {
+            const response = getLukeResponse(text);
+            addMessage(response, 'bot');
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.speak(new SpeechSynthesisUtterance(response));
+            }
+        }, 600);
+    };
 
-  if (sender === 'user') {
-    messageDiv.classList.add('user-message');
-  } else {
-    messageDiv.classList.add('bot-message');
-  }
+    sendBtn.addEventListener('click', handleSend);
+    userInput.addEventListener('keypress', (e) => e.key === 'Enter' && handleSend());
 
-  messageDiv.innerText = message;
-
-  chatBox.appendChild(messageDiv);
-
-  chatBox.scrollTop =
-    chatBox.scrollHeight;
-}
-
-// Text-to-Speech
-function speakResponse(text) {
-
-  const speech =
-    new SpeechSynthesisUtterance(text);
-
-  speech.lang = 'en-US';
-  speech.pitch = 1;
-  speech.rate = 1;
-  speech.volume = 1;
-
-  window.speechSynthesis.speak(speech);
-}
-
-// AI Logic
-function generateLukeResponse(userMessage) {
-
-  const message =
-    userMessage.toLowerCase();
-
-  // Resume Help
-  if (
-    message.includes('resume')
-  ) {
-    return (
-      'Your resume should include your skills, experience, achievements, and contact information.'
-    );
-  }
-
-  // Interview Help
-  if (
-    message.includes('interview')
-  ) {
-    return (
-      'Practice speaking confidently and prepare examples of teamwork and leadership experiences.'
-    );
-  }
-
-  // Job Search Help
-  if (
-    message.includes('job')
-  ) {
-    return (
-      'I recommend exploring internships and part-time jobs in retail, technology, and customer service.'
-    );
-  }
-
-  // Lesson Help
-  if (
-    message.includes('lesson')
-  ) {
-    return (
-      'You can continue your career lessons in the Learning Center section.'
-    );
-  }
-
-  // Default Response
-  return (
-    'I am Luke, your AI career assistant. Ask me about resumes, interviews, jobs, or lessons.'
-  );
-}
-
-// Send Chat Message
-function handleSendMessage() {
-
-  const message =
-    userInput.value.trim();
-
-  if (message === '') return;
-
-  addMessage(message, 'user');
-
-  const response =
-    generateLukeResponse(message);
-
-  setTimeout(() => {
-
-    addMessage(response, 'bot');
-
-    speakResponse(response);
-
-  }, 600);
-
-  userInput.value = '';
-}
-
-// Button Click
-if (sendBtn) {
-
-  sendBtn.addEventListener(
-    'click',
-    handleSendMessage
-  );
-}
-
-// Press Enter
-if (userInput) {
-
-  userInput.addEventListener(
-    'keypress',
-    (e) => {
-
-      if (e.key === 'Enter') {
-        handleSendMessage();
-      }
+    // Voice Recognition Logic
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (SpeechRecognition && voiceBtn) {
+        const recognition = new SpeechRecognition();
+        voiceBtn.addEventListener('click', () => recognition.start());
+        recognition.onresult = (e) => {
+            userInput.value = e.results[0][0].transcript;
+            handleSend();
+        };
+    } else if (voiceBtn) {
+        voiceBtn.style.display = 'none';
     }
-  );
 }
-
-// -------------------------------
-// VOICE RECOGNITION
-// -------------------------------
-const SpeechRecognition =
-  window.SpeechRecognition ||
-  window.webkitSpeechRecognition;
-
-if (SpeechRecognition) {
-
-  const recognition =
-    new SpeechRecognition();
-
-  recognition.continuous = false;
-  recognition.lang = 'en-US';
-  recognition.interimResults = false;
-
-  if (voiceBtn) {
-
-    voiceBtn.addEventListener(
-      'click',
-      () => {
-
-        recognition.start();
-
-        addMessage(
-          'Listening...',
-          'bot'
-        );
-      }
-    );
-  }
-
-  recognition.onresult = (event) => {
-
-    const transcript =
-      event.results[0][0].transcript;
-
-    userInput.value = transcript;
-
-    handleSendMessage();
-  };
-
-  recognition.onerror = () => {
-
-    addMessage(
-      'Voice recognition failed. Please try again.',
-      'bot'
-    );
-  };
-
-} else {
-
-  console.warn(
-    'Speech Recognition not supported'
-  );
-
-  if (voiceBtn) {
-    voiceBtn.style.display = 'none';
-  }
-}
-
-// -------------------------------
-// DASHBOARD PROGRESS
-// -------------------------------
-function updateDashboardProgress() {
-
-  const completedLessons =
-    JSON.parse(
-      localStorage.getItem(
-        'completedLessons'
-      )
-    ) || [];
-
-  const progressBar =
-    document.querySelector(
-      '.dashboard-progress'
-    );
-
-  if (progressBar) {
-
-    const progressPercent =
-      Math.min(
-        completedLessons.length * 20,
-        100
-      );
-
-    progressBar.style.width =
-      `${progressPercent}%`;
-  }
-}
-
-updateDashboardProgress();
-
-// -------------------------------
-// FAKE JOB DATA
-// -------------------------------
-const jobs = [
-  {
-    title: 'Retail Associate',
-    borough: 'Manhattan'
-  },
-  {
-    title: 'Marketing Intern',
-    borough: 'Brooklyn'
-  },
-  {
-    title: 'Customer Service Rep',
-    borough: 'Queens'
-  },
-  {
-    title: 'Graphic Design Intern',
-    borough: 'Bronx'
-  }
-];
-
-console.log('Available Jobs:', jobs);
-
-// -------------------------------
-// SAVE USER SETTINGS
-// -------------------------------
-function saveUserSetting(key, value) {
-
-  localStorage.setItem(key, value);
-
-  console.log(
-    `Saved Setting: ${key} = ${value}`
-  );
-}
-
-// Example Usage
-saveUserSetting(
-  'notifications',
-  'enabled'
-);
-
-// -------------------------------
-// APP INITIALIZATION
-// -------------------------------
-function initializeApp() {
-
-  console.log(
-    'YouthConnect NYC Loaded Successfully'
-  );
-
-  console.log(
-    'Luke AI Assistant Activated'
-  );
-
-  console.log(
-    'Lesson Tracking Ready'
-  );
-
-  console.log(
-    'Voice Recognition Enabled'
-  );
-}
-
-initializeApp();
-```
