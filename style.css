@@ -1,62 +1,57 @@
-/* ============================
-  width: 100%;
-  padding: 12px;
-  margin: 10px 0;
+* {
+  color: #cfd8e3;
+}
+
+.search-container {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.search-container input {
+  flex: 1;
+  min-width: 250px;
+  padding: 15px;
   border-radius: 12px;
   border: none;
 }
 
-/* ============================
-   FOOTER
-============================ */
-
-footer {
-  text-align: center;
+.hero-card {
+  width: 340px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   padding: 30px;
-  background: #020617;
+  border-radius: 24px;
+  backdrop-filter: blur(15px);
 }
 
-/* ============================
-   DARK MODE
-============================ */
-
-.dark-mode {
-  background: #f8fafc;
-  color: #0f172a;
+.progress-bar {
+  width: 100%;
+  height: 14px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 50px;
+  overflow: hidden;
+  margin: 20px 0;
 }
 
-.dark-mode .navbar,
-.dark-mode .feature-card,
-.dark-mode .dashboard-card,
-.dark-mode .lesson-card,
-.dark-mode .settings-card,
-.dark-mode .luke-container {
-  background: white;
-  color: black;
+.progress-fill {
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(135deg, #4da3ff, #7b61ff);
 }
 
-/* ============================
-   MOBILE RESPONSIVE
-============================ */
-
-@media (max-width: 768px) {
-
-  .navbar {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .nav-links {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .hero-content h2 {
-    font-size: 2.5rem;
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-  }
-
+.dashboard-progress {
+  width: 55%;
 }
+
+.achievement-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  background: rgba(255,255,255,0.08);
+  padding: 15px;
+  border-radius: 16px;
+}
+
+/*
