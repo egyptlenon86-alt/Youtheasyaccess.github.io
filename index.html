@@ -321,53 +321,6 @@
       </div>
     </section>
 
-    <!-- ── SCHOLARSHIPS VIEW ──────────────────── -->
-    <section class="view" id="view-scholarships">
-      <div class="view-header container">
-        <h1 class="view-title">Scholarships</h1>
-        <p class="view-sub">Free money for NYC youth — no loans, no repayment</p>
-      </div>
-      <div class="container">
-        <!-- Filters -->
-        <div class="filters-bar">
-          <div class="filter-search">
-            <i data-lucide="search"></i>
-            <input type="text" placeholder="Search scholarships..." id="scholarshipSearch" />
-          </div>
-          <select class="filter-select" id="scholarshipBorough">
-            <option value="">All Boroughs</option>
-            <option>Manhattan</option>
-            <option>Brooklyn</option>
-            <option>Queens</option>
-            <option>Bronx</option>
-            <option>Staten Island</option>
-          </select>
-          <select class="filter-select" id="scholarshipIndustry">
-            <option value="">All Industries</option>
-            <option value="tech">Tech</option>
-            <option value="healthcare">Healthcare</option>
-            <option value="arts">Arts & Media</option>
-            <option value="finance">Finance</option>
-            <option value="nonprofit">Nonprofit</option>
-            <option value="gov">Government</option>
-          </select>
-          <button class="btn btn-primary btn-sm" id="filterScholarships">Filter</button>
-        </div>
-        <!-- Loading State -->
-        <div id="scholarshipsLoading" style="text-align:center;padding:60px 0;color:var(--text-muted)">
-          <div style="font-size:2rem;margin-bottom:12px">🔄</div>
-          <div>Loading scholarships...</div>
-        </div>
-        <!-- Error State -->
-        <div id="scholarshipsError" style="display:none;text-align:center;padding:60px 0;color:var(--danger)">
-          <div style="font-size:2rem;margin-bottom:12px">⚠️</div>
-          <div>Could not load scholarships. Check your connection.</div>
-        </div>
-        <!-- Results Grid -->
-        <div class="programs-grid" id="scholarshipsGrid" style="display:none"></div>
-      </div>
-    </section>
-
     <!-- ── DASHBOARD VIEW ─────────────────── -->
     <section class="view" id="view-dashboard">
       <div class="view-header container">
@@ -503,6 +456,53 @@
           <p>Know your rights as a young worker in New York City.</p>
           <button class="btn btn-primary btn-sm">View Rights</button>
         </div>
+      </div>
+    </section>
+
+    <!-- ── SCHOLARSHIPS VIEW ──────────────────── -->
+    <section class="view" id="view-scholarships">
+      <div class="view-header container">
+        <h1 class="view-title">Scholarships</h1>
+        <p class="view-sub">Free money for NYC youth — no loans, no repayment</p>
+      </div>
+      <div class="container">
+        <!-- Filters -->
+        <div class="filters-bar">
+          <div class="filter-search">
+            <i data-lucide="search"></i>
+            <input type="text" placeholder="Search scholarships..." id="scholarshipSearch" />
+          </div>
+          <select class="filter-select" id="scholarshipBorough">
+            <option value="">All Boroughs</option>
+            <option>Manhattan</option>
+            <option>Brooklyn</option>
+            <option>Queens</option>
+            <option>Bronx</option>
+            <option>Staten Island</option>
+          </select>
+          <select class="filter-select" id="scholarshipIndustry">
+            <option value="">All Industries</option>
+            <option value="tech">Tech</option>
+            <option value="healthcare">Healthcare</option>
+            <option value="arts">Arts & Media</option>
+            <option value="finance">Finance</option>
+            <option value="nonprofit">Nonprofit</option>
+            <option value="gov">Government</option>
+          </select>
+          <button class="btn btn-primary btn-sm" id="filterScholarships">Filter</button>
+        </div>
+        <!-- Loading State -->
+        <div id="scholarshipsLoading" style="text-align:center;padding:60px 0;color:var(--text-muted)">
+          <div style="font-size:2rem;margin-bottom:12px">🔄</div>
+          <div>Loading scholarships...</div>
+        </div>
+        <!-- Error State -->
+        <div id="scholarshipsError" style="display:none;text-align:center;padding:60px 0;color:var(--danger)">
+          <div style="font-size:2rem;margin-bottom:12px">⚠️</div>
+          <div>Could not load scholarships. Check your connection.</div>
+        </div>
+        <!-- Results Grid -->
+        <div class="programs-grid" id="scholarshipsGrid" style="display:none"></div>
       </div>
     </section>
 
@@ -981,17 +981,14 @@
       </div>
     </div>
     <div class="footer-bottom container">
-      <p>© 2026 LaunchPad NYC. Built for NYC youth. 🗽</p>
+      <p>© 2025 LaunchPad NYC. Built for NYC youth. 🗽</p>
     </div>
   </footer>
 
-  <!-- ═══════════════════════════════════════
-       SCRIPTS — ORDER MATTERS
-       1. supabase.js  (DB helpers, must load first)
-       2. script.js    (app logic, depends on supabase.js)
-  ═══════════════════════════════════════ -->
+  <!-- 1. Supabase client (already added to <head>) -->
+  <!-- 2. Your DB functions -->
   <script src="supabase.js"></script>
+  <!-- 3. Your app logic (must come AFTER supabase.js) -->
   <script src="script.js"></script>
-
 </body>
 </html>
