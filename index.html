@@ -1,266 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YouthConnect NYC</title>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css" />
+    <div class="luke-container">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-</head>
-
-<body>
-
-  <!-- ========================= -->
-  <!-- NAVIGATION -->
-  <!-- ========================= -->
-  <header class="navbar">
-
-    <div class="logo">
-      YouthConnect NYC
-    </div>
-
-    <nav>
-      <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-
-        <li class="dropdown">
-          <a href="#">Programs ▼</a>
-
-          <ul class="dropdown-menu">
-            <li><a href="#">Internships</a></li>
-            <li><a href="#">Part-Time Jobs</a></li>
-            <li><a href="#">Career Training</a></li>
-          </ul>
-        </li>
-
-        <li><a href="#">Dashboard</a></li>
-        <li><a href="#">Messages</a></li>
-        <li><a href="#">Training</a></li>
-        <li><a href="#">Settings</a></li>
-      </ul>
-    </nav>
-
-    <button id="themeToggle" class="theme-btn">
-      🌙
-    </button>
-
-  </header>
-
-  <!-- ========================= -->
-  <!-- HERO SECTION -->
-  <!-- ========================= -->
-  <section class="hero">
-
-    <div class="hero-content">
-
-      <h1>
-        Find Jobs, Internships & Programs Built For NYC Youth
-      </h1>
-
-      <p>
-        Discover opportunities designed for teens and young adults ages 18–25.
-      </p>
-
-      <!-- Search Bar -->
-      <div class="search-box">
-        <input type="text" placeholder="Search jobs or programs..." />
-        <button>Search</button>
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- ========================= -->
-  <!-- USER DASHBOARD -->
-  <!-- ========================= -->
-  <section class="dashboard">
-
-    <h2>Your Dashboard</h2>
-
-    <div class="dashboard-grid">
-
-      <!-- Recommended Jobs -->
-      <div class="card">
-        <h3>Recommended Jobs</h3>
-
-        <ul>
-          <li>Retail Assistant – Manhattan</li>
-          <li>Tech Internship – Brooklyn</li>
-          <li>Marketing Program – Queens</li>
-        </ul>
-
-      </div>
-
-      <!-- Saved Jobs -->
-      <div class="card">
-        <h3>Saved Jobs</h3>
-
-        <ul>
-          <li>Graphic Design Intern</li>
-          <li>Customer Service Assistant</li>
-        </ul>
-
-      </div>
-
-      <!-- Applied Jobs -->
-      <div class="card">
-        <h3>Previously Applied</h3>
-
-        <ul>
-          <li>NYC Summer Youth Program</li>
-          <li>Community Outreach Assistant</li>
-        </ul>
-
-      </div>
-
-      <!-- Resume Upload -->
-      <div class="card">
-        <h3>Resume Upload</h3>
-
-        <input type="file" />
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- ========================= -->
-  <!-- WORK READINESS -->
-  <!-- ========================= -->
-  <section class="training">
-
-    <h2>Work Readiness Training</h2>
-
-    <div class="training-container">
-
-      <div class="training-card">
-        <h3>Interview Skills</h3>
-
-        <div class="progress-bar">
-          <div class="progress interview-progress"></div>
+      <div class="chat-window">
+        <div class="chat-message bot">
+          Hello! I'm Luke 👋
+          <br>
+          How can I help with your career journey today?
         </div>
 
-        <p>70% Complete</p>
-
-      </div>
-
-      <div class="training-card">
-        <h3>Resume Writing</h3>
-
-        <div class="progress-bar">
-          <div class="progress resume-progress"></div>
+        <div class="chat-message user">
+          Help me improve my resume.
         </div>
-
-        <p>50% Complete</p>
-
       </div>
 
-      <div class="training-card">
-        <h3>Professional Communication</h3>
+      <div class="chat-controls">
+        <input type="text" placeholder="Ask Luke something..." />
 
-        <div class="progress-bar">
-          <div class="progress communication-progress"></div>
-        </div>
-
-        <p>90% Complete</p>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- ========================= -->
-  <!-- MAP SECTION -->
-  <!-- ========================= -->
-  <section class="map-section">
-
-    <h2>NYC Job Map</h2>
-
-    <div class="map-placeholder">
-      Interactive Job Map Coming Soon
-    </div>
-
-  </section>
-
-  <!-- ========================= -->
-  <!-- AI ASSISTANT -->
-  <!-- ========================= -->
-  <section class="ai-assistant">
-
-    <h2>Meet Luke — Your AI Career Assistant</h2>
-
-    <div class="assistant-box">
-
-      <div class="assistant-messages" id="chatBox">
-
-        <div class="message luke">
-          Hi! I'm Luke 👋 How can I help you today?
-        </div>
-
-      </div>
-
-      <div class="chat-input">
-
-        <input
-          type="text"
-          id="userInput"
-          placeholder="Ask Luke a question..."
-        />
-
-        <button onclick="sendMessage()">
-          Send
+        <button id="voiceBtn">
+          <i class="fas fa-microphone"></i>
         </button>
 
+        <button id="speakBtn">
+          <i class="fas fa-volume-up"></i>
+        </button>
       </div>
 
     </div>
-
   </section>
 
-  <!-- ========================= -->
+  <!-- ============================ -->
   <!-- SETTINGS SECTION -->
-  <!-- ========================= -->
-  <section class="settings">
+  <!-- ============================ -->
 
-    <h2>Account Settings</h2>
+  <section class="settings-section" id="settings">
+
+    <div class="section-title">
+      <h2>Account Settings</h2>
+    </div>
 
     <div class="settings-grid">
 
-      <div class="card">
+      <div class="settings-card">
         <h3>My Profile</h3>
-        <p>Edit your personal information and goals.</p>
+        <input type="text" placeholder="Full Name" />
+        <input type="email" placeholder="Email Address" />
+        <input type="file" />
       </div>
 
-      <div class="card">
-        <h3>Privacy Settings</h3>
-        <p>Manage notifications and privacy options.</p>
+      <div class="settings-card">
+        <h3>Appearance</h3>
+        <button id="themeToggle">Toggle Dark Mode</button>
       </div>
 
-      <div class="card">
-        <h3>Resume Management</h3>
-        <p>Upload and organize your resumes.</p>
+      <div class="settings-card">
+        <h3>Saved Information</h3>
+        <ul>
+          <li>Saved Jobs</li>
+          <li>Completed Lessons</li>
+          <li>Uploaded Resumes</li>
+          <li>Career Preferences</li>
+        </ul>
+      </div>
+
+      <div class="settings-card">
+        <h3>Privacy & Notifications</h3>
+        <label>
+          <input type="checkbox" checked /> Email Notifications
+        </label>
       </div>
 
     </div>
-
   </section>
 
-  <!-- ========================= -->
+  <!-- ============================ -->
   <!-- FOOTER -->
-  <!-- ========================= -->
+  <!-- ============================ -->
+
   <footer>
-
-    <p>
-      © 2026 YouthConnect NYC — Empowering Young Professionals
-    </p>
-
+    <p>© 2026 YouthConnect NYC — Empowering Young Careers</p>
   </footer>
 
   <!-- JavaScript -->
