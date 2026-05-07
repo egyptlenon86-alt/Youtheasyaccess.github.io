@@ -145,7 +145,6 @@ function closeModal(id) {
   if (el) el.classList.remove('open');
 }
 
-// ── setView — updated to lazy-load scholarships on tab open ──
 function setView(viewId) {
   $$('.view').forEach(v => v.classList.remove('active'));
   const target = $(`#view-${viewId}`);
@@ -153,9 +152,6 @@ function setView(viewId) {
     target.classList.add('active');
     state.currentView = viewId;
     window.scrollTo({ top: 0, behavior: 'smooth' });
-
-    // Load scholarships fresh each time the tab opens
-    if (viewId === 'scholarships') loadScholarships();
   }
   // Update nav active state
   $$('.nav-link, .mobile-nav-link').forEach(a => a.classList.remove('active'));
@@ -463,7 +459,7 @@ function openJobModal(job) {
       </div>
       <div style="margin-bottom:20px">
         <h3 style="font-weight:700;margin-bottom:8px">About This Role</h3>
-        <p style="color:var(--text-secondary);line-height:1.7">${job.description}</p>
+        <p style="color:var(--text-secondary);line-height:1.7">${job.desc}</p>
       </div>
       <div style="display:flex;gap:20px;margin-bottom:24px;padding:16px;background:var(--bg-elevated);border-radius:var(--radius)">
         <div><div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em">Pay</div><div style="font-weight:700;color:var(--success)">${job.pay}</div></div>
@@ -777,21 +773,17 @@ function initSignInModal() {
     input.type = input.type === 'password' ? 'text' : 'password';
   });
 
-  // Submit sign in — updated to use Supabase signIn
-  $('#signInSubmit')?.addEventListener('click', async () => {
+  // Submit sign in
+  $('#signInSubmit')?.addEventListener('click', () => {
     const email = $('#signInEmail')?.value.trim();
     const pwd   = $('#signInPassword')?.value;
     if (!email || !pwd) { showToast('Please fill in all fields.', 'error'); return; }
-
-    try {
-      await signIn(email, pwd);
-      closeModal('signInModal');
-      showToast('Welcome back! 👋', 'success');
-      setView('dashboard');
-      updateDashboardStats();
-    } catch (err) {
-      showToast(err.message || 'Sign in failed.', 'error');
-    }
+    // Simulate sign in
+    state.user = { name: 'User', email };
+    closeModal('signInModal');
+    showToast('Welcome back! 👋', 'success');
+    setView('dashboard');
+    updateDashboardStats();
   });
 
   // Forgot submit
@@ -800,18 +792,6 @@ function initSignInModal() {
     if (!email) { showToast('Please enter your email.', 'error'); return; }
     showToast('Reset link sent! Check your inbox. 📧', 'success');
     closeModal('forgotModal');
-  });
-
-  // Google sign-in buttons
-  $$('.google-btn').forEach(btn => {
-    btn.addEventListener('click', async () => {
-      try {
-        await signInWithGoogle();
-        // Supabase handles the redirect automatically
-      } catch (err) {
-        showToast('Google sign-in failed. Try again.', 'error');
-      }
-    });
   });
 }
 
@@ -1184,133 +1164,6 @@ function initMessages() {
   });
 }
 
-/* ── Scholarships View (Supabase) ────────────── */
-
-function renderScholarshipCard(s) {
-  const deadlineStr = s.deadline
-    ? new Date(s.deadline).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
-    : s.deadline_label || 'Open now';
-
-  const tags = (s.tags || []).map(t => `<span class="job-tag">${t}</span>`).join('');
-
-  return `
-    <div class="program-card" data-scholarship-id="${s.id}">
-      <div class="program-card-header">
-        <div class="program-icon">${s.emoji || '🎓'}</div>
-        <div>
-          <div class="program-org">${s.organization}</div>
-          <div class="program-name">${s.title}</div>
-        </div>
-      </div>
-      <div class="program-card-body">
-        <p class="program-desc">${s.description || ''}</p>
-        <div class="job-tags" style="margin-bottom:12px">${tags}</div>
-        <div class="program-meta">
-          <div class="program-meta-item">💰 ${s.amount || 'Varies'}</div>
-          <div class="program-meta-item">🎂 Ages ${s.age_min}–${s.age_max}</div>
-          <div class="program-meta-item">📍 ${s.borough}</div>
-          ${s.spots_available ? `<div class="program-meta-item">👥 ${s.spots_available} spots</div>` : ''}
-        </div>
-      </div>
-      <div class="program-footer">
-        <span class="program-deadline">⏰ Deadline: ${deadlineStr}</span>
-        <div style="display:flex;gap:8px">
-          <button class="btn btn-ghost btn-sm" data-save-scholarship="${s.id}">🏷️ Save</button>
-          <button class="btn btn-primary btn-sm" data-apply-scholarship="${s.id}">Apply Now</button>
-        </div>
-      </div>
-    </div>`;
-}
-
-async function loadScholarships(filters = {}) {
-  const grid    = $('#scholarshipsGrid');
-  const loading = $('#scholarshipsLoading');
-  const errEl   = $('#scholarshipsError');
-  if (!grid) return;
-
-  // Show loading state
-  if (loading) loading.style.display = 'block';
-  if (errEl)   errEl.style.display   = 'none';
-  grid.style.display = 'none';
-
-  try {
-    // Use search function if filters present, otherwise fetch all
-    const hasFilters = Object.values(filters).some(Boolean);
-    const scholarships = hasFilters
-      ? await searchScholarships(filters)
-      : await fetchScholarships();
-
-    if (loading) loading.style.display = 'none';
-
-    if (!scholarships.length) {
-      grid.style.display = 'grid';
-      grid.innerHTML = '<p class="empty-state" style="grid-column:1/-1">No scholarships found. Try adjusting your filters!</p>';
-      return;
-    }
-
-    grid.style.display = 'grid';
-    grid.innerHTML = scholarships.map(renderScholarshipCard).join('');
-    lucide.createIcons();
-    initScholarshipInteractions();
-
-  } catch (err) {
-    console.error('loadScholarships error:', err);
-    if (loading) loading.style.display = 'none';
-    if (errEl)   errEl.style.display   = 'block';
-  }
-}
-
-function initScholarshipInteractions() {
-  // Save scholarship
-  $$('[data-save-scholarship]').forEach(btn => {
-    btn.addEventListener('click', async (e) => {
-      e.stopPropagation();
-      const id = btn.dataset.saveScholarship;
-      try {
-        await saveScholarship(id);
-        showToast('Scholarship saved! ✨', 'success');
-        btn.textContent = '🔖 Saved';
-        btn.disabled = true;
-      } catch {
-        showToast('Sign in to save scholarships.', 'warning');
-        openModal('signInModal');
-      }
-    });
-  });
-
-  // Apply to scholarship
-  $$('[data-apply-scholarship]').forEach(btn => {
-    btn.addEventListener('click', async (e) => {
-      e.stopPropagation();
-      const id = btn.dataset.applyScholarship;
-      try {
-        await applyToScholarship(id);
-        showToast('Application recorded! Good luck! 🚀', 'success');
-        btn.textContent = '✓ Applied';
-        btn.disabled = true;
-      } catch {
-        showToast('Sign in to apply for scholarships.', 'warning');
-        openModal('signInModal');
-      }
-    });
-  });
-}
-
-function initScholarshipsView() {
-  const filterBtn = $('#filterScholarships');
-  filterBtn?.addEventListener('click', () => {
-    loadScholarships({
-      borough:  $('#scholarshipBorough')?.value  || null,
-      industry: $('#scholarshipIndustry')?.value || null,
-      keyword:  $('#scholarshipSearch')?.value   || null,
-    });
-  });
-
-  $('#scholarshipSearch')?.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') filterBtn?.click();
-  });
-}
-
 /* ── Keyboard Shortcuts ──────────────────────── */
 function initKeyboardShortcuts() {
   document.addEventListener('keydown', (e) => {
@@ -1372,7 +1225,6 @@ function boot() {
   initSettings();
   initLuke();
   initMessages();
-  initScholarshipsView(); // ← Scholarships view initialised
   initKeyboardShortcuts();
 
   // Init job interactions after all renders
