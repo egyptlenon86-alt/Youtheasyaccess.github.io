@@ -1,72 +1,937 @@
 <!DOCTYPE html>
-      <p>Interactive map integration placeholder.</p>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LaunchPad NYC — Your Career Starts Here</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       LOADING SCREEN
+  ═══════════════════════════════════════ -->
+  <div id="loader" class="loader">
+    <div class="loader-inner">
+      <div class="loader-logo">LP</div>
+      <div class="loader-bar"><div class="loader-fill"></div></div>
+      <span class="loader-text">Loading your future...</span>
     </div>
-  </section>
-
-  <!-- SETTINGS -->
-  <section class="settings" id="settings">
-
-    <div class="section-title">
-      <h2>Account Settings</h2>
-      <p>Manage your account and preferences.</p>
-    </div>
-
-    <div class="settings-grid">
-
-      <div class="settings-card">
-        <h3>My Profile</h3>
-        <p>Edit personal information and career interests.</p>
-      </div>
-
-      <div class="settings-card">
-        <h3>Saved Information</h3>
-        <p>Manage saved jobs, completed lessons, and uploads.</p>
-      </div>
-
-      <div class="settings-card">
-        <h3>Notifications</h3>
-        <p>Customize notification and privacy settings.</p>
-      </div>
-
-      <div class="settings-card dark-toggle-card">
-        <h3>Appearance</h3>
-        <button id="themeToggle">Toggle Dark Mode</button>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- AI ASSISTANT -->
-  <div class="ai-assistant">
-
-    <div class="assistant-header">
-      <h3>Luke AI Assistant</h3>
-      <span class="online-status">Online</span>
-    </div>
-
-    <div class="assistant-body" id="chatBox">
-      <div class="message bot-message">
-        Hi! I'm Luke. I can help you with resumes, jobs, interview prep, and lessons.
-      </div>
-    </div>
-
-    <div class="assistant-controls">
-      <input type="text" id="userInput" placeholder="Ask Luke a question..." />
-
-      <button id="sendBtn">
-        <i class="fas fa-paper-plane"></i>
-      </button>
-
-      <button id="voiceBtn">
-        <i class="fas fa-microphone"></i>
-      </button>
-    </div>
-
   </div>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2026 YouthConnect NYC — Empowering Young Careers</p>
+  <!-- ═══════════════════════════════════════
+       HEADER / NAVIGATION
+  ═══════════════════════════════════════ -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <!-- Logo -->
+      <a href="#" class="logo" id="logoBtn">
+        <span class="logo-mark">LP</span>
+        <span class="logo-text">LaunchPad<span class="logo-nyc">NYC</span></span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="nav-desktop">
+        <div class="nav-item has-dropdown">
+          <button class="nav-link">Explore <i data-lucide="chevron-down" class="nav-chevron"></i></button>
+          <div class="dropdown">
+            <a href="#" class="dropdown-item" data-view="jobs"><i data-lucide="briefcase"></i> Jobs & Internships</a>
+            <a href="#" class="dropdown-item" data-view="programs"><i data-lucide="star"></i> Career Programs</a>
+            <a href="#" class="dropdown-item" data-view="map"><i data-lucide="map-pin"></i> NYC Map</a>
+          </div>
+        </div>
+        <a href="#" class="nav-link" data-view="lessons">Learn</a>
+        <a href="#" class="nav-link" data-view="resources">Resources</a>
+        <a href="#" class="nav-link" data-view="dashboard">Dashboard</a>
+      </nav>
+
+      <!-- Search -->
+      <div class="header-search">
+        <i data-lucide="search" class="search-icon"></i>
+        <input type="text" class="search-input" placeholder="Search jobs, programs..." id="globalSearch" />
+      </div>
+
+      <!-- Right Actions -->
+      <div class="header-actions">
+        <!-- Dark Mode Toggle -->
+        <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+          <i data-lucide="sun" class="theme-icon sun"></i>
+          <i data-lucide="moon" class="theme-icon moon"></i>
+        </button>
+        <!-- Messages -->
+        <button class="icon-btn" id="messagesBtn" data-view="messages" title="Messages">
+          <i data-lucide="message-square"></i>
+          <span class="badge">3</span>
+        </button>
+        <!-- Notification -->
+        <button class="icon-btn" title="Notifications">
+          <i data-lucide="bell"></i>
+          <span class="badge">5</span>
+        </button>
+        <button class="btn btn-ghost" id="signInBtn">Sign In</button>
+        <button class="btn btn-primary" id="joinBtn">Join Now</button>
+        <!-- Mobile Menu -->
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Nav -->
+    <nav class="nav-mobile" id="mobileNav">
+      <a href="#" class="mobile-nav-link" data-view="jobs">Jobs & Internships</a>
+      <a href="#" class="mobile-nav-link" data-view="programs">Career Programs</a>
+      <a href="#" class="mobile-nav-link" data-view="lessons">Learn</a>
+      <a href="#" class="mobile-nav-link" data-view="map">NYC Map</a>
+      <a href="#" class="mobile-nav-link" data-view="dashboard">Dashboard</a>
+      <div class="mobile-nav-btns">
+        <button class="btn btn-ghost" id="mobileSignIn">Sign In</button>
+        <button class="btn btn-primary" id="mobileJoin">Join Now</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ═══════════════════════════════════════
+       MAIN CONTENT AREA (Views)
+  ═══════════════════════════════════════ -->
+  <main class="main" id="main">
+
+    <!-- ── HOME VIEW ──────────────────────── -->
+    <section class="view active" id="view-home">
+
+      <!-- Hero -->
+      <div class="hero">
+        <div class="hero-bg">
+          <div class="hero-orb hero-orb-1"></div>
+          <div class="hero-orb hero-orb-2"></div>
+          <div class="hero-orb hero-orb-3"></div>
+          <div class="hero-grid"></div>
+        </div>
+        <div class="hero-content">
+          <div class="hero-badge">🗽 NYC's #1 Youth Career Platform</div>
+          <h1 class="hero-title">
+            Your Career<br/>
+            <span class="hero-title-accent">Starts Here.</span>
+          </h1>
+          <p class="hero-sub">Jobs, internships, and career programs built for teens and young adults in New York City. No experience needed — just ambition.</p>
+          <div class="hero-cta">
+            <button class="btn btn-primary btn-lg" id="heroJoinBtn">Get Started Free</button>
+            <button class="btn btn-outline btn-lg" data-view="jobs">Browse Jobs</button>
+          </div>
+          <div class="hero-stats">
+            <div class="stat"><span class="stat-num">2,400+</span><span class="stat-label">Open Jobs</span></div>
+            <div class="stat-divider"></div>
+            <div class="stat"><span class="stat-num">340+</span><span class="stat-label">Programs</span></div>
+            <div class="stat-divider"></div>
+            <div class="stat"><span class="stat-num">18K+</span><span class="stat-label">Young Workers</span></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-card-stack">
+            <div class="floating-card card-job">
+              <div class="fc-icon">🏢</div>
+              <div class="fc-content">
+                <div class="fc-title">Junior Designer</div>
+                <div class="fc-sub">Google NYC · $22/hr</div>
+              </div>
+              <span class="fc-tag">New!</span>
+            </div>
+            <div class="floating-card card-match">
+              <div class="fc-icon">⚡</div>
+              <div class="fc-content">
+                <div class="fc-title">95% Match</div>
+                <div class="fc-sub">Based on your profile</div>
+              </div>
+            </div>
+            <div class="floating-card card-lesson">
+              <div class="fc-icon">🎓</div>
+              <div class="fc-content">
+                <div class="fc-title">Resume Workshop</div>
+                <div class="fc-sub">12 min · Beginner</div>
+              </div>
+              <div class="fc-progress"><div class="fc-bar" style="width:60%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category Pills -->
+      <div class="categories container">
+        <h2 class="section-title">Explore by Industry</h2>
+        <div class="category-grid">
+          <button class="cat-card" data-filter="tech"><span class="cat-emoji">💻</span><span>Tech</span></button>
+          <button class="cat-card" data-filter="healthcare"><span class="cat-emoji">🏥</span><span>Healthcare</span></button>
+          <button class="cat-card" data-filter="retail"><span class="cat-emoji">🛍️</span><span>Retail</span></button>
+          <button class="cat-card" data-filter="food"><span class="cat-emoji">🍕</span><span>Food & Bev</span></button>
+          <button class="cat-card" data-filter="arts"><span class="cat-emoji">🎨</span><span>Arts & Media</span></button>
+          <button class="cat-card" data-filter="finance"><span class="cat-emoji">💰</span><span>Finance</span></button>
+          <button class="cat-card" data-filter="nonprofit"><span class="cat-emoji">🌱</span><span>Nonprofit</span></button>
+          <button class="cat-card" data-filter="gov"><span class="cat-emoji">🏛️</span><span>Government</span></button>
+        </div>
+      </div>
+
+      <!-- Featured Jobs -->
+      <div class="section container">
+        <div class="section-header">
+          <h2 class="section-title">Featured Opportunities</h2>
+          <button class="btn btn-ghost" data-view="jobs">View All →</button>
+        </div>
+        <div class="jobs-grid" id="featuredJobs"></div>
+      </div>
+
+      <!-- Programs -->
+      <div class="section container">
+        <div class="section-header">
+          <h2 class="section-title">Career Programs</h2>
+          <button class="btn btn-ghost" data-view="programs">View All →</button>
+        </div>
+        <div class="programs-grid" id="featuredPrograms"></div>
+      </div>
+
+      <!-- Lessons Preview -->
+      <div class="section section-dark">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Start Learning Today</h2>
+            <button class="btn btn-ghost" data-view="lessons">All Lessons →</button>
+          </div>
+          <div class="lessons-row" id="featuredLessons"></div>
+        </div>
+      </div>
+
+      <!-- Luke CTA Banner -->
+      <div class="luke-banner container">
+        <div class="luke-banner-content">
+          <div class="luke-avatar-lg">
+            <span>L</span>
+            <div class="luke-pulse"></div>
+          </div>
+          <div>
+            <h3>Meet Luke — Your AI Career Assistant</h3>
+            <p>Ask questions, get resume help, find jobs, and prepare for interviews. Luke's got you 24/7.</p>
+            <button class="btn btn-primary" id="lukeBannerBtn">Chat with Luke</button>
+          </div>
+        </div>
+      </div>
+
+    </section><!-- /view-home -->
+
+    <!-- ── JOBS VIEW ──────────────────────── -->
+    <section class="view" id="view-jobs">
+      <div class="view-header container">
+        <h1 class="view-title">Jobs & Internships</h1>
+        <p class="view-sub">NYC opportunities built for young workers with little or no experience</p>
+      </div>
+      <div class="container">
+        <!-- Filters -->
+        <div class="filters-bar">
+          <div class="filter-search">
+            <i data-lucide="search"></i>
+            <input type="text" placeholder="Search jobs..." id="jobSearch" />
+          </div>
+          <select class="filter-select" id="jobType">
+            <option value="">All Types</option>
+            <option>Full-Time</option>
+            <option>Part-Time</option>
+            <option>Internship</option>
+            <option>Seasonal</option>
+          </select>
+          <select class="filter-select" id="jobBorough">
+            <option value="">All Boroughs</option>
+            <option>Manhattan</option>
+            <option>Brooklyn</option>
+            <option>Queens</option>
+            <option>Bronx</option>
+            <option>Staten Island</option>
+          </select>
+          <select class="filter-select" id="jobPay">
+            <option value="">Any Pay</option>
+            <option>$15–$18/hr</option>
+            <option>$18–$22/hr</option>
+            <option>$22+/hr</option>
+          </select>
+          <button class="btn btn-primary btn-sm" id="applyFilters">Filter</button>
+        </div>
+        <div class="jobs-list" id="allJobs"></div>
+      </div>
+    </section>
+
+    <!-- ── PROGRAMS VIEW ──────────────────── -->
+    <section class="view" id="view-programs">
+      <div class="view-header container">
+        <h1 class="view-title">Career Programs</h1>
+        <p class="view-sub">Paid internships, apprenticeships, and development programs for NYC youth</p>
+      </div>
+      <div class="container">
+        <div class="programs-list" id="allPrograms"></div>
+      </div>
+    </section>
+
+    <!-- ── LESSONS VIEW ──────────────────── -->
+    <section class="view" id="view-lessons">
+      <div class="view-header container">
+        <h1 class="view-title">Learning Center</h1>
+        <p class="view-sub">Build your skills, earn badges, and get work-ready</p>
+      </div>
+      <div class="container">
+        <div class="lesson-cats">
+          <button class="lesson-cat-btn active" data-lcat="all">All</button>
+          <button class="lesson-cat-btn" data-lcat="resume">Resume</button>
+          <button class="lesson-cat-btn" data-lcat="interview">Interviews</button>
+          <button class="lesson-cat-btn" data-lcat="workplace">Workplace</button>
+          <button class="lesson-cat-btn" data-lcat="money">Money</button>
+          <button class="lesson-cat-btn" data-lcat="digital">Digital Skills</button>
+        </div>
+        <div class="lessons-grid" id="allLessons"></div>
+      </div>
+    </section>
+
+    <!-- ── MAP VIEW ──────────────────────── -->
+    <section class="view" id="view-map">
+      <div class="view-header container">
+        <h1 class="view-title">NYC Job Map</h1>
+        <p class="view-sub">Find opportunities near you across all five boroughs</p>
+      </div>
+      <div class="map-layout">
+        <div class="map-sidebar">
+          <div class="map-results" id="mapResults"></div>
+        </div>
+        <div class="map-area">
+          <div class="map-placeholder">
+            <div class="map-pins" id="mapPins"></div>
+            <div class="map-nyc-art">
+              <div class="borough brooklyn">Brooklyn</div>
+              <div class="borough manhattan">Manhattan</div>
+              <div class="borough queens">Queens</div>
+              <div class="borough bronx">Bronx</div>
+              <div class="borough staten">Staten Island</div>
+            </div>
+            <p class="map-note">Interactive map · Click pins for details</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── DASHBOARD VIEW ─────────────────── -->
+    <section class="view" id="view-dashboard">
+      <div class="view-header container">
+        <h1 class="view-title">My Dashboard</h1>
+        <p class="view-sub">Track your progress and manage your career journey</p>
+      </div>
+      <div class="container dashboard-grid">
+        <!-- Welcome Card -->
+        <div class="dash-welcome">
+          <div class="dash-avatar" id="dashAvatar">JD</div>
+          <div>
+            <h2 id="dashName">Welcome back!</h2>
+            <p class="dash-level">Work Readiness: <span class="progress-label">Beginner</span></p>
+          </div>
+          <button class="btn btn-ghost btn-sm" data-view="settings">Edit Profile</button>
+        </div>
+        <!-- Stats -->
+        <div class="dash-stats">
+          <div class="dash-stat"><span class="ds-num" id="statApplied">0</span><span class="ds-label">Applied</span></div>
+          <div class="dash-stat"><span class="ds-num" id="statSaved">0</span><span class="ds-label">Saved</span></div>
+          <div class="dash-stat"><span class="ds-num" id="statLessons">0</span><span class="ds-label">Lessons Done</span></div>
+          <div class="dash-stat"><span class="ds-num" id="statBadges">0</span><span class="ds-label">Badges</span></div>
+        </div>
+        <!-- Progress -->
+        <div class="dash-card">
+          <h3>Work Readiness Progress</h3>
+          <div class="readiness-tracks" id="readinessTracks"></div>
+        </div>
+        <!-- Saved Jobs -->
+        <div class="dash-card">
+          <h3>Saved Jobs</h3>
+          <div id="savedJobsList" class="small-list"><p class="empty-state">No saved jobs yet. <a href="#" data-view="jobs">Browse jobs →</a></p></div>
+        </div>
+        <!-- Applied -->
+        <div class="dash-card">
+          <h3>Applications</h3>
+          <div id="appliedList" class="small-list"><p class="empty-state">No applications yet. <a href="#" data-view="jobs">Find a job →</a></p></div>
+        </div>
+        <!-- Recent Lessons -->
+        <div class="dash-card">
+          <h3>Recent Lessons</h3>
+          <div id="recentLessons" class="small-list"></div>
+        </div>
+        <!-- Badges -->
+        <div class="dash-card dash-full">
+          <h3>My Badges</h3>
+          <div class="badges-grid" id="badgesGrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── MESSAGES VIEW ─────────────────── -->
+    <section class="view" id="view-messages">
+      <div class="view-header container">
+        <h1 class="view-title">Messages</h1>
+      </div>
+      <div class="container messages-layout">
+        <div class="msg-sidebar">
+          <div class="msg-thread active">
+            <div class="msg-avatar">🏢</div>
+            <div class="msg-info"><span class="msg-name">NYC Youth Works</span><span class="msg-preview">Your application was received...</span></div>
+            <span class="msg-time">2h</span>
+          </div>
+          <div class="msg-thread">
+            <div class="msg-avatar">💼</div>
+            <div class="msg-info"><span class="msg-name">Brooklyn Tech Internship</span><span class="msg-preview">We'd love to schedule an interview</span></div>
+            <span class="msg-time">1d</span>
+          </div>
+          <div class="msg-thread">
+            <div class="msg-avatar">🌱</div>
+            <div class="msg-info"><span class="msg-name">GreenFuture Program</span><span class="msg-preview">Congrats! You've been selected</span></div>
+            <span class="msg-time">3d</span>
+          </div>
+        </div>
+        <div class="msg-area">
+          <div class="msg-top">
+            <div class="msg-avatar">🏢</div>
+            <span class="msg-name">NYC Youth Works</span>
+          </div>
+          <div class="msg-body">
+            <div class="msg-bubble incoming">Your application for the Summer Internship program has been received. We'll review your profile and get back to you within 5 business days.</div>
+            <div class="msg-bubble outgoing">Thank you! I'm excited about this opportunity. Is there anything else I should submit?</div>
+            <div class="msg-bubble incoming">No, you're all set! We'll be in touch soon. Good luck! 🎉</div>
+          </div>
+          <div class="msg-compose">
+            <input type="text" placeholder="Type a message..." class="msg-input" />
+            <button class="btn btn-primary btn-sm"><i data-lucide="send"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── RESOURCES VIEW ─────────────────── -->
+    <section class="view" id="view-resources">
+      <div class="view-header container">
+        <h1 class="view-title">Resources</h1>
+        <p class="view-sub">Tools, guides, and support for your career journey</p>
+      </div>
+      <div class="container resources-grid">
+        <div class="resource-card">
+          <div class="resource-icon">📄</div>
+          <h3>Resume Builder</h3>
+          <p>Build a professional resume from scratch with our guided template tool.</p>
+          <button class="btn btn-primary btn-sm">Start Building</button>
+        </div>
+        <div class="resource-card">
+          <div class="resource-icon">🎤</div>
+          <h3>Interview Prep</h3>
+          <p>Practice common interview questions with AI-powered feedback from Luke.</p>
+          <button class="btn btn-primary btn-sm" id="interviewPrepBtn">Practice Now</button>
+        </div>
+        <div class="resource-card">
+          <div class="resource-icon">💳</div>
+          <h3>Work Permits</h3>
+          <p>Under 18? Learn how to get your working papers for NYC employment.</p>
+          <button class="btn btn-primary btn-sm">Learn More</button>
+        </div>
+        <div class="resource-card">
+          <div class="resource-icon">🧾</div>
+          <h3>Tax Help for Teens</h3>
+          <p>Understand your first paycheck, W-2, and how to file your taxes.</p>
+          <button class="btn btn-primary btn-sm">View Guide</button>
+        </div>
+        <div class="resource-card">
+          <div class="resource-icon">🤝</div>
+          <h3>Mentorship Match</h3>
+          <p>Connect with a career mentor in your industry of interest.</p>
+          <button class="btn btn-primary btn-sm">Find Mentor</button>
+        </div>
+        <div class="resource-card">
+          <div class="resource-icon">🏥</div>
+          <h3>Worker Rights</h3>
+          <p>Know your rights as a young worker in New York City.</p>
+          <button class="btn btn-primary btn-sm">View Rights</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SETTINGS VIEW ─────────────────── -->
+    <section class="view" id="view-settings">
+      <div class="view-header container">
+        <h1 class="view-title">Settings</h1>
+      </div>
+      <div class="container settings-layout">
+        <!-- Settings Sidebar -->
+        <nav class="settings-nav">
+          <button class="settings-nav-btn active" data-tab="profile">
+            <i data-lucide="user"></i> My Profile
+          </button>
+          <button class="settings-nav-btn" data-tab="appearance">
+            <i data-lucide="palette"></i> Appearance
+          </button>
+          <button class="settings-nav-btn" data-tab="saved">
+            <i data-lucide="bookmark"></i> Saved Info
+          </button>
+          <button class="settings-nav-btn" data-tab="privacy">
+            <i data-lucide="shield"></i> Privacy & Notifications
+          </button>
+          <button class="settings-nav-btn" data-tab="account">
+            <i data-lucide="settings"></i> Account
+          </button>
+        </nav>
+        <!-- Settings Content -->
+        <div class="settings-content">
+          <!-- Profile Tab -->
+          <div class="settings-tab active" id="tab-profile">
+            <h2>My Profile</h2>
+            <div class="profile-photo-area">
+              <div class="profile-photo" id="profilePhoto">JD</div>
+              <button class="btn btn-ghost btn-sm">Upload Photo</button>
+            </div>
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" class="form-input" placeholder="First name" id="profileFirst" />
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" class="form-input" placeholder="Last name" id="profileLast" />
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" class="form-input" placeholder="you@email.com" id="profileEmail" />
+            </div>
+            <div class="form-group">
+              <label>Borough</label>
+              <select class="form-input" id="profileBorough">
+                <option>Manhattan</option>
+                <option>Brooklyn</option>
+                <option>Queens</option>
+                <option>Bronx</option>
+                <option>Staten Island</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Career Interests</label>
+              <input type="text" class="form-input" placeholder="e.g. Tech, Healthcare, Arts" id="profileInterests" />
+            </div>
+            <div class="form-group">
+              <label>Resume Upload</label>
+              <div class="file-upload-area" id="resumeUpload">
+                <i data-lucide="upload-cloud"></i>
+                <span>Drop resume here or click to upload</span>
+                <input type="file" accept=".pdf,.doc,.docx" style="display:none" id="resumeFile" />
+              </div>
+            </div>
+            <button class="btn btn-primary" id="saveProfile">Save Changes</button>
+          </div>
+
+          <!-- Appearance Tab -->
+          <div class="settings-tab" id="tab-appearance">
+            <h2>Appearance</h2>
+            <div class="settings-row">
+              <div>
+                <h3>Dark Mode</h3>
+                <p>Switch between light and dark themes</p>
+              </div>
+              <label class="toggle-switch" id="darkModeToggle">
+                <input type="checkbox" id="darkModeCheck" checked />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="settings-row">
+              <div>
+                <h3>Accent Color</h3>
+                <p>Choose your preferred accent color</p>
+              </div>
+              <div class="color-swatches">
+                <button class="swatch active" style="background:#7C3AED" data-color="#7C3AED"></button>
+                <button class="swatch" style="background:#0EA5E9" data-color="#0EA5E9"></button>
+                <button class="swatch" style="background:#10B981" data-color="#10B981"></button>
+                <button class="swatch" style="background:#F59E0B" data-color="#F59E0B"></button>
+                <button class="swatch" style="background:#EF4444" data-color="#EF4444"></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Saved Tab -->
+          <div class="settings-tab" id="tab-saved">
+            <h2>Saved Information</h2>
+            <div class="saved-section">
+              <h3>Saved Jobs (<span id="savedCount">0</span>)</h3>
+              <div id="settingsSavedJobs"></div>
+            </div>
+            <div class="saved-section">
+              <h3>Applied Jobs (<span id="appliedCount">0</span>)</h3>
+              <div id="settingsAppliedJobs"></div>
+            </div>
+            <div class="saved-section">
+              <h3>Completed Lessons (<span id="lessonsCount">0</span>)</h3>
+              <div id="settingsLessons"></div>
+            </div>
+          </div>
+
+          <!-- Privacy Tab -->
+          <div class="settings-tab" id="tab-privacy">
+            <h2>Privacy & Notifications</h2>
+            <div class="settings-row">
+              <div><h3>Job Alerts</h3><p>Get notified of new matching jobs</p></div>
+              <label class="toggle-switch"><input type="checkbox" checked /><span class="toggle-slider"></span></label>
+            </div>
+            <div class="settings-row">
+              <div><h3>Program Reminders</h3><p>Remind me about upcoming deadlines</p></div>
+              <label class="toggle-switch"><input type="checkbox" checked /><span class="toggle-slider"></span></label>
+            </div>
+            <div class="settings-row">
+              <div><h3>Lesson Progress</h3><p>Weekly updates on your learning</p></div>
+              <label class="toggle-switch"><input type="checkbox" /><span class="toggle-slider"></span></label>
+            </div>
+            <div class="settings-row">
+              <div><h3>Profile Visibility</h3><p>Let employers see your profile</p></div>
+              <label class="toggle-switch"><input type="checkbox" checked /><span class="toggle-slider"></span></label>
+            </div>
+          </div>
+
+          <!-- Account Tab -->
+          <div class="settings-tab" id="tab-account">
+            <h2>Account</h2>
+            <div class="form-group">
+              <label>Change Password</label>
+              <input type="password" class="form-input" placeholder="Current password" />
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-input" placeholder="New password" />
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-input" placeholder="Confirm new password" />
+            </div>
+            <button class="btn btn-primary btn-sm">Update Password</button>
+            <hr class="settings-divider" />
+            <div class="danger-zone">
+              <h3>Danger Zone</h3>
+              <button class="btn btn-danger btn-sm">Delete Account</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- /main -->
+
+  <!-- ═══════════════════════════════════════
+       SIGN IN MODAL
+  ═══════════════════════════════════════ -->
+  <div class="modal-overlay" id="signInModal">
+    <div class="modal">
+      <button class="modal-close" data-close="signInModal"><i data-lucide="x"></i></button>
+      <div class="modal-logo">LP</div>
+      <h2 class="modal-title">Welcome Back</h2>
+      <p class="modal-sub">Sign in to your LaunchPad account</p>
+
+      <div class="social-btns">
+        <button class="social-btn google-btn"><span>G</span> Continue with Google</button>
+        <button class="social-btn apple-btn"><span>🍎</span> Continue with Apple</button>
+      </div>
+      <div class="divider"><span>or</span></div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" class="form-input" placeholder="you@email.com" id="signInEmail" />
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <div class="input-with-icon">
+          <input type="password" class="form-input" placeholder="Your password" id="signInPassword" />
+          <button class="input-icon-btn" id="toggleSignInPwd"><i data-lucide="eye"></i></button>
+        </div>
+      </div>
+      <a href="#" class="forgot-link" id="forgotPwdLink">Forgot password?</a>
+      <button class="btn btn-primary btn-full" id="signInSubmit">Sign In</button>
+      <p class="modal-switch">Don't have an account? <a href="#" id="switchToJoin">Join Now</a></p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       JOIN / SIGNUP MODAL
+  ═══════════════════════════════════════ -->
+  <div class="modal-overlay" id="joinModal">
+    <div class="modal modal-wide">
+      <button class="modal-close" data-close="joinModal"><i data-lucide="x"></i></button>
+
+      <!-- Step Indicators -->
+      <div class="step-indicator">
+        <div class="step active" id="step-dot-1">1</div>
+        <div class="step-line"></div>
+        <div class="step" id="step-dot-2">2</div>
+        <div class="step-line"></div>
+        <div class="step" id="step-dot-3">3</div>
+      </div>
+
+      <!-- Step 1: Account Info -->
+      <div class="modal-step active" id="join-step-1">
+        <h2 class="modal-title">Create Your Account</h2>
+        <p class="modal-sub">Join thousands of NYC young workers</p>
+        <div class="social-btns">
+          <button class="social-btn google-btn"><span>G</span> Continue with Google</button>
+          <button class="social-btn apple-btn"><span>🍎</span> Continue with Apple</button>
+        </div>
+        <div class="divider"><span>or sign up with email</span></div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" class="form-input" placeholder="First" id="joinFirst" />
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" class="form-input" placeholder="Last" id="joinLast" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" class="form-input" placeholder="you@email.com" id="joinEmail" />
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <div class="input-with-icon">
+            <input type="password" class="form-input" placeholder="Create password" id="joinPassword" />
+            <button class="input-icon-btn" id="toggleJoinPwd"><i data-lucide="eye"></i></button>
+          </div>
+          <div class="password-strength" id="pwdStrength">
+            <div class="strength-bars">
+              <div class="strength-bar" id="sb1"></div>
+              <div class="strength-bar" id="sb2"></div>
+              <div class="strength-bar" id="sb3"></div>
+              <div class="strength-bar" id="sb4"></div>
+            </div>
+            <span class="strength-label" id="pwdStrengthLabel">Enter password</span>
+          </div>
+          <div class="pwd-reqs" id="pwdReqs">
+            <div class="req" id="req-len"><i data-lucide="circle"></i> 8+ characters</div>
+            <div class="req" id="req-upper"><i data-lucide="circle"></i> Uppercase letter</div>
+            <div class="req" id="req-num"><i data-lucide="circle"></i> Number</div>
+            <div class="req" id="req-special"><i data-lucide="circle"></i> Special character</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Date of Birth</label>
+          <input type="date" class="form-input" id="joinDob" />
+        </div>
+        <button class="btn btn-primary btn-full" id="joinNext1">Continue →</button>
+        <p class="modal-switch">Already have an account? <a href="#" id="switchToSignIn">Sign In</a></p>
+      </div>
+
+      <!-- Step 2: Onboarding Survey -->
+      <div class="modal-step" id="join-step-2">
+        <h2 class="modal-title">Tell Us About You</h2>
+        <p class="modal-sub">We'll personalize your experience based on your answers</p>
+        <div class="form-group">
+          <label>What borough do you live in?</label>
+          <select class="form-input" id="joinBorough">
+            <option value="">Select borough</option>
+            <option>Manhattan</option>
+            <option>Brooklyn</option>
+            <option>Queens</option>
+            <option>Bronx</option>
+            <option>Staten Island</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>What are you looking for?</label>
+          <div class="chip-group" id="lookingFor">
+            <button class="chip" data-val="job">Part-time job</button>
+            <button class="chip" data-val="internship">Internship</button>
+            <button class="chip" data-val="fulltime">Full-time job</button>
+            <button class="chip" data-val="program">Career program</button>
+            <button class="chip" data-val="training">Job training</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Career interests <span class="label-hint">(select all that apply)</span></label>
+          <div class="chip-group" id="careerInterests">
+            <button class="chip" data-val="tech">Tech</button>
+            <button class="chip" data-val="healthcare">Healthcare</button>
+            <button class="chip" data-val="retail">Retail</button>
+            <button class="chip" data-val="food">Food & Bev</button>
+            <button class="chip" data-val="arts">Arts & Media</button>
+            <button class="chip" data-val="finance">Finance</button>
+            <button class="chip" data-val="nonprofit">Nonprofit</button>
+            <button class="chip" data-val="education">Education</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Previous work experience</label>
+          <select class="form-input" id="joinExperience">
+            <option value="">Select...</option>
+            <option>No experience</option>
+            <option>Less than 6 months</option>
+            <option>6 months – 1 year</option>
+            <option>1–2 years</option>
+            <option>2+ years</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>What's your main goal?</label>
+          <select class="form-input" id="joinGoal">
+            <option value="">Select goal</option>
+            <option>Earn money now</option>
+            <option>Build my resume</option>
+            <option>Learn new skills</option>
+            <option>Start a career</option>
+            <option>Explore options</option>
+          </select>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-ghost" id="joinBack2">← Back</button>
+          <button class="btn btn-primary" id="joinNext2">Continue →</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Complete -->
+      <div class="modal-step" id="join-step-3">
+        <div class="success-animation">
+          <div class="success-circle">✓</div>
+        </div>
+        <h2 class="modal-title">You're In! 🎉</h2>
+        <p class="modal-sub">Your LaunchPad account is ready. Let's start your career journey.</p>
+        <div class="welcome-cards">
+          <div class="welcome-card"><span>🎯</span> Jobs matched to you</div>
+          <div class="welcome-card"><span>🎓</span> Free learning lessons</div>
+          <div class="welcome-card"><span>🤖</span> Luke AI assistant</div>
+        </div>
+        <button class="btn btn-primary btn-full" id="joinDone">Go to My Dashboard</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       FORGOT PASSWORD MODAL
+  ═══════════════════════════════════════ -->
+  <div class="modal-overlay" id="forgotModal">
+    <div class="modal">
+      <button class="modal-close" data-close="forgotModal"><i data-lucide="x"></i></button>
+      <h2 class="modal-title">Reset Password</h2>
+      <p class="modal-sub">Enter your email and we'll send you a reset link</p>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" class="form-input" placeholder="you@email.com" id="forgotEmail" />
+      </div>
+      <button class="btn btn-primary btn-full" id="forgotSubmit">Send Reset Link</button>
+      <p class="modal-switch"><a href="#" id="backToSignIn">← Back to Sign In</a></p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       JOB DETAIL MODAL
+  ═══════════════════════════════════════ -->
+  <div class="modal-overlay" id="jobModal">
+    <div class="modal modal-wide">
+      <button class="modal-close" data-close="jobModal"><i data-lucide="x"></i></button>
+      <div id="jobModalContent"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       LESSON MODAL
+  ═══════════════════════════════════════ -->
+  <div class="modal-overlay" id="lessonModal">
+    <div class="modal modal-wide">
+      <button class="modal-close" data-close="lessonModal"><i data-lucide="x"></i></button>
+      <div id="lessonModalContent"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       LUKE AI ASSISTANT
+  ═══════════════════════════════════════ -->
+  <!-- Toggle Button -->
+  <button class="luke-fab" id="lukeFab" title="Chat with Luke">
+    <div class="luke-fab-avatar">L</div>
+    <div class="luke-fab-pulse"></div>
+    <span class="luke-fab-label">Luke</span>
+  </button>
+
+  <!-- Chat Window -->
+  <div class="luke-chat" id="lukeChat">
+    <div class="luke-chat-header">
+      <div class="luke-chat-info">
+        <div class="luke-chat-avatar">L</div>
+        <div>
+          <div class="luke-chat-name">Luke</div>
+          <div class="luke-chat-status"><span class="online-dot"></span> Online · AI Career Assistant</div>
+        </div>
+      </div>
+      <div class="luke-chat-actions">
+        <button class="icon-btn" id="lukeMicBtn" title="Voice input"><i data-lucide="mic"></i></button>
+        <button class="icon-btn" id="lukeClose"><i data-lucide="x"></i></button>
+      </div>
+    </div>
+    <div class="luke-messages" id="lukeMessages">
+      <div class="luke-msg luke-msg-in">
+        <div class="luke-msg-bubble">
+          Hey! I'm Luke 👋 I'm your AI career assistant. I can help you find jobs, build your resume, prep for interviews, and navigate LaunchPad. What can I help you with today?
+        </div>
+      </div>
+      <div class="luke-suggestions">
+        <button class="luke-suggest" data-msg="Help me find a job">🔍 Find me a job</button>
+        <button class="luke-suggest" data-msg="Help me build my resume">📄 Resume help</button>
+        <button class="luke-suggest" data-msg="Prepare me for an interview">🎤 Interview prep</button>
+        <button class="luke-suggest" data-msg="What lessons should I take?">🎓 Lessons for me</button>
+      </div>
+    </div>
+    <div class="luke-voice-indicator" id="lukeVoice" style="display:none">
+      <div class="voice-waves">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <span>Listening...</span>
+    </div>
+    <div class="luke-compose">
+      <input type="text" class="luke-input" id="lukeInput" placeholder="Ask Luke anything..." />
+      <button class="icon-btn luke-mic-small" id="lukeMicSmall" title="Voice"><i data-lucide="mic"></i></button>
+      <button class="btn btn-primary btn-sm" id="lukeSend"><i data-lucide="send"></i></button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       TOAST NOTIFICATIONS
+  ═══════════════════════════════════════ -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner container">
+      <div class="footer-brand">
+        <div class="logo">
+          <span class="logo-mark">LP</span>
+          <span class="logo-text">LaunchPad<span class="logo-nyc">NYC</span></span>
+        </div>
+        <p>Empowering NYC's next generation of workers.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <a href="#" data-view="jobs">Jobs</a>
+          <a href="#" data-view="programs">Programs</a>
+          <a href="#" data-view="lessons">Learn</a>
+          <a href="#" data-view="map">NYC Map</a>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <a href="#">Help Center</a>
+          <a href="#">Contact Us</a>
+          <a href="#">Accessibility</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <p>© 2025 LaunchPad NYC. Built for NYC youth. 🗽</p>
+    </div>
   </footer>
 
   <script src="script.js"></script>
