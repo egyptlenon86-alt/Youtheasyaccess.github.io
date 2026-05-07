@@ -2,98 +2,269 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Youth Job Connect</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YouthConnect NYC</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-<!-- HEADER -->
-<header>
-  <h1>YouthConnect NYC</h1>
-  <nav>
-    <button onclick="showPage('jobs')">Jobs</button>
-    <button onclick="showPage('map')">Maps</button>
-    <button onclick="showPage('training')">Work Readiness</button>
-    <button onclick="showPage('account')">Account</button>
-  </nav>
-</header>
+  <!-- ========================= -->
+  <!-- NAVIGATION -->
+  <!-- ========================= -->
+  <header class="navbar">
 
-<!-- LOGIN -->
-<section id="auth">
-  <h2>Sign In / Sign Up</h2>
-  <button onclick="login()">Continue with Email</button>
-  <button onclick="login()">Continue with Google</button>
-  <button onclick="login()">Continue with Apple</button>
-</section>
+    <div class="logo">
+      YouthConnect NYC
+    </div>
 
-<!-- SURVEY MODAL -->
-<div id="surveyModal" class="modal hidden">
-  <div class="modal-content">
-    <h2>Tell us about you</h2>
-    <label>What jobs interest you?</label>
-    <input type="text" id="interestInput"/>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
 
-    <label>Any past experience?</label>
-    <input type="text" id="experienceInput"/>
+        <li class="dropdown">
+          <a href="#">Programs ▼</a>
 
-    <button onclick="saveSurvey()">Submit</button>
-  </div>
-</div>
+          <ul class="dropdown-menu">
+            <li><a href="#">Internships</a></li>
+            <li><a href="#">Part-Time Jobs</a></li>
+            <li><a href="#">Career Training</a></li>
+          </ul>
+        </li>
 
-<!-- SEARCH -->
-<div id="searchBar" class="hidden">
-  <input type="text" id="searchInput" placeholder="Search jobs..." onkeyup="searchJobs()" />
-</div>
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Messages</a></li>
+        <li><a href="#">Training</a></li>
+        <li><a href="#">Settings</a></li>
+      </ul>
+    </nav>
 
-<!-- JOBS PAGE -->
-<section id="jobs" class="page hidden">
-  <h2>Job Listings</h2>
-  <div id="jobList"></div>
-</section>
+    <button id="themeToggle" class="theme-btn">
+      🌙
+    </button>
 
-<!-- MAP PAGE -->
-<section id="map" class="page hidden">
-  <h2>NYC Job Map</h2>
-  <div class="map-placeholder">[Map Integration Coming Soon]</div>
-</section>
+  </header>
 
-<!-- TRAINING PAGE -->
-<section id="training" class="page hidden">
-  <h2>Work Readiness Training</h2>
-  <ul>
-    <li>Resume Writing</li>
-    <li>Interview Skills</li>
-    <li>Workplace Basics</li>
-  </ul>
-</section>
+  <!-- ========================= -->
+  <!-- HERO SECTION -->
+  <!-- ========================= -->
+  <section class="hero">
 
-<!-- ACCOUNT PAGE -->
-<section id="account" class="page hidden">
-  <h2>My Account</h2>
-  <p><strong>Interests:</strong> <span id="savedInterest"></span></p>
-  <p><strong>Experience:</strong> <span id="savedExperience"></span></p>
+    <div class="hero-content">
 
-  <h3>Upload Resume</h3>
-  <input type="file" />
+      <h1>
+        Find Jobs, Internships & Programs Built For NYC Youth
+      </h1>
 
-  <h3>Jobs Applied</h3>
-  <ul id="appliedJobs"></ul>
-</section>
+      <p>
+        Discover opportunities designed for teens and young adults ages 18–25.
+      </p>
 
-<!-- MESSENGER -->
-<div id="messenger">
-  <h3>Messages</h3>
-  <div class="chat-box" id="chatBox"></div>
-  <input type="text" id="chatInput" placeholder="Ask Luke..." />
-  <button onclick="sendMessage()">Send</button>
-</div>
+      <!-- Search Bar -->
+      <div class="search-box">
+        <input type="text" placeholder="Search jobs or programs..." />
+        <button>Search</button>
+      </div>
 
-<!-- AI ASSISTANT -->
-<div id="aiAssistant" onclick="speakAI()">
-  🎧 Ask Luke
-</div>
+    </div>
 
-<script src="script.js"></script>
+  </section>
+
+  <!-- ========================= -->
+  <!-- USER DASHBOARD -->
+  <!-- ========================= -->
+  <section class="dashboard">
+
+    <h2>Your Dashboard</h2>
+
+    <div class="dashboard-grid">
+
+      <!-- Recommended Jobs -->
+      <div class="card">
+        <h3>Recommended Jobs</h3>
+
+        <ul>
+          <li>Retail Assistant – Manhattan</li>
+          <li>Tech Internship – Brooklyn</li>
+          <li>Marketing Program – Queens</li>
+        </ul>
+
+      </div>
+
+      <!-- Saved Jobs -->
+      <div class="card">
+        <h3>Saved Jobs</h3>
+
+        <ul>
+          <li>Graphic Design Intern</li>
+          <li>Customer Service Assistant</li>
+        </ul>
+
+      </div>
+
+      <!-- Applied Jobs -->
+      <div class="card">
+        <h3>Previously Applied</h3>
+
+        <ul>
+          <li>NYC Summer Youth Program</li>
+          <li>Community Outreach Assistant</li>
+        </ul>
+
+      </div>
+
+      <!-- Resume Upload -->
+      <div class="card">
+        <h3>Resume Upload</h3>
+
+        <input type="file" />
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ========================= -->
+  <!-- WORK READINESS -->
+  <!-- ========================= -->
+  <section class="training">
+
+    <h2>Work Readiness Training</h2>
+
+    <div class="training-container">
+
+      <div class="training-card">
+        <h3>Interview Skills</h3>
+
+        <div class="progress-bar">
+          <div class="progress interview-progress"></div>
+        </div>
+
+        <p>70% Complete</p>
+
+      </div>
+
+      <div class="training-card">
+        <h3>Resume Writing</h3>
+
+        <div class="progress-bar">
+          <div class="progress resume-progress"></div>
+        </div>
+
+        <p>50% Complete</p>
+
+      </div>
+
+      <div class="training-card">
+        <h3>Professional Communication</h3>
+
+        <div class="progress-bar">
+          <div class="progress communication-progress"></div>
+        </div>
+
+        <p>90% Complete</p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ========================= -->
+  <!-- MAP SECTION -->
+  <!-- ========================= -->
+  <section class="map-section">
+
+    <h2>NYC Job Map</h2>
+
+    <div class="map-placeholder">
+      Interactive Job Map Coming Soon
+    </div>
+
+  </section>
+
+  <!-- ========================= -->
+  <!-- AI ASSISTANT -->
+  <!-- ========================= -->
+  <section class="ai-assistant">
+
+    <h2>Meet Luke — Your AI Career Assistant</h2>
+
+    <div class="assistant-box">
+
+      <div class="assistant-messages" id="chatBox">
+
+        <div class="message luke">
+          Hi! I'm Luke 👋 How can I help you today?
+        </div>
+
+      </div>
+
+      <div class="chat-input">
+
+        <input
+          type="text"
+          id="userInput"
+          placeholder="Ask Luke a question..."
+        />
+
+        <button onclick="sendMessage()">
+          Send
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ========================= -->
+  <!-- SETTINGS SECTION -->
+  <!-- ========================= -->
+  <section class="settings">
+
+    <h2>Account Settings</h2>
+
+    <div class="settings-grid">
+
+      <div class="card">
+        <h3>My Profile</h3>
+        <p>Edit your personal information and goals.</p>
+      </div>
+
+      <div class="card">
+        <h3>Privacy Settings</h3>
+        <p>Manage notifications and privacy options.</p>
+      </div>
+
+      <div class="card">
+        <h3>Resume Management</h3>
+        <p>Upload and organize your resumes.</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ========================= -->
+  <!-- FOOTER -->
+  <!-- ========================= -->
+  <footer>
+
+    <p>
+      © 2026 YouthConnect NYC — Empowering Young Professionals
+    </p>
+
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+
 </body>
 </html>
