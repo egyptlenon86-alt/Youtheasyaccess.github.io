@@ -10,6 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <!-- Supabase JS Client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
@@ -43,6 +45,7 @@
             <a href="#" class="dropdown-item" data-view="jobs"><i data-lucide="briefcase"></i> Jobs & Internships</a>
             <a href="#" class="dropdown-item" data-view="programs"><i data-lucide="star"></i> Career Programs</a>
             <a href="#" class="dropdown-item" data-view="map"><i data-lucide="map-pin"></i> NYC Map</a>
+            <a href="#" class="dropdown-item" data-view="scholarships"><i data-lucide="graduation-cap"></i> Scholarships</a>
           </div>
         </div>
         <a href="#" class="nav-link" data-view="lessons">Learn</a>
@@ -88,6 +91,7 @@
       <a href="#" class="mobile-nav-link" data-view="programs">Career Programs</a>
       <a href="#" class="mobile-nav-link" data-view="lessons">Learn</a>
       <a href="#" class="mobile-nav-link" data-view="map">NYC Map</a>
+      <a href="#" class="mobile-nav-link" data-view="scholarships">Scholarships</a>
       <a href="#" class="mobile-nav-link" data-view="dashboard">Dashboard</a>
       <div class="mobile-nav-btns">
         <button class="btn btn-ghost" id="mobileSignIn">Sign In</button>
@@ -314,6 +318,53 @@
             <p class="map-note">Interactive map · Click pins for details</p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ── SCHOLARSHIPS VIEW ──────────────────── -->
+    <section class="view" id="view-scholarships">
+      <div class="view-header container">
+        <h1 class="view-title">Scholarships</h1>
+        <p class="view-sub">Free money for NYC youth — no loans, no repayment</p>
+      </div>
+      <div class="container">
+        <!-- Filters -->
+        <div class="filters-bar">
+          <div class="filter-search">
+            <i data-lucide="search"></i>
+            <input type="text" placeholder="Search scholarships..." id="scholarshipSearch" />
+          </div>
+          <select class="filter-select" id="scholarshipBorough">
+            <option value="">All Boroughs</option>
+            <option>Manhattan</option>
+            <option>Brooklyn</option>
+            <option>Queens</option>
+            <option>Bronx</option>
+            <option>Staten Island</option>
+          </select>
+          <select class="filter-select" id="scholarshipIndustry">
+            <option value="">All Industries</option>
+            <option value="tech">Tech</option>
+            <option value="healthcare">Healthcare</option>
+            <option value="arts">Arts & Media</option>
+            <option value="finance">Finance</option>
+            <option value="nonprofit">Nonprofit</option>
+            <option value="gov">Government</option>
+          </select>
+          <button class="btn btn-primary btn-sm" id="filterScholarships">Filter</button>
+        </div>
+        <!-- Loading State -->
+        <div id="scholarshipsLoading" style="text-align:center;padding:60px 0;color:var(--text-muted)">
+          <div style="font-size:2rem;margin-bottom:12px">🔄</div>
+          <div>Loading scholarships...</div>
+        </div>
+        <!-- Error State -->
+        <div id="scholarshipsError" style="display:none;text-align:center;padding:60px 0;color:var(--danger)">
+          <div style="font-size:2rem;margin-bottom:12px">⚠️</div>
+          <div>Could not load scholarships. Check your connection.</div>
+        </div>
+        <!-- Results Grid -->
+        <div class="programs-grid" id="scholarshipsGrid" style="display:none"></div>
       </div>
     </section>
 
@@ -934,6 +985,13 @@
     </div>
   </footer>
 
+  <!-- ═══════════════════════════════════════
+       SCRIPTS — ORDER MATTERS
+       1. supabase.js  (DB helpers, must load first)
+       2. script.js    (app logic, depends on supabase.js)
+  ═══════════════════════════════════════ -->
+  <script src="supabase.js"></script>
   <script src="script.js"></script>
+
 </body>
 </html>
