@@ -1,0 +1,657 @@
+[
+  {
+    "id": 1,
+    "emoji": "📄",
+    "category": "resume",
+    "title": "Build Your First Resume",
+    "subtitle": "Zero experience? No problem.",
+    "duration": "12 min",
+    "level": "Beginner",
+    "xp": 120,
+    "badge": { "emoji": "📄", "name": "Resume Ready" },
+    "videoUrl": "https://www.youtube.com/embed/Tt08KmFfIYQ",
+    "videoTitle": "How to Write a Resume With No Work Experience",
+    "description": "Create a standout resume even with no work experience. Learn exactly what employers look for and how to make your skills shine.",
+    "keyPoints": [
+      "Your resume is a marketing document — sell yourself!",
+      "No job experience? Use school projects, clubs, and volunteer work",
+      "Keep it to 1 page and use clean, readable formatting",
+      "Tailor your resume for each job you apply to",
+      "Proofread everything — typos are instant rejections"
+    ],
+    "sections": [
+      {
+        "title": "What Goes on a Resume?",
+        "content": "Even with zero work experience, you have more to show than you think. A strong resume includes: your contact info, a brief objective statement, your education, any skills you have (even if learned in class), activities like clubs or sports, volunteer or community work, and any projects you're proud of. Think of each section as a story about who you are.",
+        "animationType": "resume-builder"
+      },
+      {
+        "title": "The Skills Section is Your Secret Weapon",
+        "content": "Skills are divided into hard skills (specific, teachable abilities like 'Microsoft Excel' or 'Spanish') and soft skills (personality traits like 'teamwork' or 'communication'). List both! Even things you learned in school count — if you've used Google Slides, that's a digital skill. If you've worked on a group project, that's collaboration.",
+        "animationType": "skills-sort"
+      },
+      {
+        "title": "Action Verbs Make You Sound Powerful",
+        "content": "Start every bullet point with a strong action verb. Instead of 'I helped with the bake sale,' write 'Organized and promoted a school fundraiser that raised $400.' The difference is massive. Use words like: led, created, managed, designed, assisted, trained, built, improved, solved, achieved.",
+        "animationType": "verb-swap"
+      }
+    ],
+    "game": {
+      "type": "resume-drag-drop",
+      "title": "🎮 Build a Resume — Drag & Drop Challenge",
+      "instructions": "Drag each item into the correct section of the resume. Get all 8 right to earn bonus XP!",
+      "bonusXP": 50,
+      "items": [
+        { "text": "Volunteered at food bank weekly", "category": "Experience", "emoji": "🤝" },
+        { "text": "Microsoft Word & Excel", "category": "Skills", "emoji": "💻" },
+        { "text": "Brooklyn Tech High School, GPA 3.6", "category": "Education", "emoji": "🎓" },
+        { "text": "Led school newspaper as Editor", "category": "Experience", "emoji": "📰" },
+        { "text": "Fluent in Spanish & English", "category": "Skills", "emoji": "🗣️" },
+        { "text": "john.doe@gmail.com", "category": "Contact", "emoji": "📧" },
+        { "text": "Built a website for local church", "category": "Projects", "emoji": "🌐" },
+        { "text": "Dependable team player", "category": "Skills", "emoji": "⭐" }
+      ],
+      "categories": ["Contact", "Education", "Experience", "Skills", "Projects"]
+    }
+  },
+  {
+    "id": 2,
+    "emoji": "🎤",
+    "category": "interview",
+    "title": "Ace Your First Interview",
+    "subtitle": "Turn nerves into confidence.",
+    "duration": "18 min",
+    "level": "Beginner",
+    "xp": 150,
+    "badge": { "emoji": "🎤", "name": "Interview Pro" },
+    "videoUrl": "https://www.youtube.com/embed/HG68Ymazo18",
+    "videoTitle": "How to Answer Interview Questions — STAR Method",
+    "description": "Master common interview questions, body language, and how to make a great first impression that gets you the job.",
+    "keyPoints": [
+      "Research the company before you walk in the door",
+      "Use the STAR method: Situation, Task, Action, Result",
+      "Make eye contact and sit up straight — posture matters",
+      "Prepare 2–3 questions to ask the interviewer",
+      "Always send a thank-you message within 24 hours"
+    ],
+    "sections": [
+      {
+        "title": "The STAR Method Explained",
+        "content": "STAR stands for Situation, Task, Action, Result. It's the secret formula for answering behavioral interview questions like 'Tell me about a time you solved a problem.' Start with the Situation (context), explain your Task (what you needed to do), describe your Action (what you actually did), and finish with the Result (what happened). Employers love concrete stories.",
+        "animationType": "star-breakdown"
+      },
+      {
+        "title": "Body Language is Half the Interview",
+        "content": "Before you say a word, your body is already communicating. Firm handshake, eye contact, and a genuine smile signal confidence. Sit up straight and lean forward slightly to show engagement. Avoid crossing your arms (defensive), looking at the floor (nervous), or fidgeting (anxious). Practice in a mirror — it really helps!",
+        "animationType": "body-language"
+      },
+      {
+        "title": "Questions They WILL Ask You",
+        "content": "Every interviewer has a standard list. 'Tell me about yourself' (keep it to 60 seconds, focus on relevant skills and goals). 'Why do you want this job?' (show you researched them). 'What's your biggest weakness?' (pick something real, then explain how you're improving). 'Where do you see yourself in 5 years?' (show ambition but stay realistic).",
+        "animationType": "question-reveal"
+      }
+    ],
+    "game": {
+      "type": "interview-quiz",
+      "title": "🎮 Hot Seat — Interview Simulator",
+      "instructions": "Pick the BEST answer for each interview question. Wrong answers dock XP, right answers earn it. Can you pass the interview?",
+      "bonusXP": 75,
+      "questions": [
+        {
+          "question": "The interviewer asks: 'Tell me about yourself.' What do you say?",
+          "answers": [
+            { "text": "I'm 17, I live in Brooklyn, and I like gaming.", "correct": false, "feedback": "Too personal and unfocused. Keep it professional!" },
+            { "text": "I'm a motivated student at Brooklyn Tech with strong communication skills and a passion for design. I've led my school's art club for two years.", "correct": true, "feedback": "✅ Perfect! Brief, professional, and highlights relevant strengths." },
+            { "text": "I don't know, what do you want to know?", "correct": false, "feedback": "This comes across as unprepared. Always have an answer ready!" },
+            { "text": "I'm the best candidate you'll meet today.", "correct": false, "feedback": "Confidence is good, but this sounds arrogant without backing it up." }
+          ]
+        },
+        {
+          "question": "'What's your biggest weakness?' — Best response?",
+          "answers": [
+            { "text": "I don't have any weaknesses.", "correct": false, "feedback": "No one believes this! It makes you seem unaware or dishonest." },
+            { "text": "I'm a perfectionist — I work too hard.", "correct": false, "feedback": "This is a cliché. Interviewers have heard it a thousand times." },
+            { "text": "I sometimes struggle with public speaking, but I've been practicing in my school debate club to improve.", "correct": true, "feedback": "✅ Honest, specific, and shows self-improvement. That's the formula!" },
+            { "text": "I hate mornings, so I might be late sometimes.", "correct": false, "feedback": "Never hint at punctuality issues in an interview!" }
+          ]
+        },
+        {
+          "question": "You arrive 10 minutes early. The receptionist asks you to wait. You should:",
+          "answers": [
+            { "text": "Pull out your phone and scroll social media.", "correct": false, "feedback": "The receptionist may report this. Stay professional the whole time." },
+            { "text": "Sit quietly, review your notes, and smile warmly at staff.", "correct": true, "feedback": "✅ You're always being evaluated — even in the waiting room!" },
+            { "text": "Ask the receptionist about the company culture.", "correct": false, "feedback": "Receptionist isn't your interviewer. Don't put them in an awkward spot." },
+            { "text": "Pace the lobby to calm your nerves.", "correct": false, "feedback": "This looks anxious and unprofessional. Take slow breaths instead." }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": 3,
+    "emoji": "💌",
+    "category": "resume",
+    "title": "Write a Cover Letter That Works",
+    "subtitle": "Say what your resume can't.",
+    "duration": "10 min",
+    "level": "Beginner",
+    "xp": 100,
+    "badge": { "emoji": "💌", "name": "Letter Writer" },
+    "videoUrl": "https://www.youtube.com/embed/hrPDNFPFR4M",
+    "videoTitle": "How to Write a Cover Letter — Step by Step",
+    "description": "Craft a compelling cover letter that gets you noticed, even without experience. Stand out from the pile.",
+    "keyPoints": [
+      "Open with energy — don't start with 'My name is...'",
+      "Explain why THIS company specifically excites you",
+      "Connect your skills to their actual job description",
+      "Keep it to 3 short paragraphs — less is more",
+      "End with a confident call-to-action"
+    ],
+    "sections": [
+      {
+        "title": "The 3-Paragraph Formula",
+        "content": "Great cover letters have a simple structure. Paragraph 1: Hook them with your enthusiasm and mention the exact role. Paragraph 2: Show how your skills/experience match what they need (use their job listing's keywords!). Paragraph 3: Express excitement, mention your availability, and politely request an interview. That's it. No fluff.",
+        "animationType": "paragraph-build"
+      },
+      {
+        "title": "Personalize or Perish",
+        "content": "A generic cover letter is worse than no cover letter. Always name the company, reference the job title exactly, and show you know something about them. Did they win an award recently? Are they known for community work? A single specific detail shows you actually care. Hiring managers can smell copy-paste from a mile away.",
+        "animationType": "personalize-reveal"
+      }
+    ],
+    "game": {
+      "type": "word-sort",
+      "title": "🎮 Cover Letter Word Sort",
+      "instructions": "Sort these phrases into STRONG or WEAK cover letter language. Get 7/8 right for bonus XP!",
+      "bonusXP": 40,
+      "items": [
+        { "text": "I think I might be a good fit maybe", "category": "WEAK", "emoji": "😬" },
+        { "text": "My passion for your mission drove me to apply", "category": "STRONG", "emoji": "🔥" },
+        { "text": "To Whom It May Concern", "category": "WEAK", "emoji": "😐" },
+        { "text": "I would bring dedication and a proven ability to collaborate", "category": "STRONG", "emoji": "💪" },
+        { "text": "I need this job because I need money", "category": "WEAK", "emoji": "💸" },
+        { "text": "I look forward to discussing how I can contribute", "category": "STRONG", "emoji": "✅" },
+        { "text": "I don't have much experience but...", "category": "WEAK", "emoji": "😅" },
+        { "text": "As demonstrated by my leadership in student council...", "category": "STRONG", "emoji": "⭐" }
+      ],
+      "categories": ["STRONG", "WEAK"]
+    }
+  },
+  {
+    "id": 4,
+    "emoji": "👔",
+    "category": "workplace",
+    "title": "Workplace Professionalism 101",
+    "subtitle": "The unwritten rules of work.",
+    "duration": "15 min",
+    "level": "Beginner",
+    "xp": 130,
+    "badge": { "emoji": "👔", "name": "Work-Ready" },
+    "videoUrl": "https://www.youtube.com/embed/xhIlFvLHzq4",
+    "videoTitle": "Workplace Professionalism Tips for First-Time Workers",
+    "description": "Learn what employers expect: punctuality, communication, dress code, and teamwork that makes you stand out.",
+    "keyPoints": [
+      "Show up on time — being late is being disrespectful",
+      "Communicate clearly and respectfully with everyone",
+      "Ask questions instead of guessing — it saves everyone time",
+      "Your phone should be put away unless it's a break",
+      "Attitude matters as much as skill — bring positive energy"
+    ],
+    "sections": [
+      {
+        "title": "The Punctuality Rule",
+        "content": "In the professional world, 'on time' means 5 minutes early. Being late signals that you don't value other people's time. If you're ever going to be late, call ahead as soon as you know — don't wait. And if you have a chronic punctuality issue, work backwards: what time do you need to leave home to arrive 10 minutes early? Set that alarm.",
+        "animationType": "clock-race"
+      },
+      {
+        "title": "Workplace Communication",
+        "content": "Email your boss with proper grammar — no emojis, abbreviations, or 'lol' in professional messages. When you don't understand something, ask for clarification instead of doing it wrong. Say 'thank you' and 'please.' Address older coworkers as Mr./Ms. unless they tell you otherwise. Small words make a huge impression.",
+        "animationType": "message-comparison"
+      },
+      {
+        "title": "Dress Codes Decoded",
+        "content": "Business formal = suits and dress shoes. Business casual = clean slacks/khakis, collared shirts, simple dresses. Smart casual = neat jeans, blouses, clean sneakers. When in doubt, ask your manager before day one. Always dress slightly nicer than required — it shows you care and gets you noticed for promotions.",
+        "animationType": "outfit-picker"
+      }
+    ],
+    "game": {
+      "type": "scenario-choice",
+      "title": "🎮 Workplace Dilemmas — What Would You Do?",
+      "instructions": "React to these real workplace situations. Choose the most professional response!",
+      "bonusXP": 60,
+      "questions": [
+        {
+          "question": "Your manager asks you to stay 30 minutes late but you have plans. You say:",
+          "answers": [
+            { "text": "Nah, I'm good, I have stuff.", "correct": false, "feedback": "Too casual and unhelpful. This damages your professional reputation." },
+            { "text": "I have a prior commitment today, but I'm happy to come in early tomorrow to help finish. Would that work?", "correct": true, "feedback": "✅ Respectful, solutions-focused, and shows initiative!" },
+            { "text": "Sure, no problem!' and then leave on time anyway.", "correct": false, "feedback": "Never say yes and then do the opposite. Trust is everything." },
+            { "text": "I'd rather not.", "correct": false, "feedback": "Too blunt with no explanation or alternative offered." }
+          ]
+        },
+        {
+          "question": "You made a mistake on a task your manager assigned. You should:",
+          "answers": [
+            { "text": "Hope no one notices.", "correct": false, "feedback": "Mistakes get discovered. Being proactive shows integrity." },
+            { "text": "Blame a coworker to take the heat off.", "correct": false, "feedback": "This is workplace sabotage. It destroys trust and your reputation." },
+            { "text": "Tell your manager immediately, explain what happened, and suggest how you'll fix it.", "correct": true, "feedback": "✅ Owning mistakes quickly and coming with solutions shows real maturity." },
+            { "text": "Quit before they find out.", "correct": false, "feedback": "One mistake rarely costs you a job. How you handle it defines your character." }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "emoji": "💵",
+    "category": "money",
+    "title": "Understanding Your First Paycheck",
+    "subtitle": "Why is my check smaller than I expected?",
+    "duration": "8 min",
+    "level": "Beginner",
+    "xp": 90,
+    "badge": { "emoji": "💵", "name": "Money Smart" },
+    "videoUrl": "https://www.youtube.com/embed/kHyE9yOJDHs",
+    "videoTitle": "Understanding Your First Paycheck and Taxes",
+    "description": "Decode taxes, deductions, net vs. gross pay, and what to do with your first earnings as a NYC young worker.",
+    "keyPoints": [
+      "Gross pay = what you earn. Net pay = what you take home.",
+      "Federal, state, and city taxes are automatically deducted",
+      "FICA covers Social Security and Medicare — everyone pays this",
+      "Keep every pay stub — they're your financial proof",
+      "Start saving even a small amount from day one"
+    ],
+    "sections": [
+      {
+        "title": "Gross vs. Net Pay",
+        "content": "You get hired at $17/hour. You work 40 hours. That's $680 gross pay — but you won't take home $680. After federal income tax (~10–12%), New York state tax (~4–6%), NYC city tax (~3%), and FICA (7.65% for Social Security + Medicare), you might take home around $550–$580. This is called your net pay. It's not your employer stealing from you — it's taxes that fund schools, roads, and social programs.",
+        "animationType": "paycheck-breakdown"
+      },
+      {
+        "title": "Your W-4 Form Matters",
+        "content": "When you start a job, you fill out a W-4 form that tells your employer how much tax to withhold. If you're a dependent (your parents claim you), you'll likely be in the 0 allowances bracket. Each January, your employer gives you a W-2 form showing everything you earned and paid in taxes — you use this to file your tax return.",
+        "animationType": "w4-explainer"
+      }
+    ],
+    "game": {
+      "type": "paycheck-calculator",
+      "title": "🎮 Paycheck Calculator Challenge",
+      "instructions": "Calculate the correct net pay for each scenario. Get within $5 and you earn full XP!",
+      "bonusXP": 45,
+      "scenarios": [
+        {
+          "hours": 20,
+          "rate": 16,
+          "grossPay": 320,
+          "deductions": { "federal": 32, "state": 16, "city": 10, "fica": 24 },
+          "netPay": 238
+        },
+        {
+          "hours": 35,
+          "rate": 18,
+          "grossPay": 630,
+          "deductions": { "federal": 63, "state": 32, "city": 19, "fica": 48 },
+          "netPay": 468
+        }
+      ]
+    }
+  },
+  {
+    "id": 6,
+    "emoji": "💻",
+    "category": "digital",
+    "title": "LinkedIn Profile Essentials",
+    "subtitle": "Let recruiters find YOU.",
+    "duration": "14 min",
+    "level": "Beginner",
+    "xp": 130,
+    "badge": { "emoji": "💻", "name": "Digital Pro" },
+    "videoUrl": "https://www.youtube.com/embed/BcfGWi8RaA0",
+    "videoTitle": "How to Create a LinkedIn Profile for Students — Step by Step",
+    "description": "Build a professional LinkedIn profile that attracts recruiters and opens doors before you even apply.",
+    "keyPoints": [
+      "Use a professional headshot — no selfies, no party photos",
+      "Your headline should say who you are AND what you want",
+      "Write a first-person summary that sounds like YOU",
+      "Add every school project, club, and volunteer activity",
+      "Connect with teachers, mentors, and local professionals"
+    ],
+    "sections": [
+      {
+        "title": "Why LinkedIn at Your Age?",
+        "content": "Over 90% of recruiters use LinkedIn to find candidates. Having a profile puts you in the game before you even start applying. Students with LinkedIn profiles get noticed for internships, scholarships, and mentorship programs. It's also where you can follow companies, see their culture, and learn about openings before they're posted elsewhere.",
+        "animationType": "linkedin-intro"
+      },
+      {
+        "title": "Headline and About Section",
+        "content": "Your headline appears under your name and is the first thing anyone reads. Don't just say 'Student at Brooklyn Tech.' Say 'Aspiring Graphic Designer | Brooklyn Tech | Adobe Creative Suite | Looking for Summer Internship.' Pack in keywords! Your About section should be 3–5 sentences in first person: who you are, what you're studying/interested in, what you're looking for, and one personal detail that makes you memorable.",
+        "animationType": "headline-builder"
+      }
+    ],
+    "game": {
+      "type": "profile-builder",
+      "title": "🎮 LinkedIn Makeover — Fix the Profile",
+      "instructions": "Spot what's WRONG with each LinkedIn profile section and pick the fix!",
+      "bonusXP": 55,
+      "items": [
+        {
+          "bad": "Headline: Student",
+          "good": "Aspiring Software Developer | NYC Tech Talent Pipeline | Python & JavaScript | Open to Internships",
+          "question": "Which headline would a recruiter click on?",
+          "explanation": "Specific keywords and intent = 5x more profile views!"
+        },
+        {
+          "bad": "About: I am a student who wants a job lol. I'm good at stuff and learn fast.",
+          "good": "About: I'm a junior at Bronx Science passionate about data science and community impact. Currently building skills in Python and SQL through online coursework. I'm actively seeking summer internships where I can contribute to real projects and grow.",
+          "question": "Which About section gets a recruiter to keep reading?",
+          "explanation": "Be specific, professional, and show clear direction!"
+        }
+      ]
+    }
+  },
+  {
+    "id": 7,
+    "emoji": "🤝",
+    "category": "workplace",
+    "title": "Networking for Beginners",
+    "subtitle": "It's not what you know, it's who.",
+    "duration": "20 min",
+    "level": "Intermediate",
+    "xp": 180,
+    "badge": { "emoji": "🤝", "name": "Networker" },
+    "videoUrl": "https://www.youtube.com/embed/Y8jBVDDG3gs",
+    "videoTitle": "How to Network as a Student or Young Professional",
+    "description": "How to make connections, ask for help, and grow your professional network in NYC even as a teen.",
+    "keyPoints": [
+      "Networking is just making genuine human connections",
+      "Informational interviews are free and incredibly valuable",
+      "Give before you ask — offer help, share resources",
+      "Follow up within 24 hours after meeting someone",
+      "NYC has free networking events every week — attend them!"
+    ],
+    "sections": [
+      {
+        "title": "What Networking Actually Means",
+        "content": "Forget the stereotype of handing out business cards at stuffy events. Modern networking is just building genuine relationships with people who share your interests or work in fields you care about. It can happen at a school event, through Instagram, via LinkedIn, at a community program, or through a mutual friend. The goal isn't to get something — it's to build real connections over time.",
+        "animationType": "network-map"
+      },
+      {
+        "title": "The Informational Interview",
+        "content": "An informational interview is when you reach out to someone working in your dream field and ask them 15–20 minutes to learn about their career path. Not to ask for a job — just to learn. This is one of the most powerful career moves you can make. You get insider knowledge, they feel valued, and you now have a real contact in the industry who knows your name.",
+        "animationType": "info-interview-flow"
+      },
+      {
+        "title": "Your Networking Message Template",
+        "content": "Keep outreach short and respectful. Try: 'Hi [Name], I'm [Your name], a high school junior interested in [their field]. I came across your work at [company] and was really inspired by [specific thing]. Would you have 15 minutes for a quick call? I'd love to hear about your career journey.' Simple, specific, and respectful of their time.",
+        "animationType": "message-template"
+      }
+    ],
+    "game": {
+      "type": "network-builder-game",
+      "title": "🎮 Build Your Network — Connection Challenge",
+      "instructions": "You have 5 in-game minutes at a career fair. Decide who to approach and what to say. Build the biggest quality network!",
+      "bonusXP": 80,
+      "contacts": [
+        { "name": "Maria Chen", "role": "UX Designer at Google", "emoji": "👩‍💻", "xpValue": 20 },
+        { "name": "DeShawn Parker", "role": "NYC Youth Works Coordinator", "emoji": "🏙️", "xpValue": 25 },
+        { "name": "Fatima Hassan", "role": "Pre-med Student at Columbia", "emoji": "👩‍⚕️", "xpValue": 15 },
+        { "name": "Carlos Rivera", "role": "Film Director, Bronx Native", "emoji": "🎬", "xpValue": 20 },
+        { "name": "Aisha Johnson", "role": "Finance Recruiter at JPMorgan", "emoji": "💼", "xpValue": 30 }
+      ]
+    }
+  },
+  {
+    "id": 8,
+    "emoji": "📊",
+    "category": "digital",
+    "title": "Google Workspace Basics",
+    "subtitle": "The tools every job uses.",
+    "duration": "16 min",
+    "level": "Beginner",
+    "xp": 140,
+    "badge": { "emoji": "📊", "name": "G-Suite Pro" },
+    "videoUrl": "https://www.youtube.com/embed/HfPwRQHxBBk",
+    "videoTitle": "Google Workspace Tutorial for Beginners — Docs, Sheets, Slides",
+    "description": "Master Google Docs, Sheets, and Slides — the suite of tools that nearly every modern workplace uses daily.",
+    "keyPoints": [
+      "Google Docs is like Word — for writing and documents",
+      "Google Sheets is like Excel — for data and calculations",
+      "Google Slides is like PowerPoint — for presentations",
+      "Everything saves automatically to the cloud",
+      "Use @mentions and comments to collaborate in real-time"
+    ],
+    "sections": [
+      {
+        "title": "Why Google Workspace?",
+        "content": "Over 6 million businesses use Google Workspace. Knowing how to use it puts you ahead of other applicants. Unlike Microsoft Office, everything is free with a Google account, saves automatically to Google Drive, and lets multiple people work on the same document at the same time. You can access it from any device, anywhere.",
+        "animationType": "workspace-intro"
+      },
+      {
+        "title": "Google Sheets Fundamentals",
+        "content": "Sheets might look scary but it's incredibly powerful. Key functions you need to know: SUM (adds numbers), AVERAGE, COUNT, and IF statements. Keyboard shortcuts save massive time: Ctrl+C to copy, Ctrl+V to paste, Ctrl+Z to undo, and Ctrl+Shift+= to insert a row. Even basic spreadsheet skills make you look like a tech wizard to older managers.",
+        "animationType": "sheets-demo"
+      }
+    ],
+    "game": {
+      "type": "keyboard-shortcut-quiz",
+      "title": "🎮 Shortcut Speed Test",
+      "instructions": "Match each keyboard shortcut to its action. Beat the timer for bonus XP!",
+      "bonusXP": 60,
+      "shortcuts": [
+        { "keys": "Ctrl + Z", "action": "Undo last action", "emoji": "↩️" },
+        { "keys": "Ctrl + C", "action": "Copy selected text", "emoji": "📋" },
+        { "keys": "Ctrl + B", "action": "Make text bold", "emoji": "𝗕" },
+        { "keys": "Ctrl + F", "action": "Find text in document", "emoji": "🔍" },
+        { "keys": "Ctrl + S", "action": "Save document", "emoji": "💾" },
+        { "keys": "Ctrl + A", "action": "Select all content", "emoji": "✅" }
+      ]
+    }
+  },
+  {
+    "id": 9,
+    "emoji": "💰",
+    "category": "money",
+    "title": "Budgeting on Your First Salary",
+    "subtitle": "Make your money work for you.",
+    "duration": "12 min",
+    "level": "Beginner",
+    "xp": 110,
+    "badge": { "emoji": "💰", "name": "Budget Boss" },
+    "videoUrl": "https://www.youtube.com/embed/sVKQn2I4HDM",
+    "videoTitle": "Budgeting for Beginners — 50/30/20 Rule Explained",
+    "description": "Learn the 50/30/20 budgeting rule and start building wealth from your very first paycheck as a young worker.",
+    "keyPoints": [
+      "The 50/30/20 rule: needs, wants, savings",
+      "Pay yourself first — savings come before fun money",
+      "An emergency fund of $500 changes your life",
+      "Avoid buy-now-pay-later schemes — they create debt",
+      "Even $20/week saved = $1,040 by end of the year"
+    ],
+    "sections": [
+      {
+        "title": "The 50/30/20 Rule",
+        "content": "This simple framework works for any income. 50% goes to Needs — rent/transit/groceries/phone. 30% goes to Wants — eating out, entertainment, clothes, subscriptions. 20% goes to Savings — emergency fund, goals, future. As a teenager, your 'needs' might be much lower since you live at home, which means you can save a bigger percentage. This is the BEST financial advantage young workers have.",
+        "animationType": "budget-pie"
+      },
+      {
+        "title": "Building Your Emergency Fund",
+        "content": "Life throws curveballs. Your phone breaks. You miss a week of work sick. Your MetroCard expires. Having $500–$1,000 in savings means these things are inconveniences, not crises. Start small: set a goal to save your first $100, then $250, then $500. Keep emergency money in a separate savings account so you're not tempted to spend it.",
+        "animationType": "savings-goal"
+      }
+    ],
+    "game": {
+      "type": "budget-allocator",
+      "title": "🎮 Budget Challenge — Allocate Your Paycheck",
+      "instructions": "You got paid $400 this week. Drag money into the right categories following the 50/30/20 rule!",
+      "bonusXP": 50,
+      "paycheck": 400,
+      "categories": [
+        { "name": "Needs (50%)", "target": 200, "emoji": "🏠", "color": "#0EA5E9" },
+        { "name": "Wants (30%)", "target": 120, "emoji": "🎉", "color": "#7C3AED" },
+        { "name": "Savings (20%)", "target": 80, "emoji": "🏦", "color": "#10B981" }
+      ]
+    }
+  },
+  {
+    "id": 10,
+    "emoji": "🎭",
+    "category": "interview",
+    "title": "Behavioral Interview Questions",
+    "subtitle": "Master the STAR method.",
+    "duration": "22 min",
+    "level": "Intermediate",
+    "xp": 200,
+    "badge": { "emoji": "🎭", "name": "STAR Master" },
+    "videoUrl": "https://www.youtube.com/embed/mTO9xXzDp_0",
+    "videoTitle": "Answering Behavioral Interview Questions Using STAR",
+    "description": "Answer 'Tell me about a time when...' questions with confidence using the proven STAR storytelling framework.",
+    "keyPoints": [
+      "STAR = Situation, Task, Action, Result",
+      "Use real stories — specificity makes you memorable",
+      "Every story should show growth or problem-solving",
+      "Quantify results whenever possible ('increased by 30%')",
+      "Prepare at least 5 different stories before any interview"
+    ],
+    "sections": [
+      {
+        "title": "Why Behavioral Questions?",
+        "content": "Employers believe past behavior predicts future performance. 'Tell me about a time you solved a conflict with a coworker' isn't just curiosity — it reveals how you actually handle stress. They want stories, not theories. 'I would handle it by...' is weak. 'When I was leading my school project and two teammates disagreed, I...' is powerful because it's real.",
+        "animationType": "star-star"
+      },
+      {
+        "title": "Building Your Story Bank",
+        "content": "Before every interview, write out 5 'stories' using STAR. Pick situations from school, sports, volunteer work, family responsibilities — anything. Cover these themes: a time you solved a problem, showed leadership, failed and learned from it, went above and beyond, worked under pressure. Mix them, adapt them. You'll never be caught off guard.",
+        "animationType": "story-builder"
+      }
+    ],
+    "game": {
+      "type": "star-builder",
+      "title": "🎮 STAR Story Constructor",
+      "instructions": "Arrange these scrambled story pieces in the correct STAR order!",
+      "bonusXP": 90,
+      "stories": [
+        {
+          "pieces": [
+            { "text": "I stayed late two nights to fix the errors and delivered the project on time.", "type": "Action" },
+            { "text": "Our grade went from a failing draft to an A-minus, and my teacher praised the turnaround.", "type": "Result" },
+            { "text": "I was leading a group project and discovered two sections had major factual errors the night before it was due.", "type": "Situation" },
+            { "text": "As project lead, it was my responsibility to ensure quality before submission.", "type": "Task" }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": 11,
+    "emoji": "📧",
+    "category": "workplace",
+    "title": "Professional Email Writing",
+    "subtitle": "Your words represent you.",
+    "duration": "9 min",
+    "level": "Beginner",
+    "xp": 95,
+    "badge": { "emoji": "📧", "name": "Inbox Pro" },
+    "videoUrl": "https://www.youtube.com/embed/QrSKpPiSfFw",
+    "videoTitle": "How to Write Professional Emails — Full Guide",
+    "description": "Write clear, professional emails that make you look polished, capable, and mature in the workplace.",
+    "keyPoints": [
+      "Always use a clear subject line — no blank subjects",
+      "Open with a greeting: 'Hi [Name],' or 'Dear [Title] [Name],'",
+      "State your purpose in the first sentence",
+      "Keep it short — if it's longer than 5 sentences, restructure",
+      "End with 'Best regards' or 'Thank you' + your full name"
+    ],
+    "sections": [
+      {
+        "title": "The Anatomy of a Professional Email",
+        "content": "Every professional email has the same structure: (1) Subject line — clear and specific. (2) Greeting — 'Hi Sarah,' or 'Dear Mr. Johnson,' not 'Hey' or nothing. (3) Opening line — get to the point. (4) Body — keep it concise and focused. (5) Call to action — what do you need them to do? (6) Sign-off — 'Best regards,' 'Thank you,' or 'Sincerely.' Your name and contact info.",
+        "animationType": "email-anatomy"
+      },
+      {
+        "title": "Common Email Mistakes That Kill Credibility",
+        "content": "Never reply-all when you meant to reply. Never send an email in all caps (it reads as shouting). Don't use slang like 'u,' 'lmk,' 'omg.' Re-read every email before sending — read it out loud to catch errors. Don't put anything in an email you wouldn't say to their face. Emails are permanent records.",
+        "animationType": "mistake-highlighter"
+      }
+    ],
+    "game": {
+      "type": "email-editor",
+      "title": "🎮 Email Makeover — Fix the Cringe",
+      "instructions": "This email is a disaster. Find all 6 mistakes and fix them!",
+      "bonusXP": 45,
+      "badEmail": {
+        "subject": "hey",
+        "body": "HEY MR SMITH\n\nhope ur doing good lol. so I wanted to no if i can get the internship. i think im pretty good and stuff. lmk asap if ur interested in hiring me or whatever\n\n- Jake"
+      },
+      "mistakes": [
+        "Subject line is vague — should be 'Internship Application Follow-Up'",
+        "Opening is too casual — use 'Dear Mr. Smith,' ",
+        "ALL CAPS reads as shouting",
+        "Abbreviations (ur, lmk, no instead of know)",
+        "No value proposition — why should they hire you?",
+        "Unprofessional sign-off — use 'Best regards, Jake [Last Name]' "
+      ]
+    }
+  },
+  {
+    "id": 12,
+    "emoji": "🔒",
+    "category": "digital",
+    "title": "Cybersecurity at Work",
+    "subtitle": "Protect yourself and your employer.",
+    "duration": "11 min",
+    "level": "Beginner",
+    "xp": 100,
+    "badge": { "emoji": "🔒", "name": "Cyber Shield" },
+    "videoUrl": "https://www.youtube.com/embed/inWWhr5tnEA",
+    "videoTitle": "Cybersecurity Basics for Everyone — Stay Safe Online",
+    "description": "Protect yourself and your employer with essential cybersecurity practices every worker needs to know today.",
+    "keyPoints": [
+      "Use strong, unique passwords for every account",
+      "Enable two-factor authentication on everything",
+      "Never click suspicious links — even from coworkers",
+      "Don't share login credentials with anyone",
+      "Use company Wi-Fi only for work, not personal banking"
+    ],
+    "sections": [
+      {
+        "title": "Why This Matters at Work",
+        "content": "Data breaches cost companies millions, but they often start with one employee clicking the wrong link. As an entry-level worker, you're often the target of phishing emails because attackers know you're new and less trained. One click can compromise the entire company's data — and that could cost you your job and create serious legal issues.",
+        "animationType": "breach-visualization"
+      },
+      {
+        "title": "Password Security 101",
+        "content": "A strong password has 12+ characters, uses uppercase, lowercase, numbers, and symbols, and isn't a word you'd find in a dictionary. Never reuse passwords. Use a password manager like LastPass or Bitwarden to remember them. Never share your password — not even with IT staff (they don't need it). Enable two-factor authentication (2FA) wherever possible.",
+        "animationType": "password-strength"
+      }
+    ],
+    "game": {
+      "type": "phishing-spotter",
+      "title": "🎮 Spot the Phishing Email",
+      "instructions": "Decide: is each email SAFE or PHISHING? Get them all right to earn full bonus XP!",
+      "bonusXP": 50,
+      "emails": [
+        {
+          "from": "security@amaz0n-support.net",
+          "subject": "URGENT: Your account has been suspended — verify now",
+          "body": "Click here immediately to verify your account or it will be permanently deleted.",
+          "verdict": "PHISHING",
+          "clues": ["Misspelled domain (amaz0n)", "Urgency language to create panic", "Generic greeting, not your name"]
+        },
+        {
+          "from": "hr@yourcompany.com",
+          "subject": "Updated Employee Handbook — FY2025",
+          "body": "Hi team, please review the updated handbook attached. Reach out with questions.",
+          "verdict": "SAFE",
+          "clues": ["Legitimate company domain", "Expected content type", "No urgent action demanded"]
+        },
+        {
+          "from": "noreply@paypa1.com",
+          "subject": "You have a payment waiting — claim it now",
+          "body": "Someone sent you $250. Log in to collect your payment today.",
+          "verdict": "PHISHING",
+          "clues": ["Fake domain (paypa1 not paypal)", "Unexpected money = red flag", "Link leads to fake login page"]
+        }
+      ]
+    }
+  }
+]
