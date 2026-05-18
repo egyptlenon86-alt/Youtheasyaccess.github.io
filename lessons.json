@@ -1,0 +1,1338 @@
+{
+  "version": "1.0",
+  "categories": [
+    { "id": "resume", "label": "Resume", "emoji": "📄", "color": "#7C3AED" },
+    { "id": "interview", "label": "Interviews", "emoji": "🎤", "color": "#0EA5E9" },
+    { "id": "workplace", "label": "Workplace", "emoji": "💼", "color": "#10B981" },
+    { "id": "money", "label": "Money", "emoji": "💰", "color": "#F59E0B" },
+    { "id": "digital", "label": "Digital Skills", "emoji": "💻", "color": "#EF4444" }
+  ],
+  "lessons": [
+
+    {
+      "id": "lesson-001",
+      "title": "How to Write Your First Resume",
+      "category": "resume",
+      "emoji": "📄",
+      "duration": "14 min",
+      "level": "Beginner",
+      "xp": 100,
+      "badge": { "id": "resume-starter", "label": "Resume Rookie", "emoji": "📝" },
+      "description": "Learn how to build a resume from scratch — even with zero work experience. We'll cover formatting, what to include, and how to stand out.",
+      "video": {
+        "youtube_id": "y8cQMkf7ojA",
+        "youtube_url": "https://www.youtube.com/watch?v=y8cQMkf7ojA",
+        "embed_url": "https://www.youtube.com/embed/y8cQMkf7ojA",
+        "title": "How To Write A Resume With No Experience (Step By Step)",
+        "channel": "Professor Heather Austin",
+        "duration_seconds": 840
+      },
+      "key_points": [
+        "Your resume should fit on ONE page",
+        "List volunteer work, clubs, and school projects if you have no job experience",
+        "Use action verbs like: managed, created, organized, assisted",
+        "Always tailor your resume to the job description",
+        "Proofread at least 3 times before submitting"
+      ],
+      "quiz": {
+        "type": "multiple_choice",
+        "title": "Resume Basics Quiz",
+        "pass_score": 70,
+        "questions": [
+          {
+            "id": "q1",
+            "question": "How many pages should a first resume be?",
+            "options": ["1 page", "2 pages", "3 pages", "As many as needed"],
+            "correct": 0,
+            "explanation": "For young workers with limited experience, keep your resume to ONE page. Employers spend only 6–7 seconds scanning it."
+          },
+          {
+            "id": "q2",
+            "question": "Which of these is the BEST action verb to start a resume bullet point?",
+            "options": ["Did", "Was responsible for", "Managed", "Helped with"],
+            "correct": 2,
+            "explanation": "'Managed' is a strong action verb. Avoid weak phrases like 'was responsible for' or vague words like 'did'."
+          },
+          {
+            "id": "q3",
+            "question": "You have no work experience. What SHOULD you include on your resume?",
+            "options": [
+              "Leave the experience section blank",
+              "Make up a job you didn't have",
+              "Include school projects, volunteer work, and clubs",
+              "Skip the resume and just show up in person"
+            ],
+            "correct": 2,
+            "explanation": "School projects, extracurriculars, volunteer work, and babysitting all count as experience for a first resume!"
+          },
+          {
+            "id": "q4",
+            "question": "What does 'tailoring your resume' mean?",
+            "options": [
+              "Making the font look nice",
+              "Adjusting your resume to match each specific job posting",
+              "Adding a photo to your resume",
+              "Using colorful borders"
+            ],
+            "correct": 1,
+            "explanation": "Tailoring means reading the job description and using similar keywords and highlighting relevant skills for THAT specific job."
+          },
+          {
+            "id": "q5",
+            "question": "Which section should appear at the TOP of a first resume?",
+            "options": ["Work Experience", "References", "Contact Information", "Hobbies"],
+            "correct": 2,
+            "explanation": "Always start with your name and contact info (email, phone, borough/city). Employers need to know who you are and how to reach you."
+          }
+        ]
+      },
+      "interactive_game": {
+        "type": "drag_drop_builder",
+        "title": "Build a Resume Section",
+        "instructions": "Drag the correct items into the right resume sections.",
+        "items": [
+          { "id": "i1", "label": "jane.doe@email.com", "correct_section": "contact" },
+          { "id": "i2", "label": "GPA: 3.8", "correct_section": "education" },
+          { "id": "i3", "label": "Volunteer at Food Bank", "correct_section": "experience" },
+          { "id": "i4", "label": "Microsoft Office, Canva", "correct_section": "skills" },
+          { "id": "i5", "label": "Brooklyn, NY 11201", "correct_section": "contact" },
+          { "id": "i6", "label": "Team Captain, Soccer", "correct_section": "activities" },
+          { "id": "i7", "label": "Brooklyn Tech High School", "correct_section": "education" },
+          { "id": "i8", "label": "Fluent in Spanish", "correct_section": "skills" }
+        ],
+        "sections": [
+          { "id": "contact", "label": "📱 Contact Info" },
+          { "id": "education", "label": "🎓 Education" },
+          { "id": "experience", "label": "💼 Experience" },
+          { "id": "skills", "label": "⚡ Skills" },
+          { "id": "activities", "label": "🏅 Activities" }
+        ]
+      }
+    },
+
+    {
+      "id": "lesson-002",
+      "title": "Writing a Cover Letter That Gets Noticed",
+      "category": "resume",
+      "emoji": "✉️",
+      "duration": "11 min",
+      "level": "Beginner",
+      "xp": 90,
+      "badge": { "id": "cover-letter-pro", "label": "Cover Letter Pro", "emoji": "✉️" },
+      "description": "A strong cover letter can be the difference between getting an interview or not. Learn the 3-paragraph structure that actually works.",
+      "video": {
+        "youtube_id": "hrFxHpJYMHg",
+        "youtube_url": "https://www.youtube.com/watch?v=hrFxHpJYMHg",
+        "embed_url": "https://www.youtube.com/embed/hrFxHpJYMHg",
+        "title": "How To Write The BEST Cover Letter For a Job Application",
+        "channel": "Self Made Millennial",
+        "duration_seconds": 660
+      },
+      "key_points": [
+        "Opening: Hook the reader — why YOU for THIS job?",
+        "Middle: Highlight 2–3 specific skills with examples",
+        "Closing: Express enthusiasm and ask for the interview",
+        "Keep it under 300 words",
+        "Never start with 'My name is...' — it's boring"
+      ],
+      "quiz": {
+        "type": "multiple_choice",
+        "title": "Cover Letter Quiz",
+        "pass_score": 70,
+        "questions": [
+          {
+            "id": "q1",
+            "question": "How long should a cover letter ideally be?",
+            "options": ["1–2 sentences", "Under 300 words (3 short paragraphs)", "1–2 full pages", "The same length as your resume"],
+            "correct": 1,
+            "explanation": "A cover letter should be concise — under 300 words. Hiring managers are busy and won't read a long letter."
+          },
+          {
+            "id": "q2",
+            "question": "What's the WORST way to start a cover letter?",
+            "options": [
+              "'I'm excited to apply for...'",
+              "'My name is John and I am applying...'",
+              "'As a passionate community volunteer...'",
+              "'After seeing this opportunity at...'"
+            ],
+            "correct": 1,
+            "explanation": "Starting with 'My name is...' is one of the most generic openers. The employer already knows your name from your resume!"
+          },
+          {
+            "id": "q3",
+            "question": "Should you send the same cover letter to every employer?",
+            "options": [
+              "Yes, it saves time",
+              "No, customize it for each job",
+              "Only if they're similar jobs",
+              "Cover letters don't matter anymore"
+            ],
+            "correct": 1,
+            "explanation": "Always customize your cover letter! Mention the company name, the specific role, and why you're interested in THEIR organization."
+          },
+          {
+            "id": "q4",
+            "question": "What should your closing paragraph do?",
+            "options": [
+              "List all your skills again",
+              "Apologize for lack of experience",
+              "Ask for the interview and thank them",
+              "List your references"
+            ],
+            "correct": 2,
+            "explanation": "Always close by expressing enthusiasm and explicitly asking for the interview. Don't be shy — 'I'd love the opportunity to discuss this role' works great."
+          }
+        ]
+      },
+      "interactive_game": {
+        "type": "fill_in_the_blanks",
+        "title": "Complete the Cover Letter",
+        "instructions": "Choose the best word to fill in each blank of this cover letter paragraph.",
+        "paragraphs": [
+          {
+            "text": "I am _____ to apply for the Summer Internship at NYC Youth Works. As a Brooklyn native with a passion for community _____, I believe I would be a great fit for your team.",
+            "blanks": [
+              { "position": 0, "options": ["excited", "okay", "forced", "maybe"], "correct": "excited" },
+              { "position": 1, "options": ["service", "chaos", "parties", "gossip"], "correct": "service" }
+            ]
+          },
+          {
+            "text": "During my time as a volunteer at my school's food drive, I _____ a team of 8 students and helped _____ over 500 meals to families in need.",
+            "blanks": [
+              { "position": 0, "options": ["watched", "led", "ignored", "quit"], "correct": "led" },
+              { "position": 1, "options": ["sell", "distribute", "throw away", "photograph"], "correct": "distribute" }
+            ]
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "lesson-003",
+      "title": "Nailing Your Job Interview",
+      "category": "interview",
+      "emoji": "🎤",
+      "duration": "18 min",
+      "level": "Beginner",
+      "xp": 120,
+      "badge": { "id": "interview-ace", "label": "Interview Ace", "emoji": "🎤" },
+      "description": "From what to wear to what to say — get fully prepared for your first job interview. Practice answering the most common questions hiring managers ask.",
+      "video": {
+        "youtube_id": "HG68Ymazo18",
+        "youtube_url": "https://www.youtube.com/watch?v=HG68Ymazo18",
+        "embed_url": "https://www.youtube.com/embed/HG68Ymazo18",
+        "title": "Top 10 Job Interview Questions & Answers",
+        "channel": "Don Georgevich",
+        "duration_seconds": 1080
+      },
+      "key_points": [
+        "Arrive 10–15 minutes early — never late",
+        "Research the company before you go",
+        "Use the STAR method for behavioral questions",
+        "Ask 2–3 thoughtful questions at the end",
+        "Send a thank-you email within 24 hours"
+      ],
+      "quiz": {
+        "type": "multiple_choice",
+        "title": "Interview Prep Quiz",
+        "pass_score": 75,
+        "questions": [
+          {
+            "id": "q1",
+            "question": "What does STAR stand for in interview answers?",
+            "options": [
+              "Skill, Talent, Ability, Result",
+              "Situation, Task, Action, Result",
+              "Strong, Thoughtful, Accurate, Reliable",
+              "Subject, Topic, Approach, Reasoning"
+            ],
+            "correct": 1,
+            "explanation": "STAR = Situation, Task, Action, Result. Use this framework to structure answers to behavioral questions like 'Tell me about a time when...'"
+          },
+          {
+            "id": "q2",
+            "question": "How early should you arrive to a job interview?",
+            "options": ["Right on time", "5 minutes early", "10–15 minutes early", "30+ minutes early"],
+            "correct": 2,
+            "explanation": "10–15 minutes early shows you're punctual and respectful. Arriving too early (30+ min) can actually be awkward for the interviewer."
+          },
+          {
+            "id": "q3",
+            "question": "The interviewer asks 'What's your greatest weakness?' — what's the BEST response?",
+            "options": [
+              "'I have no weaknesses'",
+              "'I work too hard' (classic fake answer)",
+              "A real weakness you're actively working to improve",
+              "Refuse to answer personal questions"
+            ],
+            "correct": 2,
+            "explanation": "Be honest but strategic. Pick a real weakness AND explain what you're doing to improve it. This shows self-awareness and growth mindset."
+          },
+          {
+            "id": "q4",
+            "question": "What should you do within 24 hours of an interview?",
+            "options": [
+              "Call them every hour for an update",
+              "Nothing — wait for them to contact you",
+              "Send a thank-you email",
+              "Connect with the interviewer on social media"
+            ],
+            "correct": 2,
+            "explanation": "A short, professional thank-you email shows gratitude and keeps you top of mind. Most candidates skip this — it's an easy way to stand out!"
+          },
+          {
+            "id": "q5",
+            "question": "At the end of an interview, the hiring manager says 'Do you have any questions?' You should:",
+            "options": [
+              "Say 'No, I'm good' to seem easygoing",
+              "Ask 2–3 thoughtful questions about the role or company",
+              "Ask about salary and vacation days immediately",
+              "Ask if you got the job"
+            ],
+            "correct": 1,
+            "explanation": "Always have questions ready! It shows genuine interest. Good ones: 'What does success look like in this role?' or 'What's the team culture like?'"
+          },
+          {
+            "id": "q6",
+            "question": "What should you research before an interview?",
+            "options": [
+              "The company's mission, products/services, and recent news",
+              "The interviewer's personal social media",
+              "How much the company is worth",
+              "Nothing — just wing it"
+            ],
+            "correct": 0,
+            "explanation": "Research the company's website, what they do, their values, and any recent news. This helps you answer 'Why do you want to work here?' confidently."
+          }
+        ]
+      },
+      "interactive_game": {
+        "type": "interview_simulator",
+        "title": "Mock Interview Simulator",
+        "instructions": "Read each interview question and pick the BEST response. You're interviewing for a retail job at a NYC clothing store.",
+        "scenario": "You're interviewing for a part-time sales associate position at a NYC clothing boutique.",
+        "rounds": [
+          {
+            "question": "Tell me about yourself.",
+            "options": [
+              { "text": "I'm 17, I love fashion, and I've always wanted to work in retail. I'm a junior at Brooklyn Tech and captain of the debate team, which taught me how to communicate confidently with people.", "score": 100, "feedback": "Perfect! You kept it professional, relevant, and showed transferable skills." },
+              { "text": "I don't know, I'm just a regular person. I go to school.", "score": 20, "feedback": "Too vague! Use this chance to make a great first impression." },
+              { "text": "I need money for college so that's why I'm here.", "score": 30, "feedback": "Honest but not professional. Focus on what you bring to THEM, not what you need." },
+              { "text": "I'm the best candidate you'll interview today, guaranteed.", "score": 10, "feedback": "Overconfident without evidence. Be enthusiastic, not arrogant." }
+            ]
+          },
+          {
+            "question": "Why do you want to work here specifically?",
+            "options": [
+              { "text": "I shopped here before and love the style. I researched your brand and know you focus on sustainable fashion, which aligns with my values. I want to be part of a team that sells clothes I actually believe in.", "score": 100, "feedback": "Excellent! You showed you did research and connected your values to theirs." },
+              { "text": "It's close to my house.", "score": 25, "feedback": "Too casual. Location can be a factor, but lead with enthusiasm for the brand." },
+              { "text": "I applied everywhere. You just happened to call back.", "score": 5, "feedback": "Never say this! It signals you're not genuinely interested in their company." },
+              { "text": "The pay seems decent.", "score": 20, "feedback": "Salary is important, but don't lead with it in early interviews. Show passion first." }
+            ]
+          },
+          {
+            "question": "Describe a time you had to deal with a difficult person.",
+            "options": [
+              { "text": "In my debate class, a teammate and I disagreed on strategy. I listened to their perspective, we found a compromise, and we ended up winning the round. I learned that conflict often leads to better outcomes.", "score": 100, "feedback": "Great STAR answer! Situation, action, and positive result." },
+              { "text": "My little brother is really annoying.", "score": 10, "feedback": "Keep it professional! Use a school or community example, not a personal family story." },
+              { "text": "I've never had a conflict with anyone.", "score": 15, "feedback": "This isn't believable and misses an opportunity to show your problem-solving skills." },
+              { "text": "I just ignore difficult people.", "score": 20, "feedback": "Avoidance isn't a good strategy in a customer-facing role. Show how you engage and resolve." }
+            ]
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "lesson-004",
+      "title": "Workplace Communication 101",
+      "category": "workplace",
+      "emoji": "💬",
+      "duration": "12 min",
+      "level": "Beginner",
+      "xp": 100,
+      "badge": { "id": "communicator", "label": "Clear Communicator", "emoji": "💬" },
+      "description": "Texting your friends is totally different from communicating at work. Learn how to write professional emails, speak up in meetings, and handle workplace conversations.",
+      "video": {
+        "youtube_id": "PCWVi5pAa30",
+        "youtube_url": "https://www.youtube.com/watch?v=PCWVi5pAa30",
+        "embed_url": "https://www.youtube.com/embed/PCWVi5pAa30",
+        "title": "Communication Skills - How To Improve Communication Skills",
+        "channel": "Practical Psychology",
+        "duration_seconds": 720
+      },
+      "key_points": [
+        "Use clear subject lines in emails: 'Question about Thursday schedule'",
+        "Start emails with a greeting: 'Hi [Name],' — not 'Hey' or nothing",
+        "Be direct and get to the point quickly",
+        "Read the room — know when to speak up vs. listen",
+        "Always respond to work messages within 24 hours"
+      ],
+      "quiz": {
+        "type": "multiple_choice",
+        "title": "Workplace Communication Quiz",
+        "pass_score": 70,
+        "questions": [
+          {
+            "id": "q1",
+            "question": "Your manager texts you about a schedule change. What's the best reply?",
+            "options": [
+              "'k'",
+              "'got it lol'",
+              "'Thanks for letting me know! I'll be there at 3pm.'",
+              "Don't reply — they'll figure it out"
+            ],
+            "correct": 2,
+            "explanation": "Always acknowledge work messages professionally. Confirm the key detail (time, task) so your manager knows you understood."
+          },
+          {
+            "id": "q2",
+            "question": "You disagree with your supervisor's idea. What do you do?",
+            "options": [
+              "Say nothing and complain to coworkers",
+              "Yell at them to make your point",
+              "Respectfully say 'Could I share a different perspective?' and explain your thinking",
+              "Quit because they don't listen"
+            ],
+            "correct": 2,
+            "explanation": "It's okay to disagree — the KEY is doing it respectfully and at the right time. Ask for permission to share, then make your case calmly."
+          },
+          {
+            "id": "q3",
+            "question": "Which email subject line is most professional?",
+            "options": [
+              "'hey'",
+              "'URGENT PLEASE READ'",
+              "'Question About My Friday Shift — [Your Name]'",
+              "No subject line is fine"
+            ],
+            "correct": 2,
+            "explanation": "Good subject lines are specific and clear. Including your name helps managers who receive many emails find yours quickly."
+          },
+          {
+            "id": "q4",
+            "question": "You make a mistake at work. What's the professional response?",
+            "options": [
+              "Blame a coworker",
+              "Hope nobody notices",
+              "Acknowledge the mistake, apologize, and explain how you'll fix it",
+              "Cry and go home"
+            ],
+            "correct": 2,
+            "explanation": "Everyone makes mistakes. What matters is owning it, apologizing, and having a solution ready. This builds trust with your employer."
+          },
+          {
+            "id": "q5",
+            "question": "A customer is being rude to you at work. You should:",
+            "options": [
+              "Be rude back — they started it",
+              "Walk away mid-sentence",
+              "Stay calm, listen, and try to solve their issue. If escalated, get a supervisor.",
+              "Record them on your phone"
+            ],
+            "correct": 2,
+            "explanation": "Staying calm under pressure is one of the most valued workplace skills. Never match a customer's negative energy — de-escalate and involve a supervisor if needed."
+          }
+        ]
+      },
+      "interactive_game": {
+        "type": "email_editor",
+        "title": "Fix the Unprofessional Email",
+        "instructions": "This email is terrible. Find all 5 mistakes and fix them to make it professional.",
+        "original_email": {
+          "to": "boss@company.com",
+          "subject": "hey",
+          "body": "hey so i cant come in tomorrow because i dont feel good. also can i get friday off too? let me know asap. bye"
+        },
+        "mistakes": [
+          { "id": "m1", "description": "Subject line is too vague ('hey')" },
+          { "id": "m2", "description": "No proper greeting (missing 'Dear' or 'Hi [Name]')" },
+          { "id": "m3", "description": "Lowercase 'i' — should be capitalized" },
+          { "id": "m4", "description": "No explanation or advance notice for time off request" },
+          { "id": "m5", "description": "No professional closing (missing 'Thank you,' or 'Best,')" }
+        ],
+        "corrected_email": {
+          "to": "boss@company.com",
+          "subject": "Sick Day Request — [Your Name], Tuesday 5/20",
+          "body": "Hi [Manager's Name],\n\nI wanted to let you know that I'm not feeling well and won't be able to come in tomorrow, Tuesday May 20th. I'm sorry for the short notice.\n\nI also wanted to ask — would it be possible to have Friday, May 22nd off? I'd be happy to switch shifts with someone if needed.\n\nThank you so much for understanding.\n\nBest,\n[Your Name]"
+        }
+      }
+    },
+
+    {
+      "id": "lesson-005",
+      "title": "Understanding Your First Paycheck",
+      "category": "money",
+      "emoji": "💵",
+      "duration": "16 min",
+      "level": "Beginner",
+      "xp": 110,
+      "badge": { "id": "money-smart", "label": "Money Smart", "emoji": "💵" },
+      "description": "Why does your paycheck look smaller than you expected? Learn about taxes, deductions, FICA, and how to actually read your pay stub.",
+      "video": {
+        "youtube_id": "Hne6cPAbVYI",
+        "youtube_url": "https://www.youtube.com/watch?v=Hne6cPAbVYI",
+        "embed_url": "https://www.youtube.com/embed/Hne6cPAbVYI",
+        "title": "How To Read A Pay Stub",
+        "channel": "Practical Personal Finance",
+        "duration_seconds": 960
+      },
+      "key_points": [
+        "Gross pay = what you earned before deductions",
+        "Net pay = what you actually take home (after taxes)",
+        "Federal & NY State income tax, Social Security, and Medicare are deducted",
+        "Your W-4 form controls how much federal tax is withheld",
+        "Keep all your pay stubs — you'll need them for taxes"
+      ],
+      "quiz": {
+        "type": "multiple_choice",
+        "title": "Paycheck Knowledge Quiz",
+        "pass_score": 70,
+        "questions": [
+          {
+            "id": "q1",
+            "question": "You earn $15/hr and work 20 hours this week. Your gross pay is $300. Your paycheck is $248. What happened?",
+            "options": [
+              "Your boss made an error",
+              "Taxes and deductions were taken out",
+              "You were fined for being late",
+              "The minimum wage changed"
+            ],
+            "correct": 1,
+            "explanation": "The difference between gross pay ($300) and net pay ($248) is taxes and deductions — federal income tax, state tax, Social Security, and Medicare."
+          },
+          {
+            "id": "q2",
+            "question": "What is FICA?",
+            "options": [
+              "A type of bank account",
+              "Federal Insurance Contributions Act — Social Security and Medicare taxes",
+              "A form you fill out when you quit",
+              "A NYC youth work program"
+            ],
+            "correct": 1,
+            "explanation": "FICA is a mandatory payroll tax that funds Social Security and Medicare. Everyone pays it — even teenagers on their first job."
+          },
+          {
+            "id": "q3",
+            "question": "What is a W-2 form?",
+            "options": [
+              "Your job application form",
+              "A form you fill out when you start a job",
+              "An annual summary of your earnings and taxes, sent by your employer",
+              "A loan application"
+            ],
+            "correct": 2,
+            "explanation": "Your employer sends you a W-2 every January. It shows your total earnings and taxes paid in the previous year. You need it to file your taxes."
+          },
+          {
+            "id": "q4",
+            "question": "What form do you fill out when you START a new job to control tax withholding?",
+            "options": ["W-2", "W-4", "1099", "I-9"],
+            "correct": 1,
+            "explanation": "The W-4 (Employee's Withholding Certificate) is filled out when you start a job. It tells your employer how much federal income tax to withhold from each paycheck."
+          },
+          {
+            "id": "q5",
+            "question": "NYC minimum wage in 2025 is $16.50/hr. You work 15 hours a week for 8 weeks. What is your total GROSS earnings?",
+            "options": ["$1,650", "$1,980", "$2,100", "$1,500"],
+            "correct": 1,
+            "explanation": "$16.50 × 15 hrs × 8 weeks = $1,980 gross. (Your net take-home will be lower after taxes.)"
+          }
+        ]
+      },
+      "interactive_game": {
+        "type": "pay_stub_decoder",
+        "title": "Decode the Pay Stub",
+        "instructions": "Read the pay stub below and answer the questions about it.",
+        "pay_stub": {
+          "employee": "Jordan Rivera",
+          "employer": "NYC Coffee Co.",
+          "pay_period": "May 1–15, 2025",
+          "hours_worked": 40,
+          "hourly_rate": 16.50,
+          "gross_pay": 660.00,
+          "deductions": [
+            { "label": "Federal Income Tax", "amount": 46.20 },
+            { "label": "NY State Tax", "amount": 26.40 },
+            { "label": "NYC Local Tax", "amount": 13.20 },
+            { "label": "Social Security (FICA)", "amount": 40.92 },
+            { "label": "Medicare (FICA)", "amount": 9.57 }
+          ],
+          "total_deductions": 136.29,
+          "net_pay": 523.71
+        },
+        "questions": [
+          {
+            "id": "ps1",
+            "question": "What is Jordan's net (take-home) pay this period?",
+            "answer": "$523.71",
+            "options": ["$660.00", "$523.71", "$136.29", "$600.00"]
+          },
+          {
+            "id": "ps2",
+            "question": "How much was taken out for FICA taxes total?",
+            "answer": "$50.49",
+            "options": ["$46.20", "$40.92", "$50.49", "$136.29"]
+          },
+          {
+            "id": "ps3",
+            "question": "What percentage of gross pay was deducted total? (approx)",
+            "answer": "~21%",
+            "options": ["~10%", "~15%", "~21%", "~35%"]
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "lesson-006",
+      "title": "Budgeting on Your First Income",
+      "category": "money",
+      "emoji": "📊",
+      "duration": "13 min",
+      "level": "Beginner",
+      "xp": 100,
+      "badge": { "id": "budget-boss", "label": "Budget Boss", "emoji": "📊" },
+      "description": "You got your first paycheck — now what? Learn the 50/30/20 budgeting rule and how to save money even on a part-time income.",
+      "video": {
+        "youtube_id": "sVKQn2I4HDM",
+        "youtube_url": "https://www.youtube.com/watch?v=sVKQn2I4HDM",
+        "embed_url": "https://www.youtube.com/embed/sVKQn2I4HDM",
+        "title": "Budgeting for Beginners — How to Budget Money on a Low Income",
+        "channel": "Marko - WhiteBoard Finance",
+        "duration_seconds": 780
+      },
+      "key_points": [
+        "50% Needs: MetroCard, food, phone bill",
+        "30% Wants: eating out, clothes, entertainment",
+        "20% Savings: emergency fund, future goals",
+        "Track every dollar — even small purchases add up",
+        "Automate your savings so you don't skip it"
+      ],
+      "quiz": {
+        "type": "multiple_choice",
+        "title": "Budgeting Quiz",
+        "pass_score": 70,
+        "questions": [
+          {
+            "id": "q1",
+            "question": "Using the 50/30/20 rule with a $500/month income, how much should go to savings?",
+            "options": ["$50", "$100", "$150", "$200"],
+            "correct": 1,
+            "explanation": "20% of $500 = $100 for savings. Even $100/month adds up to $1,200 in a year!"
+          },
+          {
+            "id": "q2",
+            "question": "Which of these is a NEED, not a want?",
+            "options": ["Netflix", "New sneakers", "MetroCard for getting to work", "Eating out with friends"],
+            "correct": 2,
+            "explanation": "A MetroCard to get to work is a NEED. Streaming, dining out, and fashion are wants (even if they feel essential!)."
+          },
+          {
+            "id": "q3",
+            "question": "What's the smartest first savings goal for a teen?",
+            "options": [
+              "Save up for a designer bag",
+              "Emergency fund of $500–$1,000",
+              "Buy stocks immediately",
+              "Loan money to friends"
+            ],
+            "correct": 1,
+            "explanation": "An emergency fund ($500–$1,000) is the foundation of financial security. It protects you when unexpected costs hit — like phone repairs or medical bills."
+          },
+          {
+            "id": "q4",
+            "question": "You spend $8 on coffee 4 times a week. How much is that per year?",
+            "options": ["$128", "$416", "$1,664", "$832"],
+            "correct": 2,
+            "explanation": "$8 × 4 days × 52 weeks = $1,664/year! Small daily expenses add up dramatically. Brewing at home could save you over $1,000."
+          }
+        ]
+      },
+      "interactive_game": {
+        "type": "budget_calculator",
+        "title": "Build Your Monthly Budget",
+        "instructions": "You earn $600/month after taxes. Allocate your money using the 50/30/20 rule. Drag the slider for each category.",
+        "income": 600,
+        "categories": [
+          { "id": "needs", "label": "Needs (50% = $300)", "target": 300, "examples": ["MetroCard", "Phone bill", "Food basics"], "color": "#10B981" },
+          { "id": "wants", "label": "Wants (30% = $180)", "target": 180, "examples": ["Eating out", "Clothes", "Entertainment"], "color": "#0EA5E9" },
+          { "id": "savings", "label": "Savings (20% = $120)", "target": 120, "examples": ["Emergency fund", "College", "Future goals"], "color": "#7C3AED" }
+        ],
+        "expense_items": [
+          { "id": "e1", "label": "MetroCard (Reduced Fare)", "amount": 33, "category": "needs" },
+          { "id": "e2", "label": "Phone bill", "amount": 45, "category": "needs" },
+          { "id": "e3", "label": "Lunch (school days)", "amount": 60, "category": "needs" },
+          { "id": "e4", "label": "Netflix", "amount": 16, "category": "wants" },
+          { "id": "e5", "label": "Eating out / weekends", "amount": 80, "category": "wants" },
+          { "id": "e6", "label": "Clothes / shopping", "amount": 50, "category": "wants" },
+          { "id": "e7", "label": "Emergency fund savings", "amount": 100, "category": "savings" },
+          { "id": "e8", "label": "College savings", "amount": 20, "category": "savings" }
+        ]
+      }
+    },
+
+    {
+      "id": "lesson-007",
+      "title": "Professional Email & Digital Communication",
+      "category": "digital",
+      "emoji": "📧",
+      "duration": "10 min",
+      "level": "Beginner",
+      "xp": 80,
+      "badge": { "id": "digital-pro", "label": "Digital Pro", "emoji": "💻" },
+      "description": "Learn how to write professional emails, use Slack/Teams effectively, and manage your digital workplace presence.",
+      "video": {
+        "youtube_id": "cnnDRXHDy1E",
+        "youtube_url": "https://www.youtube.com/watch?v=cnnDRXHDy1E",
+        "embed_url": "https://www.youtube.com/embed/cnnDRXHDy1E",
+        "title": "How to Write a Professional Email",
+        "channel": "GCFLearnFree.org",
+        "duration_seconds": 600
+      },
+      "key_points": [
+        "Use a professional email address (firstname.lastname@gmail.com)",
+        "Always include a subject line that summarizes your email",
+        "Keep emails under 150 words when possible",
+        "Reply within 24 hours — even if just to say 'Got it, I'll respond soon'",
+        "Proofread before sending — autocorrect makes embarrassing mistakes"
+      ],
+      "quiz": {
+        "type": "multiple_choice",
+        "title": "Digital Communication Quiz",
+        "pass_score": 70,
+        "questions": [
+          {
+            "id": "q1",
+            "question": "Which is the most professional email address to use for job applications?",
+            "options": [
+              "xoxo_cutie2007@gmail.com",
+              "jordanrivera99@gmail.com",
+              "jordan.rivera@gmail.com",
+              "j.r.2025nyc.student@yahoo.com"
+            ],
+            "correct": 2,
+            "explanation": "firstname.lastname@gmail.com is clean, professional, and easy to remember. Avoid nicknames, birth years, or extra numbers."
+          },
+          {
+            "id": "q2",
+            "question": "You receive an email from a hiring manager. When should you reply?",
+            "options": [
+              "Whenever you feel like it",
+              "Within 24 hours, even if briefly",
+              "Only if you want the job",
+              "After a week — you don't want to seem desperate"
+            ],
+            "correct": 1,
+            "explanation": "Reply within 24 hours to show professionalism. Even a quick 'Thank you for reaching out — I'll send my full response by tomorrow' is better than silence."
+          },
+          {
+            "id": "q3",
+            "question": "Your coworker sends you a message on Slack with a question. Emojis are:",
+            "options": [
+              "Never appropriate in any workplace communication",
+              "Always required to seem friendly",
+              "Context-dependent — okay in casual team chats, avoid in formal communications",
+              "Better than words in all situations"
+            ],
+            "correct": 2,
+            "explanation": "Read the room! Emojis in casual Slack channels or team chats are often fine. In formal emails or messages to executives, keep it text-only."
+          },
+          {
+            "id": "q4",
+            "question": "True or False: Employers often Google candidates before interviews. Your social media can affect your chances.",
+            "options": [
+              "True — 70%+ of employers screen social media",
+              "False — employers are not allowed to look you up",
+              "Only if you're applying for a tech job",
+              "Only LinkedIn is checked"
+            ],
+            "correct": 0,
+            "explanation": "TRUE! Over 70% of employers search candidates online. Google yourself now. Clean up public posts that could seem unprofessional."
+          }
+        ]
+      },
+      "interactive_game": {
+        "type": "sort_the_messages",
+        "title": "Professional or Unprofessional?",
+        "instructions": "Swipe each message into the correct category: Professional ✅ or Unprofessional ❌",
+        "messages": [
+          { "id": "m1", "text": "Hey! Can u cover my shift tmrw? I forgot I have smth", "answer": "unprofessional", "reason": "Too casual, vague, no advance notice" },
+          { "id": "m2", "text": "Hi Marcus, I wanted to check in on the status of my application. Thank you for your time!", "answer": "professional", "reason": "Polite, specific, and concise" },
+          { "id": "m3", "text": "yo is the meeting cancelled or nah", "answer": "unprofessional", "reason": "Too informal for a work message" },
+          { "id": "m4", "text": "Good afternoon! I'm following up on our conversation from Tuesday regarding the internship. Please let me know if you need anything from me.", "answer": "professional", "reason": "Formal greeting, references context, offers action" },
+          { "id": "m5", "text": "k got it", "answer": "unprofessional", "reason": "Too brief — doesn't confirm understanding" },
+          { "id": "m6", "text": "Thank you for your email! I'll have the report ready by Friday at 5pm.", "answer": "professional", "reason": "Acknowledges, commits to a deadline" },
+          { "id": "m7", "text": "I can't come in today I don't feel well bye", "answer": "unprofessional", "reason": "No greeting, no proper explanation, no plan for coverage" },
+          { "id": "m8", "text": "Hi Team, just a reminder that tomorrow's meeting is at 10am in Room 3B. See you then!", "answer": "professional", "reason": "Clear, informative, friendly and professional" }
+        ]
+      }
+    },
+
+    {
+      "id": "lesson-008",
+      "title": "Workplace Rights for Young Workers in NYC",
+      "category": "workplace",
+      "emoji": "⚖️",
+      "duration": "15 min",
+      "level": "Beginner",
+      "xp": 110,
+      "badge": { "id": "rights-aware", "label": "Rights Aware", "emoji": "⚖️" },
+      "description": "Know your rights! NYC has strong protections for young workers. Learn about minimum wage, break requirements, working papers, and what to do if your rights are violated.",
+      "video": {
+        "youtube_id": "Z8YEwSqJzLo",
+        "youtube_url": "https://www.youtube.com/watch?v=Z8YEwSqJzLo",
+        "embed_url": "https://www.youtube.com/embed/Z8YEwSqJzLo",
+        "title": "Know Your Rights as a Young Worker",
+        "channel": "NYC Consumer & Worker Protection",
+        "duration_seconds": 900
+      },
+      "key_points": [
+        "NYC minimum wage is $16.50/hr (2025) for most workers",
+        "Workers under 18 need working papers (Employment Certificate) for most jobs",
+        "You're entitled to a 30-minute unpaid break for shifts over 6 hours",
+        "Employers CANNOT pay you less than minimum wage — even in cash",
+        "If your rights are violated, contact NYC Department of Consumer and Worker Protection"
+      ],
+      "quiz": {
+        "type": "multiple_choice",
+        "title": "Worker Rights Quiz",
+        "pass_score": 75,
+        "questions": [
+          {
+            "id": "q1",
+            "question": "Your employer says they can pay you $12/hr because 'you're still learning.' This is:",
+            "options": [
+              "Okay — employers can set any training wage",
+              "Illegal — NYC minimum wage applies to all workers",
+              "Fine if you signed a contract",
+              "Legal for workers under 18"
+            ],
+            "correct": 1,
+            "explanation": "NYC minimum wage ($16.50/hr in 2025) applies to all workers. You cannot legally be paid less, even during training. If this happens, contact the NYC Dept. of Consumer & Worker Protection."
+          },
+          {
+            "id": "q2",
+            "question": "You're 16 and want to work. What document do you likely need?",
+            "options": [
+              "A college ID",
+              "Working papers (Employment Certificate)",
+              "A notarized permission slip",
+              "A Social Security card only"
+            ],
+            "correct": 1,
+            "explanation": "In NY, most workers under 18 need an Employment Certificate (working papers) from their school. Your school's main office can help you get them."
+          },
+          {
+            "id": "q3",
+            "question": "You work a 7-hour shift. Are you legally entitled to a break?",
+            "options": [
+              "No — breaks are optional",
+              "Yes — one 30-minute unpaid meal break",
+              "Yes — two 15-minute paid breaks",
+              "Only if you request it"
+            ],
+            "correct": 1,
+            "explanation": "In New York, workers are entitled to a 30-minute unpaid meal break for shifts over 6 hours. For shifts over 11 hours, an additional 20-minute break is required."
+          },
+          {
+            "id": "q4",
+            "question": "Your boss threatens to fire you for reporting a safety issue. This is called:",
+            "options": [
+              "Normal management",
+              "Workplace discipline",
+              "Retaliation — and it's illegal",
+              "A performance review"
+            ],
+            "correct": 2,
+            "explanation": "Retaliation for reporting workplace issues (safety, harassment, wage theft) is illegal in NYC. You can report it to the NYC Commission on Human Rights or the NLRB."
+          },
+          {
+            "id": "q5",
+            "question": "Your employer pays you 'under the table' in cash. Do you still need to pay taxes?",
+            "options": [
+              "No — cash payments are tax-free",
+              "Yes — all income must be reported to the IRS, regardless of payment method",
+              "Only if you earn more than $10,000/year",
+              "Only if your employer sends a W-2"
+            ],
+            "correct": 1,
+            "explanation": "ALL income is taxable — cash, checks, or apps. If your employer pays cash and doesn't withhold taxes, you may owe them yourself at tax time. Report all income."
+          }
+        ]
+      },
+      "interactive_game": {
+        "type": "scenario_chooser",
+        "title": "What Would You Do?",
+        "instructions": "Read each workplace scenario and choose the best course of action.",
+        "scenarios": [
+          {
+            "id": "s1",
+            "situation": "Your manager asks you to stay 3 hours past your scheduled time without pay. They say 'it's just this once.'",
+            "options": [
+              { "text": "Stay and work for free to avoid conflict", "score": 20, "feedback": "Wage theft is illegal even 'just this once.' If unpaid overtime becomes a pattern, you have the right to report it." },
+              { "text": "Politely say you're happy to stay but need to confirm overtime pay, then document it in writing", "score": 100, "feedback": "Perfect! Document everything in writing. Overtime (over 40 hrs/week) must be paid at 1.5x your rate in NY." },
+              { "text": "Quit on the spot", "score": 10, "feedback": "Too extreme for a first offense. Try to address it directly first, and document if it continues." },
+              { "text": "Agree but call out sick the next day as revenge", "score": 0, "feedback": "This could get you fired for a legitimate reason. Address the real issue professionally." }
+            ]
+          },
+          {
+            "id": "s2",
+            "situation": "A coworker keeps making jokes that make you uncomfortable and feel like harassment.",
+            "options": [
+              { "text": "Laugh it off so you don't cause drama", "score": 10, "feedback": "You don't have to tolerate harassment. Laughing it off may signal it's okay to continue." },
+              { "text": "Calmly tell them their comments make you uncomfortable, document the incidents, and report to HR if it continues", "score": 100, "feedback": "This is exactly right. Set a boundary directly, document, and escalate if needed." },
+              { "text": "Post about it on social media", "score": 5, "feedback": "This can hurt your case legally and may violate workplace policies." },
+              { "text": "Quit without saying anything", "score": 20, "feedback": "You have rights! Don't let harassment drive you from a job. Report it through proper channels first." }
+            ]
+          },
+          {
+            "id": "s3",
+            "situation": "You notice your paycheck is $50 short from what you calculated.",
+            "options": [
+              { "text": "Assume you made a math mistake and say nothing", "score": 15, "feedback": "Always verify pay discrepancies! Keep records of your hours worked every day." },
+              { "text": "Calmly bring your records to your manager and ask them to review the calculation", "score": 100, "feedback": "Correct! Keep a log of your hours and compare it to your pay stub. Politely raise discrepancies — most are honest mistakes." },
+              { "text": "Take $50 worth of merchandise to make up for it", "score": 0, "feedback": "This is theft and could get you arrested. Always resolve pay issues through proper channels." },
+              { "text": "Post a bad review of the company immediately", "score": 5, "feedback": "Try to resolve internally first. If they refuse to fix it, then you can escalate to the NYC Dept. of Consumer & Worker Protection." }
+            ]
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "lesson-009",
+      "title": "Time Management & Showing Up Strong",
+      "category": "workplace",
+      "emoji": "⏰",
+      "duration": "11 min",
+      "level": "Beginner",
+      "xp": 90,
+      "badge": { "id": "time-master", "label": "Time Master", "emoji": "⏰" },
+      "description": "Balancing school, work, social life, and sleep is hard. Learn practical time management strategies that actually work for young workers.",
+      "video": {
+        "youtube_id": "iDbdXTMnOmE",
+        "youtube_url": "https://www.youtube.com/watch?v=iDbdXTMnOmE",
+        "embed_url": "https://www.youtube.com/embed/iDbdXTMnOmE",
+        "title": "Time Management for Students & Young Professionals",
+        "channel": "Thomas Frank",
+        "duration_seconds": 660
+      },
+      "key_points": [
+        "Use a weekly calendar to block out work, school, and study time",
+        "Prioritize tasks by urgency AND importance (Eisenhower Matrix)",
+        "The 2-minute rule: if it takes under 2 min, do it now",
+        "Batch similar tasks together to reduce mental switching",
+        "Protect your sleep — exhaustion kills productivity and professionalism"
+      ],
+      "quiz": {
+        "type": "multiple_choice",
+        "title": "Time Management Quiz",
+        "pass_score": 70,
+        "questions": [
+          {
+            "id": "q1",
+            "question": "You have a big test tomorrow AND a work shift tonight. What's the best strategy?",
+            "options": [
+              "Call out sick from work",
+              "Study during your break at work and for 1 hour before your shift",
+              "Skip studying — you'll wing the test",
+              "Work all night then cram in the morning"
+            ],
+            "correct": 1,
+            "explanation": "Plan ahead! Use small pockets of time efficiently. 1 hour of focused study before your shift + break time review beats frantic last-minute cramming."
+          },
+          {
+            "id": "q2",
+            "question": "What does 'reliability' mean in the workplace?",
+            "options": [
+              "Being good at your job",
+              "Consistently showing up on time and doing what you say you'll do",
+              "Working the most hours",
+              "Being the manager's favorite"
+            ],
+            "correct": 1,
+            "explanation": "Reliability is showing up consistently, on time, and following through on commitments. It's one of the most valued traits in ANY entry-level employee."
+          },
+          {
+            "id": "q3",
+            "question": "You're scheduled to work but a friend invited you to a party that night. You should:",
+            "options": [
+              "Call out — friends first",
+              "Honor your work commitment; plan the party for another night",
+              "Just not show up without calling",
+              "Leave work early without telling anyone"
+            ],
+            "correct": 1,
+            "explanation": "When you're scheduled to work, that's a commitment. Calling out for social events — especially without notice — damages your reputation and puts extra burden on coworkers."
+          }
+        ]
+      },
+      "interactive_game": {
+        "type": "priority_matrix",
+        "title": "Sort Your Tasks!",
+        "instructions": "Drag each task into the correct quadrant of the Eisenhower Priority Matrix.",
+        "quadrants": [
+          { "id": "do_now", "label": "Do Now", "description": "Urgent + Important", "color": "#EF4444" },
+          { "id": "schedule", "label": "Schedule It", "description": "Not Urgent + Important", "color": "#0EA5E9" },
+          { "id": "delegate", "label": "Delegate / Do Quick", "description": "Urgent + Not Important", "color": "#F59E0B" },
+          { "id": "eliminate", "label": "Eliminate / Do Later", "description": "Not Urgent + Not Important", "color": "#6B7280" }
+        ],
+        "tasks": [
+          { "id": "t1", "label": "Call out sick before your shift starts", "correct": "do_now" },
+          { "id": "t2", "label": "Study for final exam (2 weeks away)", "correct": "schedule" },
+          { "id": "t3", "label": "Reply to a work schedule text", "correct": "do_now" },
+          { "id": "t4", "label": "Scroll TikTok for an hour", "correct": "eliminate" },
+          { "id": "t5", "label": "Set up direct deposit for your paycheck", "correct": "schedule" },
+          { "id": "t6", "label": "A coworker needs coverage in 30 min (non-emergency)", "correct": "delegate" },
+          { "id": "t7", "label": "Organize your phone photos", "correct": "eliminate" },
+          { "id": "t8", "label": "Complete online training before tomorrow's shift", "correct": "do_now" }
+        ]
+      }
+    },
+
+    {
+      "id": "lesson-010",
+      "title": "LinkedIn & Online Presence for Young Professionals",
+      "category": "digital",
+      "emoji": "🔗",
+      "duration": "14 min",
+      "level": "Intermediate",
+      "xp": 120,
+      "badge": { "id": "linked-up", "label": "Linked Up", "emoji": "🔗" },
+      "description": "LinkedIn isn't just for adults in suits — it's how young people get discovered by employers. Build a standout profile and start networking today.",
+      "video": {
+        "youtube_id": "BcfGWi8MgFM",
+        "youtube_url": "https://www.youtube.com/watch?v=BcfGWi8MgFM",
+        "embed_url": "https://www.youtube.com/embed/BcfGWi8MgFM",
+        "title": "LinkedIn Profile Tips for Students & New Graduates",
+        "channel": "Jeff Su",
+        "duration_seconds": 840
+      },
+      "key_points": [
+        "Use a professional headshot — no sunglasses, group photos, or blurry selfies",
+        "Your headline should say MORE than just 'Student' — add your goal",
+        "Connect with teachers, counselors, coaches, and family in your field",
+        "The 'About' section is your personal pitch — make it compelling",
+        "Engage with posts — likes and comments increase your visibility"
+      ],
+      "quiz": {
+        "type": "multiple_choice",
+        "title": "LinkedIn & Online Presence Quiz",
+        "pass_score": 70,
+        "questions": [
+          {
+            "id": "q1",
+            "question": "Which LinkedIn headline is most effective for a student looking for a tech internship?",
+            "options": [
+              "Student",
+              "Brooklyn Tech Senior | Aspiring Software Developer | Python & Web Design",
+              "Looking for work!!! Please hire me",
+              "Future CEO"
+            ],
+            "correct": 1,
+            "explanation": "Your headline should include your school, your goal, and 1–2 relevant skills. It's the first thing employers see when they find your profile."
+          },
+          {
+            "id": "q2",
+            "question": "You have 0 connections on LinkedIn. Who should you connect with FIRST?",
+            "options": [
+              "Random recruiters and CEOs you don't know",
+              "Teachers, school counselors, coaches, and family members",
+              "No one — just wait for employers to find you",
+              "Only people with 500+ connections"
+            ],
+            "correct": 1,
+            "explanation": "Start with your real-life network. Teachers, coaches, and family often have professional connections that can lead to opportunities."
+          },
+          {
+            "id": "q3",
+            "question": "An employer Googles your name and finds your public Instagram with party photos. This:",
+            "options": [
+              "Doesn't matter — Instagram is personal",
+              "Can hurt your chances if the content seems unprofessional",
+              "Only matters if you're applying for a government job",
+              "Actually helps — shows you're fun and social"
+            ],
+            "correct": 1,
+            "explanation": "Over 70% of employers check social media. You don't have to delete everything — but make sure your public profile wouldn't make an employer question your judgment."
+          },
+          {
+            "id": "q4",
+            "question": "When reaching out to someone new on LinkedIn to ask about opportunities, you should:",
+            "options": [
+              "Just say 'Hi, can you get me a job?'",
+              "Send a personalized note mentioning a specific reason you're reaching out and something you genuinely admire about their work",
+              "Send a blank connection request",
+              "Never message strangers on LinkedIn"
+            ],
+            "correct": 1,
+            "explanation": "Personalized messages dramatically increase response rates. Reference something specific: their career path, a post they wrote, or your shared school."
+          }
+        ]
+      },
+      "interactive_game": {
+        "type": "profile_builder",
+        "title": "Build a LinkedIn Headline",
+        "instructions": "Choose the best components to build a strong LinkedIn headline. Pick one option from each category.",
+        "max_characters": 220,
+        "categories": [
+          {
+            "id": "school",
+            "label": "Your School/Year",
+            "options": [
+              { "text": "Student", "quality": "weak" },
+              { "text": "Brooklyn Tech Senior '25", "quality": "strong" },
+              { "text": "Goes to school", "quality": "weak" },
+              { "text": "HS Student, NYC", "quality": "medium" }
+            ]
+          },
+          {
+            "id": "goal",
+            "label": "Your Career Goal",
+            "options": [
+              { "text": "Looking for work", "quality": "weak" },
+              { "text": "Aspiring UX Designer", "quality": "strong" },
+              { "text": "Interested in stuff", "quality": "weak" },
+              { "text": "Future Professional", "quality": "medium" }
+            ]
+          },
+          {
+            "id": "skills",
+            "label": "Your Top Skills",
+            "options": [
+              { "text": "Good at things", "quality": "weak" },
+              { "text": "Python | Figma | Adobe Creative Suite", "quality": "strong" },
+              { "text": "I know computers", "quality": "weak" },
+              { "text": "Tech Enthusiast", "quality": "medium" }
+            ]
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "lesson-011",
+      "title": "Networking 101: Building Real Connections",
+      "category": "workplace",
+      "emoji": "🤝",
+      "duration": "13 min",
+      "level": "Intermediate",
+      "xp": 110,
+      "badge": { "id": "networker", "label": "Super Connector", "emoji": "🤝" },
+      "description": "70% of jobs are never posted online — they're filled through connections. Learn how to network authentically without feeling fake or pushy.",
+      "video": {
+        "youtube_id": "YCJFRzChc8s",
+        "youtube_url": "https://www.youtube.com/watch?v=YCJFRzChc8s",
+        "embed_url": "https://www.youtube.com/embed/YCJFRzChc8s",
+        "title": "How to Network (Even If You Hate Networking)",
+        "channel": "GaryVee",
+        "duration_seconds": 780
+      },
+      "key_points": [
+        "Networking = building genuine relationships, not just collecting contacts",
+        "Your elevator pitch should be 30–60 seconds: who you are, what you do, what you're looking for",
+        "Ask for advice, not jobs — people love helping",
+        "Follow up within 48 hours of meeting someone",
+        "Give before you ask — share articles, make introductions, add value"
+      ],
+      "quiz": {
+        "type": "multiple_choice",
+        "title": "Networking Quiz",
+        "pass_score": 70,
+        "questions": [
+          {
+            "id": "q1",
+            "question": "What percentage of jobs are estimated to be filled through networking?",
+            "options": ["10%", "30%", "50%", "70%+"],
+            "correct": 3,
+            "explanation": "Studies suggest 70-80% of jobs are filled through networking and referrals — many are never even posted publicly. Your network is your most powerful career tool."
+          },
+          {
+            "id": "q2",
+            "question": "You're at a career fair and want to ask someone for help. Which is the BEST approach?",
+            "options": [
+              "'Do you have any jobs for me?'",
+              "'Can I get your boss's number?'",
+              "'I'm interested in your field — could I ask for 10 minutes of advice on how you got started?'",
+              "'Can you look at my resume right now?'"
+            ],
+            "correct": 2,
+            "explanation": "Asking for advice is far more effective than asking for a job. People love sharing their stories and are more likely to remember — and help — someone who shows genuine curiosity."
+          },
+          {
+            "id": "q3",
+            "question": "What's an 'elevator pitch'?",
+            "options": [
+              "A pitch for a startup on an elevator",
+              "A 30–60 second professional introduction of who you are and what you're looking for",
+              "A list of all your accomplishments",
+              "An email template for job applications"
+            ],
+            "correct": 1,
+            "explanation": "An elevator pitch is a brief, polished introduction you can deliver in the time it takes to ride an elevator — about 30–60 seconds. Practice yours until it feels natural."
+          }
+        ]
+      },
+      "interactive_game": {
+        "type": "elevator_pitch_builder",
+        "title": "Build Your 30-Second Pitch",
+        "instructions": "Arrange the sentence blocks in the correct order to build a strong elevator pitch.",
+        "correct_order": ["intro", "school", "experience", "goal", "ask"],
+        "blocks": [
+          { "id": "intro", "text": "Hi, I'm Jordan Rivera — a junior at Brooklyn Tech High School.", "order": 1 },
+          { "id": "school", "text": "I'm studying computer science and have a 3.7 GPA.", "order": 2 },
+          { "id": "experience", "text": "I recently built an app that helps students track homework, and I volunteer teaching coding to middle schoolers.", "order": 3 },
+          { "id": "goal", "text": "I'm looking for a summer internship in software development or UX design.", "order": 4 },
+          { "id": "ask", "text": "Would you have 10 minutes to share advice on breaking into this field?", "order": 5 }
+        ]
+      }
+    },
+
+    {
+      "id": "lesson-012",
+      "title": "Filing Taxes for the First Time",
+      "category": "money",
+      "emoji": "🧾",
+      "duration": "20 min",
+      "level": "Intermediate",
+      "xp": 130,
+      "badge": { "id": "tax-savvy", "label": "Tax Savvy", "emoji": "🧾" },
+      "description": "Taxes don't have to be scary! Learn how to file your first tax return, what forms you need, and free resources for NYC youth.",
+      "video": {
+        "youtube_id": "hlIgmFgt3pE",
+        "youtube_url": "https://www.youtube.com/watch?v=hlIgmFgt3pE",
+        "embed_url": "https://www.youtube.com/embed/hlIgmFgt3pE",
+        "title": "How to File Taxes for the First Time — Step by Step",
+        "channel": "Humphrey Yang",
+        "duration_seconds": 1200
+      },
+      "key_points": [
+        "Tax deadline is usually April 15th each year",
+        "You need your W-2 form from your employer to file",
+        "Most teens can file for FREE using IRS Free File or NYC Free Tax Prep",
+        "If you're a dependent, your parents may claim you — still file your own return",
+        "You may get a refund — don't leave money on the table!"
+      ],
+      "quiz": {
+        "type": "multiple_choice",
+        "title": "Taxes 101 Quiz",
+        "pass_score": 70,
+        "questions": [
+          {
+            "id": "q1",
+            "question": "When is the federal tax filing deadline (in most years)?",
+            "options": ["January 1st", "March 1st", "April 15th", "December 31st"],
+            "correct": 2,
+            "explanation": "April 15th is Tax Day! If you miss it without filing an extension, you may face penalties. Mark your calendar."
+          },
+          {
+            "id": "q2",
+            "question": "What is a tax refund?",
+            "options": [
+              "Money you borrow from the government",
+              "A penalty for not paying taxes",
+              "Money returned to you if you overpaid taxes throughout the year",
+              "A bonus from your employer"
+            ],
+            "correct": 2,
+            "explanation": "If more taxes were withheld from your paychecks than you actually owed, the government sends you the difference back as a refund. File on time so you don't miss it!"
+          },
+          {
+            "id": "q3",
+            "question": "NYC offers free tax preparation for individuals earning under a certain amount. This service is called:",
+            "options": [
+              "TurboTax Premium",
+              "NYC Free Tax Prep (VITA program)",
+              "H&R Block Youth",
+              "NYC Revenue Department Help"
+            ],
+            "correct": 1,
+            "explanation": "NYC Free Tax Prep (part of the IRS VITA program) offers free, professional tax filing for qualifying New Yorkers. Visit nyc.gov/taxprep to find a site near you."
+          },
+          {
+            "id": "q4",
+            "question": "You're 17 and your parents claim you as a dependent. Do you still need to file taxes?",
+            "options": [
+              "No — your parents file for you automatically",
+              "Yes — if you earned over $13,850 (2024), you must file your own return too",
+              "Only if you had a full-time job",
+              "No — minors never pay taxes"
+            ],
+            "correct": 1,
+            "explanation": "Even dependents must file their own tax return if they earn above the standard deduction threshold ($13,850 in 2024). You may also want to file even with less income to get any withheld taxes refunded."
+          }
+        ]
+      },
+      "interactive_game": {
+        "type": "tax_form_matcher",
+        "title": "Match the Tax Form",
+        "instructions": "Draw a line matching each tax form to its correct description.",
+        "pairs": [
+          { "form": "W-2", "description": "Annual wage and tax statement from your employer" },
+          { "form": "W-4", "description": "Form you fill out when starting a job to set tax withholding" },
+          { "form": "1040", "description": "Main federal individual income tax return form" },
+          { "form": "1099", "description": "Income report for freelance/gig work (non-employee)" },
+          { "form": "EITC", "description": "Earned Income Tax Credit — extra money back for lower-income workers" }
+        ]
+      }
+    }
+
+  ],
+
+  "badges": [
+    { "id": "resume-starter", "label": "Resume Rookie", "emoji": "📝", "description": "Completed your first resume lesson", "xp": 100 },
+    { "id": "cover-letter-pro", "label": "Cover Letter Pro", "emoji": "✉️", "description": "Mastered the art of cover letters", "xp": 90 },
+    { "id": "interview-ace", "label": "Interview Ace", "emoji": "🎤", "description": "Aced the interview prep lesson", "xp": 120 },
+    { "id": "communicator", "label": "Clear Communicator", "emoji": "💬", "description": "Leveled up your workplace communication", "xp": 100 },
+    { "id": "money-smart", "label": "Money Smart", "emoji": "💵", "description": "Decoded your first paycheck", "xp": 110 },
+    { "id": "budget-boss", "label": "Budget Boss", "emoji": "📊", "description": "Built your first monthly budget", "xp": 100 },
+    { "id": "digital-pro", "label": "Digital Pro", "emoji": "💻", "description": "Mastered professional digital communication", "xp": 80 },
+    { "id": "rights-aware", "label": "Rights Aware", "emoji": "⚖️", "description": "Know your workplace rights", "xp": 110 },
+    { "id": "time-master", "label": "Time Master", "emoji": "⏰", "description": "Conquered time management", "xp": 90 },
+    { "id": "linked-up", "label": "Linked Up", "emoji": "🔗", "description": "Built a professional online presence", "xp": 120 },
+    { "id": "networker", "label": "Super Connector", "emoji": "🤝", "description": "Learned the art of networking", "xp": 110 },
+    { "id": "tax-savvy", "label": "Tax Savvy", "emoji": "🧾", "description": "Ready to file your first tax return", "xp": 130 },
+    { "id": "work-ready", "label": "Work Ready! 🚀", "emoji": "🚀", "description": "Completed ALL work readiness lessons — you're ready!", "xp": 500, "special": true }
+  ],
+
+  "readiness_tracks": [
+    {
+      "id": "track-resume",
+      "label": "Resume & Applications",
+      "emoji": "📄",
+      "lessons": ["lesson-001", "lesson-002"],
+      "color": "#7C3AED"
+    },
+    {
+      "id": "track-interview",
+      "label": "Interview Skills",
+      "emoji": "🎤",
+      "lessons": ["lesson-003"],
+      "color": "#0EA5E9"
+    },
+    {
+      "id": "track-workplace",
+      "label": "Workplace Readiness",
+      "emoji": "💼",
+      "lessons": ["lesson-004", "lesson-008", "lesson-009", "lesson-011"],
+      "color": "#10B981"
+    },
+    {
+      "id": "track-money",
+      "label": "Financial Literacy",
+      "emoji": "💰",
+      "lessons": ["lesson-005", "lesson-006", "lesson-012"],
+      "color": "#F59E0B"
+    },
+    {
+      "id": "track-digital",
+      "label": "Digital & Online Presence",
+      "emoji": "💻",
+      "lessons": ["lesson-007", "lesson-010"],
+      "color": "#EF4444"
+    }
+  ]
+}
