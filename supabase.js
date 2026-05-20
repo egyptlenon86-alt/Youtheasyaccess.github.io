@@ -3,7 +3,7 @@
 ═══════════════════════════════════════════════════════ */
 
 const SUPABASE_URL  = 'https://kfswlcvlxwrvgzysvopx.supabase.co';
-const SUPABASE_ANON = 'PASTE_YOUR_NEW_ANON_KEY_HERE'; // ← regenerate this
+const SUPABASE_ANON = sb_publishable_wj4tCAKrhkO9CEMY8xFcxQ_l77vylJG
 
 const { createClient } = supabase; // from the CDN script in your HTML
 const db = createClient(SUPABASE_URL, SUPABASE_ANON);
