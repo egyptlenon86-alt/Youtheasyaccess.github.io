@@ -2,12 +2,6 @@
    LAUNCHPAD NYC — script.js
    Full interactivity for the youth career platform
 ═══════════════════════════════════════════════════════ */
-const SUPABASE_URL  = 'https://kfswlcvlxwrvgzysvopx.supabase.co';
-const SUPABASE_ANON = 'sb_publishable_wj4tCAKrhkO9CEMY8xFcxQ_l77vylJG';
-
-const { createClient } = supabase; // from the CDN script in your HTML
-const db = createClient(SUPABASE_URL, SUPABASE_ANON);
-
 'use strict';
 
 /* ── State ─────────────────────────────────── */
@@ -487,7 +481,7 @@ function openJobModal(job) {
   $('#jobModalContent').innerHTML = content;
   openModal('jobModal');
 
-  $('#applyJobBtn')?.addEventListener('click', () => {
+  $('#applyJobBtn')?.addEventListener('click', async () => {
     const id = parseInt($('#applyJobBtn').dataset.jobId);
     if (!state.appliedJobs.includes(id)) {
       state.appliedJobs.push(id);
@@ -496,6 +490,7 @@ function openJobModal(job) {
       closeModal('jobModal');
       renderAllJobs(JOBS);
       renderFeaturedJobs();
+      if (state.user) applyToJob(state.user.id, id).catch(console.error);
     }
   });
 
@@ -511,9 +506,11 @@ function toggleSaveJob(id) {
   if (idx === -1) {
     state.savedJobs.push(id);
     showToast('Job saved! ✨', 'success');
+    if (state.user) saveJob(state.user.id, id).catch(console.error);
   } else {
     state.savedJobs.splice(idx, 1);
     showToast('Job removed from saved.', 'info');
+    if (state.user) unsaveJob(state.user.id, id).catch(console.error);
   }
   updateDashboardStats();
   renderAllJobs(JOBS);
@@ -617,9 +614,11 @@ function openLessonModal(lesson) {
 function completeLesson(id) {
   if (!state.completedLessons.includes(id)) {
     state.completedLessons.push(id);
+    const lesson = LESSONS.find(l => l.id === id);
     showToast('Lesson complete! 🎓 Points added to your profile.', 'success');
     updateDashboardStats();
     renderAllLessons($('.lesson-cat-btn.active')?.dataset.lcat || 'all');
+    if (state.user) markLessonComplete(state.user.id, id, lesson?.points || 0).catch(console.error);
   }
   closeModal('lessonModal');
 }
@@ -800,11 +799,16 @@ function initSignInModal() {
   });
 
   // Forgot submit
-  $('#forgotSubmit')?.addEventListener('click', () => {
+  $('#forgotSubmit')?.addEventListener('click', async () => {
     const email = $('#forgotEmail')?.value.trim();
     if (!email) { showToast('Please enter your email.', 'error'); return; }
-    showToast('Reset link sent! Check your inbox. 📧', 'success');
-    closeModal('forgotModal');
+    try {
+      await resetPassword(email);
+      showToast('Reset link sent! Check your inbox. 📧', 'success');
+      closeModal('forgotModal');
+    } catch (err) {
+      showToast(err.message || 'Could not send reset email.', 'error');
+    }
   });
 
   // Google sign-in buttons
@@ -962,6 +966,36 @@ function initSettings() {
       localStorage.setItem('lp-accent', color);
       showToast('Accent color updated! 🎨', 'success');
     });
+  });
+
+  // Change password
+  $('#updatePasswordBtn')?.addEventListener('click', async () => {
+    const current = $('#currentPasswordInput')?.value;
+    const next    = $('#newPasswordInput')?.value;
+    const confirm = $('#confirmPasswordInput')?.value;
+    if (!next || !confirm) { showToast('Please fill in all password fields.', 'error'); return; }
+    if (next !== confirm)  { showToast('New passwords do not match.', 'error'); return; }
+    if (next.length < 8)   { showToast('Password must be at least 8 characters.', 'error'); return; }
+    try {
+      await db.auth.updateUser({ password: next });
+      showToast('Password updated! ✅', 'success');
+      $('#currentPasswordInput').value = '';
+      $('#newPasswordInput').value = '';
+      $('#confirmPasswordInput').value = '';
+    } catch (err) {
+      showToast(err.message || 'Could not update password.', 'error');
+    }
+  });
+
+  // Sign out
+  $('#signOutBtn')?.addEventListener('click', async () => {
+    try {
+      await signOut();
+      showToast('Signed out. See you soon! 👋', 'success');
+      setView('home');
+    } catch (err) {
+      showToast(err.message || 'Sign out failed.', 'error');
+    }
   });
 
   // Load saved accent
@@ -1364,12 +1398,21 @@ function initScrollAnimations() {
 }
 
 /* ── Load user data from Supabase into state ── */
+function updateHeaderAuthState(loggedIn) {
+  $('#signInBtn')?.style.setProperty('display', loggedIn ? 'none' : '');
+  $('#joinBtn')?.style.setProperty('display', loggedIn ? 'none' : '');
+  $('#mobileSignIn')?.style.setProperty('display', loggedIn ? 'none' : '');
+  $('#mobileJoin')?.style.setProperty('display', loggedIn ? 'none' : '');
+  $('#headerUserBtn')?.style.setProperty('display', loggedIn ? '' : 'none');
+}
+
 async function loadUserData(user) {
   if (!user) {
     state.user = null;
     state.savedJobs = [];
     state.appliedJobs = [];
     state.completedLessons = [];
+    updateHeaderAuthState(false);
     updateDashboardStats();
     return;
   }
@@ -1400,6 +1443,7 @@ async function loadUserData(user) {
     state.appliedJobs      = applied.map(r => r.job_id);
     state.completedLessons = completed.map(r => r.lesson_id);
 
+    updateHeaderAuthState(true);
     updateDashboardStats();
   } catch (err) {
     console.warn('loadUserData error:', err);
