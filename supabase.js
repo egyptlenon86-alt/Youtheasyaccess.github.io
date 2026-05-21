@@ -84,6 +84,16 @@ async function updateProfile(userId, updates) {
   return data;
 }
 
+async function upsertProfile(userId, updates) {
+  const { data, error } = await db
+    .from('profiles')
+    .upsert({ id: userId, ...updates, updated_at: new Date().toISOString() })
+    .select()
+    .single();
+  if (error) throw error;
+  return data;
+}
+
 async function uploadResume(userId, file) {
   const ext  = file.name.split('.').pop();
   const path = `resumes/${userId}.${ext}`;
@@ -248,7 +258,7 @@ async function saveScholarship(scholarshipId) {
   const user = await getCurrentUser();
   if (!user) throw new Error('Not signed in');
   const { error } = await db
-    .from('saved_scholarships')
+    .from('user_scholarships')
     .insert({ user_id: user.id, scholarship_id: scholarshipId });
   if (error) throw error;
 }
@@ -292,7 +302,7 @@ async function awardBadge(userId, badgeId) {
 async function fetchMessages(userId) {
   const { data, error } = await db
     .from('messages')
-    .select('*')
+    .select('sender_id, receiver_id, body, sent_at, is_read')
     .or(`sender_id.eq.${userId},receiver_id.eq.${userId}`)
     .order('sent_at', { ascending: true });
   if (error) throw error;
