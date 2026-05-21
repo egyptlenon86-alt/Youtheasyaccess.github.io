@@ -900,6 +900,7 @@ function initJoinModal() {
       await signUp(email, pwd, { first_name: first, last_name: last });
       goToStep(3);
 
+
       // Update dashboard avatar
       if (first) {
         const initials = (first[0] + (last ? last[0] : '')).toUpperCase();
@@ -911,7 +912,13 @@ function initJoinModal() {
         if (dashName) dashName.textContent = `Welcome, ${first}! 👋`;
       }
     } catch (err) {
-      showToast(err.message || 'Sign up failed. Please try again.', 'error');
+      const msg = err.message || '';
+      if (msg.toLowerCase().includes('confirmation email') || msg.toLowerCase().includes('sending')) {
+        showToast('Account created! Check your email to confirm, then sign in.', 'success');
+        goToStep(3);
+      } else {
+        showToast(msg || 'Sign up failed. Please try again.', 'error');
+      }
     }
   });
 
