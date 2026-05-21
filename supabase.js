@@ -124,7 +124,7 @@ async function fetchJobs(filters = {}) {
 async function fetchSavedJobs(userId) {
   const { data, error } = await db
     .from('saved_jobs')
-    .select('job_id, saved_at, jobs(*)')
+    .select('job_id, saved_at')
     .eq('user_id', userId)
     .order('saved_at', { ascending: false });
   if (error) throw error;
@@ -151,7 +151,7 @@ async function unsaveJob(userId, jobId) {
 async function fetchApplications(userId) {
   const { data, error } = await db
     .from('job_applications')
-    .select('*, jobs(*)')
+    .select('job_id, applied_at, status')
     .eq('user_id', userId)
     .order('applied_at', { ascending: false });
   if (error) throw error;
