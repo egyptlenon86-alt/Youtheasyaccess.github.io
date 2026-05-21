@@ -10,6 +10,7 @@ const state = {
   savedJobs: [],
   appliedJobs: [],
   completedLessons: [],
+  earnedBadges: [],
   currentJobFilter: {},
   lukeOpen: false,
   lukeMessages: [],
@@ -491,6 +492,10 @@ function openJobModal(job) {
       renderAllJobs(JOBS);
       renderFeaturedJobs();
       if (state.user) applyToJob(state.user.id, id).catch(console.error);
+      if (state.user && !state.earnedBadges.includes(4)) {
+        awardBadge(state.user.id, 4).catch(() => null);
+        state.earnedBadges.push(4);
+      }
     }
   });
 
@@ -619,6 +624,10 @@ function completeLesson(id) {
     updateDashboardStats();
     renderAllLessons($('.lesson-cat-btn.active')?.dataset.lcat || 'all');
     if (state.user) markLessonComplete(state.user.id, id, lesson?.points || 0).catch(console.error);
+    if (state.user && state.completedLessons.length >= 5 && !state.earnedBadges.includes(5)) {
+      awardBadge(state.user.id, 5).catch(() => null);
+      state.earnedBadges.push(5);
+    }
   }
   closeModal('lessonModal');
 }
@@ -680,11 +689,11 @@ function renderReadinessTracks() {
 function renderBadges() {
   const el = $('#badgesGrid');
   if (!el) return;
-  el.innerHTML = BADGES.map(b => `
-    <div class="badge-item ${b.earned ? '' : 'locked'}" title="${b.name}">
+  el.innerHTML = BADGES.map(b => { const earned = state.earnedBadges.includes(b.id); return `
+    <div class="badge-item ${earned ? '' : 'locked'}" title="${b.name}">
       <div class="badge-icon">${b.emoji}</div>
       <div class="badge-name">${b.name}</div>
-    </div>`).join('');
+    </div>`;}).join('');
 }
 
 function updateDashboardStats() {
@@ -822,6 +831,16 @@ function initSignInModal() {
       }
     });
   });
+
+  $$('.apple-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      try {
+        await signInWithApple();
+      } catch (err) {
+        showToast('Apple sign-in failed. Try again.', 'error');
+      }
+    });
+  });
 }
 
 /* ── Join / Signup Modal ─────────────────────── */
@@ -947,18 +966,20 @@ function initSettings() {
   });
 
   // Save profile
-  $('#saveProfile')?.addEventListener('click', () => {
+  $('#saveProfile')?.addEventListener('click', async () => {
     const first = $('#profileFirst')?.value.trim();
     const last  = $('#profileLast')?.value.trim();
     if (!first) { showToast('Please enter your first name.', 'error'); return; }
-    showToast('Profile saved! ✅', 'success');
-
-    if (first) {
+    try {
+      if (state.user) await upsertProfile(state.user.id, { first_name: first, last_name: last, email: state.user.email });
+      showToast('Profile saved! ✅', 'success');
       const initials = (first[0] + (last ? last[0] : '')).toUpperCase();
       const dashAvatar = $('#dashAvatar');
       if (dashAvatar) dashAvatar.textContent = initials;
       const dashName = $('#dashName');
       if (dashName) dashName.textContent = `Welcome back, ${first}! 👋`;
+    } catch (err) {
+      showToast(err.message || 'Could not save profile.', 'error');
     }
   });
 
@@ -1446,15 +1467,22 @@ async function loadUserData(user) {
       if (dashName) dashName.textContent = `Welcome back, ${first}! 👋`;
     }
 
-    const [saved, applied, completed] = await Promise.all([
+    const [saved, applied, completed, userBadges] = await Promise.all([
       fetchSavedJobs(user.id).catch(() => []),
       fetchApplications(user.id).catch(() => []),
       fetchCompletedLessons(user.id).catch(() => []),
+      fetchUserBadges(user.id).catch(() => []),
     ]);
 
     state.savedJobs        = saved.map(r => r.job_id);
     state.appliedJobs      = applied.map(r => r.job_id);
     state.completedLessons = completed.map(r => r.lesson_id);
+    state.earnedBadges     = userBadges.map(r => r.badge_id);
+
+    if (!state.earnedBadges.includes(1)) {
+      await awardBadge(user.id, 1).catch(() => null);
+      state.earnedBadges.push(1);
+    }
 
     updateHeaderAuthState(true);
     updateDashboardStats();
