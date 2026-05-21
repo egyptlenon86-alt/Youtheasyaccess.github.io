@@ -1425,7 +1425,13 @@ async function loadUserData(user) {
   }
 
   try {
-    const profile = await fetchProfile(user.id).catch(() => null);
+    let profile = await fetchProfile(user.id).catch(() => null);
+    if (!profile) {
+      const first_name = user.user_metadata?.first_name || '';
+      const last_name  = user.user_metadata?.last_name  || '';
+      await updateProfile(user.id, { first_name, last_name }).catch(() => null);
+      profile = { first_name, last_name };
+    }
     const first = profile?.first_name || user.user_metadata?.first_name || '';
     const last  = profile?.last_name  || user.user_metadata?.last_name  || '';
     state.user = { id: user.id, name: `${first} ${last}`.trim() || user.email, email: user.email };
