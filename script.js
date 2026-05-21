@@ -3,10 +3,7 @@
    Full interactivity for the youth career platform
 ═══════════════════════════════════════════════════════ */
 'use strict';
-const supabaseUrl = 'https://kfswlcvlxwrgvzysvopx.supabase.co';
-const supabaseKey = 'sb_publishable_wj4tCAKrhkO9CEMY8xFcxQ_l77vylJG'; // Ensure this is your real, long anon key string!
 
-const supabase = lib.supabase.createClient(supabaseUrl, supabaseKey);
 /* ── State ─────────────────────────────────── */
 const state = {
   user: null,
