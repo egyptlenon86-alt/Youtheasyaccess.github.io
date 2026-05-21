@@ -121,61 +121,69 @@ const LUKE_RESPONSES = {
 
 /* ── API Integration ───────────────────────── */
 async function fetchLiveJobs() {
-  const API_ENDPOINT = 'https://api.example.com/v1/jobs'; // 👈 Replace with your real API URL
-  
-  state.isLoadingJobs = true;
-  state.jobFetchError = null;
-  
-  // Optional: Show a loading state in your UI container if it exists
-  const allJobsContainer = $('#allJobs');
-  if (allJobsContainer) {
-    allJobsContainer.innerHTML = '<p class="loading-state">🔍 Loading live NYC opportunities...</p>';
-  }
-
-  try {
-    const response = await fetch(API_ENDPOINT);
-    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    // 1. Set your credentials and configuration
+    const appId = 'fa0db452';
+    const appKey = '0f631f08154de4d0cbc451e949776bf5'; // 
+    const country = 'us'; 
+    const page = 1;
     
-    const rawData = await response.json();
+    // Search query parameters
+    const searchKeyword = encodeURIComponent('developer');
+    const location = encodeURIComponent('New York City');
     
-    // 💡 Map your API keys here so they perfectly match your UI setup
-    // Modify the keys on the right side (e.g., item.job_title) to match your API response
-    state.liveJobs = rawData.map((item, index) => ({
-      id: item.id || `live-${index}`,
-      emoji: item.emoji || '🏢', // Fallback emoji if API doesn't provide one
-      title: item.job_title || item.title || 'Untitled Position',
-      company: item.company_name || item.company || 'Unknown Employer',
-      type: item.job_type || item.type || 'Full-Time',
-      borough: item.borough || item.location || 'NYC',
-      pay: item.salary_range || item.pay || 'Salary Undisclosed',
-      tags: item.tags || ['Entry Level'],
-      industry: item.industry || 'general',
-      description: item.description || 'No description provided.'
-    }));
+    // 2. Construct the absolute endpoint URL
+    const url = `https://api.adzuna.com/v1/api/jobs/${country}/search/${page}?app_id=${appId}&app_key=${appKey}&results_per_page=20&what=${searchKeyword}&where=${location}&content-type=application/json`;
 
-    // Seamlessly swap your static array or combine them
-    // Option A: Complete replacement
-    JOBS.length = 0; 
-    JOBS.push(...state.liveJobs);
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        // Adzuna wraps its listings inside an array called 'results'
+        const rawResults = data.results || [];
+        
+        // 3. Map Adzuna API keys so they perfectly match your UI setup
+        state.liveJobs = rawResults.map((item, index) => ({
+            id: item.id || `live-${index}`,
+            emoji: '🏢', // Fallback emoji since Adzuna doesn't provide icons
+            title: item.title || 'Untitled Position',
+            company: item.company?.display_name || 'Unknown Employer', // Adzuna nests company names inside an object
+            type: item.contract_time === 'full_time' ? 'Full-Time' : 'Contract/Part-Time', // Normalizing Adzuna types
+            borough: item.location?.display_name || 'NYC', // Adzuna nests locations inside an object
+            pay: item.salary_min ? `$${item.salary_min.toLocaleString()} - $${item.salary_max?.toLocaleString()}` : 'Salary Undisclosed',
+            tags: item.category?.label ? [item.category.label] : ['Entry Level'],
+            industry: 'general',
+            description: item.description || 'No description provided.'
+        }));
 
-    // Option B: To keep mock data alongside live data instead, uncomment the line below:
-    // JOBS.push(...state.liveJobs);
+        // Seamlessly swap your static array or combine them
+        // Option A: Complete replacement
+        JOBS.length = 0; 
+        JOBS.push(...state.liveJobs);
 
-    // Refresh views with the freshly fetched live items
-    renderFeaturedJobs();
-    if (state.currentView === 'jobs') {
-      renderAllJobs(JOBS);
+        // Refresh views with the freshly fetched live items
+        renderFeaturedJobs();
+        if (state.currentView === 'jobs') {
+            renderAllJobs(JOBS);
+        }
+
+        return state.liveJobs;
+
+    } catch (error) {
+        console.error('Failed to load live job listings:', error);
+        state.jobFetchError = error.message;
+        
+        // Check if showToast function exists before calling it to prevent crashing
+        if (typeof showToast === 'function') {
+            showToast('Could not load latest job listings. Using cached data.', 'warning');
+        }
+        
+    } finally {
+        state.isLoadingJobs = false;
     }
-
-  } catch (error) {
-    console.error('Failed to load live job listings:', error);
-    state.jobFetchError = error.message;
-    showToast('Could not load latest job listings. Using cached data.', 'warning');
-    
-    // Fallback: If API fails, your layout gracefully preserves your mock data safely
-  } finally {
-    state.isLoadingJobs = false;
-  }
 }
 /* ── Helpers ───────────────────────────────── */
 function $(sel, ctx = document) { return ctx.querySelector(sel); }
