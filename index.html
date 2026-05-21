@@ -78,6 +78,7 @@
         </button>
         <button class="btn btn-ghost" id="signInBtn">Sign In</button>
         <button class="btn btn-primary" id="joinBtn">Join Now</button>
+        <button class="btn btn-ghost" id="headerUserBtn" data-view="dashboard" style="display:none">My Account</button>
         <!-- Mobile Menu -->
         <button class="mobile-menu-btn" id="mobileMenuBtn">
           <i data-lucide="menu"></i>
@@ -647,16 +648,17 @@
             <h2>Account</h2>
             <div class="form-group">
               <label>Change Password</label>
-              <input type="password" class="form-input" placeholder="Current password" />
+              <input type="password" class="form-input" id="currentPasswordInput" placeholder="Current password" />
             </div>
             <div class="form-group">
-              <input type="password" class="form-input" placeholder="New password" />
+              <input type="password" class="form-input" id="newPasswordInput" placeholder="New password" />
             </div>
             <div class="form-group">
-              <input type="password" class="form-input" placeholder="Confirm new password" />
+              <input type="password" class="form-input" id="confirmPasswordInput" placeholder="Confirm new password" />
             </div>
-            <button class="btn btn-primary btn-sm">Update Password</button>
+            <button class="btn btn-primary btn-sm" id="updatePasswordBtn">Update Password</button>
             <hr class="settings-divider" />
+            <button class="btn btn-ghost btn-sm" id="signOutBtn" style="width:100%;margin-bottom:12px">Sign Out</button>
             <div class="danger-zone">
               <h3>Danger Zone</h3>
               <button class="btn btn-danger btn-sm">Delete Account</button>
