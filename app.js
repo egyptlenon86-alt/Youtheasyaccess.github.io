@@ -526,6 +526,21 @@ const xpState = {
   gameXpEarned: {},
 };
 
+// Merge completed lessons from Supabase on startup
+(async () => {
+  try {
+    const { data: { user } } = await db.auth.getUser();
+    if (user) {
+      const dbCompleted = await fetchCompletedLessons(user.id);
+      dbCompleted.forEach(r => {
+        if (!xpState.completedLessons.includes(r.lesson_id)) {
+          xpState.completedLessons.push(r.lesson_id);
+        }
+      });
+    }
+  } catch (e) {}
+})();
+
 function saveXpState() {
   localStorage.setItem('lp_totalXp', xpState.totalXp);
   localStorage.setItem('lp_activeSkin', xpState.activeSkin);
@@ -1807,6 +1822,13 @@ window.completeLesson = function(lessonId, xpReward) {
     addXp(xpReward, 'Lesson complete!');
     if(btn) { btn.textContent = '✅ Completed!'; btn.disabled = true; btn.style.background = 'var(--success)'; }
     showToast(`Lesson complete! +${xpReward} XP earned 🎓`, 'success');
+    // Sync completion to Supabase if user is logged in
+    (async () => {
+      try {
+        const { data: { user } } = await db.auth.getUser();
+        if (user) await markLessonComplete(user.id, lessonId, xpReward);
+      } catch (e) {}
+    })();
   } else {
     showToast('Already completed! XP awarded once per lesson.', 'info');
   }
