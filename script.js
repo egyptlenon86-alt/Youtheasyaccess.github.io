@@ -1363,62 +1363,8 @@ function renderScholarshipCard(s) {
     </div>`;
 }
 
-async function loadScholarships(filters = {}) {
-  const grid    = $('#scholarshipsGrid');
-  const loading = $('#scholarshipsLoading');
-  const errEl   = $('#scholarshipsError');
-  if (!grid) return;
-
-  // Show loading state
-  if (loading) loading.style.display = 'block';
-  if (errEl)   errEl.style.display   = 'none';
-  grid.style.display = 'none';
-
-  try {
-    // Use search function if filters present, otherwise fetch all
-    const hasFilters = Object.values(filters).some(Boolean);
-    const scholarships = hasFilters
-      ? await searchScholarships(filters)
-      : await fetchScholarships();
-
-    if (loading) loading.style.display = 'none';
-
-    if (!scholarships.length) {
-      grid.style.display = 'grid';
-      grid.innerHTML = '<p class="empty-state" style="grid-column:1/-1">No scholarships found. Try adjusting your filters!</p>';
-      return;
-    }
-
-    grid.style.display = 'grid';
-    grid.innerHTML = scholarships.map(renderScholarshipCard).join('');
-    lucide.createIcons();
-    initScholarshipInteractions();
-
-  } catch (err) {
-    console.error('loadScholarships error:', err);
-    if (loading) loading.style.display = 'none';
-    if (errEl)   errEl.style.display   = 'block';
-  }
-}
-
+/* ── Scholarships View Interaction ─────────────────── */
 function initScholarshipInteractions() {
-  // Save scholarship
-  $$('[data-save-scholarship]').forEach(btn => {
-    btn.addEventListener('click', async (e) => {
-      e.stopPropagation();
-      const id = btn.dataset.saveScholarship;
-      try {
-        await saveScholarship(id);
-        showToast('Scholarship saved! ✨', 'success');
-        btn.textContent = '🔖 Saved';
-        btn.disabled = true;
-      } catch {
-        showToast('Sign in to save scholarships.', 'warning');
-        openModal('signInModal');
-      }
-    });
-  });
-
   // Apply to scholarship
   $$('[data-apply-scholarship]').forEach(btn => {
     btn.addEventListener('click', async (e) => {
