@@ -784,11 +784,11 @@ function initSignInModal() {
     if (!email || !pwd) { showToast('Please fill in all fields.', 'error'); return; }
 
     try {
-      await signIn(email, pwd);
+      const { user } = await signIn(email, pwd);
+      await loadUserData(user);
       closeModal('signInModal');
       showToast('Welcome back! 👋', 'success');
       setView('dashboard');
-      updateDashboardStats();
     } catch (err) {
       showToast(err.message || 'Sign in failed.', 'error');
     }
@@ -881,23 +881,28 @@ function initJoinModal() {
 
   $('#joinBack2')?.addEventListener('click', () => goToStep(1));
 
-  $('#joinNext2')?.addEventListener('click', () => {
-    goToStep(3);
-    // Simulate creating user
+  $('#joinNext2')?.addEventListener('click', async () => {
     const first = $('#joinFirst')?.value.trim();
     const last  = $('#joinLast')?.value.trim();
     const email = $('#joinEmail')?.value.trim();
-    state.user = { name: `${first} ${last}`, email };
+    const pwd   = $('#joinPassword')?.value;
 
-    // Update dashboard avatar
-    if (first) {
-      const initials = (first[0] + (last ? last[0] : '')).toUpperCase();
-      const dashAvatar = $('#dashAvatar');
-      if (dashAvatar) dashAvatar.textContent = initials;
-      const profilePhoto = $('#profilePhoto');
-      if (profilePhoto) profilePhoto.textContent = initials;
-      const dashName = $('#dashName');
-      if (dashName) dashName.textContent = `Welcome, ${first}! 👋`;
+    try {
+      await signUp(email, pwd, { first_name: first, last_name: last });
+      goToStep(3);
+
+      // Update dashboard avatar
+      if (first) {
+        const initials = (first[0] + (last ? last[0] : '')).toUpperCase();
+        const dashAvatar = $('#dashAvatar');
+        if (dashAvatar) dashAvatar.textContent = initials;
+        const profilePhoto = $('#profilePhoto');
+        if (profilePhoto) profilePhoto.textContent = initials;
+        const dashName = $('#dashName');
+        if (dashName) dashName.textContent = `Welcome, ${first}! 👋`;
+      }
+    } catch (err) {
+      showToast(err.message || 'Sign up failed. Please try again.', 'error');
     }
   });
 
@@ -1353,6 +1358,49 @@ function initScrollAnimations() {
   });
 }
 
+/* ── Load user data from Supabase into state ── */
+async function loadUserData(user) {
+  if (!user) {
+    state.user = null;
+    state.savedJobs = [];
+    state.appliedJobs = [];
+    state.completedLessons = [];
+    updateDashboardStats();
+    return;
+  }
+
+  try {
+    const profile = await fetchProfile(user.id).catch(() => null);
+    const first = profile?.first_name || user.user_metadata?.first_name || '';
+    const last  = profile?.last_name  || user.user_metadata?.last_name  || '';
+    state.user = { id: user.id, name: `${first} ${last}`.trim() || user.email, email: user.email };
+
+    if (first) {
+      const initials = (first[0] + (last ? last[0] : '')).toUpperCase();
+      const dashAvatar = $('#dashAvatar');
+      if (dashAvatar) dashAvatar.textContent = initials;
+      const profilePhoto = $('#profilePhoto');
+      if (profilePhoto) profilePhoto.textContent = initials;
+      const dashName = $('#dashName');
+      if (dashName) dashName.textContent = `Welcome back, ${first}! 👋`;
+    }
+
+    const [saved, applied, completed] = await Promise.all([
+      fetchSavedJobs(user.id).catch(() => []),
+      fetchApplications(user.id).catch(() => []),
+      fetchCompletedLessons(user.id).catch(() => []),
+    ]);
+
+    state.savedJobs        = saved.map(r => r.job_id);
+    state.appliedJobs      = applied.map(r => r.job_id);
+    state.completedLessons = completed.map(r => r.lesson_id);
+
+    updateDashboardStats();
+  } catch (err) {
+    console.warn('loadUserData error:', err);
+  }
+}
+
 /* ── Boot ───────────────────────────────────── */
 function boot() {
   lucide.createIcons();
@@ -1381,6 +1429,9 @@ function boot() {
     initScrollAnimations();
     lucide.createIcons();
   }, 300);
+
+  // Restore session on page load and react to future auth changes
+  onAuthChange(user => loadUserData(user));
 
   // Reload icons after modals open
   document.addEventListener('click', () => {
