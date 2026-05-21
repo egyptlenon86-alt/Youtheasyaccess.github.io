@@ -19,8 +19,11 @@ const state = {
   joinStep: 1,
   profileData: {},
   accentColor: '#7C3AED',
+  // Add these lines to manage your live API state
+  liveJobs: [],
+  isLoadingJobs: false,
+  jobFetchError: null
 };
-
 /* ── Data ──────────────────────────────────── */
 const JOBS = [
   { id: 1,  emoji: '🏢', title: 'Junior Web Developer', company: 'TechStart NYC', type: 'Internship',  borough: 'Manhattan',   pay: '$22/hr',  tags: ['Tech', 'Beginner OK', 'Remote Flex'], industry: 'tech',       description: 'Build and maintain web apps using HTML, CSS, and JavaScript. Perfect for those starting their tech journey.' },
@@ -116,6 +119,64 @@ const LUKE_RESPONSES = {
   ],
 };
 
+/* ── API Integration ───────────────────────── */
+async function fetchLiveJobs() {
+  const API_ENDPOINT = 'https://api.example.com/v1/jobs'; // 👈 Replace with your real API URL
+  
+  state.isLoadingJobs = true;
+  state.jobFetchError = null;
+  
+  // Optional: Show a loading state in your UI container if it exists
+  const allJobsContainer = $('#allJobs');
+  if (allJobsContainer) {
+    allJobsContainer.innerHTML = '<p class="loading-state">🔍 Loading live NYC opportunities...</p>';
+  }
+
+  try {
+    const response = await fetch(API_ENDPOINT);
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    
+    const rawData = await response.json();
+    
+    // 💡 Map your API keys here so they perfectly match your UI setup
+    // Modify the keys on the right side (e.g., item.job_title) to match your API response
+    state.liveJobs = rawData.map((item, index) => ({
+      id: item.id || `live-${index}`,
+      emoji: item.emoji || '🏢', // Fallback emoji if API doesn't provide one
+      title: item.job_title || item.title || 'Untitled Position',
+      company: item.company_name || item.company || 'Unknown Employer',
+      type: item.job_type || item.type || 'Full-Time',
+      borough: item.borough || item.location || 'NYC',
+      pay: item.salary_range || item.pay || 'Salary Undisclosed',
+      tags: item.tags || ['Entry Level'],
+      industry: item.industry || 'general',
+      description: item.description || 'No description provided.'
+    }));
+
+    // Seamlessly swap your static array or combine them
+    // Option A: Complete replacement
+    JOBS.length = 0; 
+    JOBS.push(...state.liveJobs);
+
+    // Option B: To keep mock data alongside live data instead, uncomment the line below:
+    // JOBS.push(...state.liveJobs);
+
+    // Refresh views with the freshly fetched live items
+    renderFeaturedJobs();
+    if (state.currentView === 'jobs') {
+      renderAllJobs(JOBS);
+    }
+
+  } catch (error) {
+    console.error('Failed to load live job listings:', error);
+    state.jobFetchError = error.message;
+    showToast('Could not load latest job listings. Using cached data.', 'warning');
+    
+    // Fallback: If API fails, your layout gracefully preserves your mock data safely
+  } finally {
+    state.isLoadingJobs = false;
+  }
+}
 /* ── Helpers ───────────────────────────────── */
 function $(sel, ctx = document) { return ctx.querySelector(sel); }
 function $$(sel, ctx = document) { return [...ctx.querySelectorAll(sel)]; }
@@ -1500,6 +1561,10 @@ function boot() {
   initTheme();
   initNavigation();
   initSearch();
+  
+  // 🚀 PUT IT HERE: Fetch the live jobs immediately during initialization
+  fetchLiveJobs();
+
   initJobsView();
   initProgramsView();
   initLessonsView();
