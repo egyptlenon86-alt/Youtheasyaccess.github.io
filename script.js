@@ -563,7 +563,6 @@ function openJobModal(job) {
       if (state.user) applyToJob(state.user.id, id).catch(console.error);
       if (statBadges)  statBadges.textContent  = state.earnedBadges.length;
       }
-    }
   });
 
   $('#saveJobModalBtn')?.addEventListener('click', () => {
