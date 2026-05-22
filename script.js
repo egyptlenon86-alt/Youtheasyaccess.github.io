@@ -551,7 +551,7 @@ function openJobModal(job) {
   $('#jobModalContent').innerHTML = content;
   openModal('jobModal');
 
-  $('#applyJobBtn')?.addEventListener('click', async () => {
+  document.querySelector('#applyJobBtn')?.addEventListener('click', async () => {
     const id = parseInt($('#applyJobBtn').dataset.jobId);
     if (!state.appliedJobs.includes(id)) {
       state.appliedJobs.push(id);
