@@ -561,9 +561,7 @@ function openJobModal(job) {
       renderAllJobs(JOBS);
       renderFeaturedJobs();
       if (state.user) applyToJob(state.user.id, id).catch(console.error);
-      if (state.user && !state.earnedBadges.includes(4)) {
-        awardBadge(state.user.id, 4).catch(() => null);
-        state.earnedBadges.push(4);
+      if (statBadges)  statBadges.textContent  = state.earnedBadges.length;
       }
     }
   });
