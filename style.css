@@ -2559,3 +2559,27 @@ input, select, textarea {
   .form-row { grid-template-columns: 1fr; }
   .luke-banner-content { flex-direction: column; text-align: center; padding: 28px; }
 }
+/* ── NOTIFICATION PANEL ── */
+.notif-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--border, rgba(255,255,255,0.08));
+}
+.notif-item:last-child { border-bottom: none; }
+.notif-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--primary, #7C3AED);
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+.notif-dot.read {
+  background: transparent;
+  border: 2px solid var(--text-muted, #888);
+}
+.notif-body { font-size: 0.9rem; line-height: 1.5; }
+.notif-time { font-size: 0.78rem; color: var(--text-muted, #888); margin-top: 0.2rem; }
+.notif-item.unread .notif-body { font-weight: 500; }
