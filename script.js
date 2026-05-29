@@ -1579,3 +1579,59 @@ if (markAllRead) {
   });
 }
 // ───────────────────────────────────────────────────
+// ── APPLY BUTTON (delegated — works even after dynamic render) ──
+const jobModal = document.getElementById('jobModal');
+
+if (jobModal) {
+  jobModal.addEventListener('click', (e) => {
+    const btn = e.target.closest('#applyBtn, .apply-btn, [data-action="apply"]');
+    if (!btn) return;
+
+    const jobId      = btn.getAttribute('data-job-id');
+    const programId  = btn.getAttribute('data-program-id');
+    const label      = jobId || programId;
+
+    // Mark as applied
+    btn.textContent  = '✓ Applied!';
+    btn.disabled     = true;
+    btn.style.opacity = '0.7';
+
+    // Track in localStorage
+    const applied = JSON.parse(localStorage.getItem('appliedJobs') || '[]');
+    if (label && !applied.includes(label)) {
+      applied.push(label);
+      localStorage.setItem('appliedJobs', JSON.stringify(applied));
+    }
+
+    // Update dashboard count
+    const statApplied = document.getElementById('statApplied');
+    if (statApplied) {
+      statApplied.textContent = applied.length;
+    }
+
+    // Show toast
+    showToast('Application submitted! 🎉', 'success');
+  });
+}
+
+// Do the same for the programs modal if you have one:
+const programsModal = document.getElementById('programModal'); // adjust id if different
+if (programsModal) {
+  programsModal.addEventListener('click', (e) => {
+    const btn = e.target.closest('#applyBtn, .apply-btn, [data-action="apply"]');
+    if (!btn) return;
+
+    btn.textContent = '✓ Applied!';
+    btn.disabled    = true;
+    btn.style.opacity = '0.7';
+
+    const applied = JSON.parse(localStorage.getItem('appliedPrograms') || '[]');
+    const id = btn.getAttribute('data-program-id') || btn.getAttribute('data-job-id');
+    if (id && !applied.includes(id)) {
+      applied.push(id);
+      localStorage.setItem('appliedPrograms', JSON.stringify(applied));
+    }
+    showToast('Application submitted! 🎉', 'success');
+  });
+}
+// ──────────────────────────────────────────────────────────────
