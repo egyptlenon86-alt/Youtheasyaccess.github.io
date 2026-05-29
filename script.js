@@ -1549,3 +1549,33 @@ function boot() {
 }
 
 document.addEventListener('DOMContentLoaded', boot);
+
+// ── NOTIFICATIONS ──────────────────────────────────
+const notificationsBtn = document.getElementById('notificationsBtn');
+const notifModal       = document.getElementById('notifModal');
+const markAllRead      = document.getElementById('markAllRead');
+const notifBadge       = document.getElementById('notifBadge');
+
+if (notificationsBtn) {
+  notificationsBtn.addEventListener('click', () => {
+    notifModal.classList.add('active');
+  });
+}
+
+// reuse your existing modal-close logic — or add this if not already present:
+document.querySelectorAll('[data-close]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const id = btn.getAttribute('data-close');
+    const el = document.getElementById(id);
+    if (el) el.classList.remove('active');
+  });
+});
+
+if (markAllRead) {
+  markAllRead.addEventListener('click', () => {
+    document.querySelectorAll('.notif-item').forEach(el => el.classList.remove('unread'));
+    document.querySelectorAll('.notif-dot').forEach(d => d.classList.add('read'));
+    if (notifBadge) notifBadge.style.display = 'none';
+  });
+}
+// ───────────────────────────────────────────────────
