@@ -75,10 +75,10 @@
           <span class="badge">3</span>
         </button>
         <!-- Notification -->
-        <button class="icon-btn" title="Notifications">
-          <i data-lucide="bell"></i>
-          <span class="badge">5</span>
-        </button>
+<button class="icon-btn" id="notificationsBtn" title="Notifications">
+  <i data-lucide="bell"></i>
+  <span class="badge" id="notifBadge">5</span>
+</button>
         <button class="btn btn-ghost" id="signInBtn">Sign In</button>
         <button class="btn btn-primary" id="joinBtn">Join Now</button>
         <button class="btn btn-ghost" id="headerUserBtn" data-view="dashboard" style="display:none">My Account</button>
@@ -263,7 +263,7 @@
             <option>$18–$22/hr</option>
             <option>$22+/hr</option>
           </select>
-          <button class="btn btn-primary btn-sm" id="applyFilters">Filter</button>
+          <button class="btn btn-primary" id="applyBtn">Apply Now</button>
         </div>
         <div class="jobs-list" id="allJobs"></div>
       </div>
@@ -670,7 +670,55 @@
         </div>
       </div>
     </section>
-
+<!-- ── NOTIFICATIONS PANEL ──────────────── -->
+<div class="modal-overlay" id="notifModal">
+  <div class="modal" style="max-width:420px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+      <h2 class="modal-title" style="margin:0;">Notifications</h2>
+      <button class="modal-close" data-close="notifModal"><i data-lucide="x"></i></button>
+    </div>
+    <div id="notifList">
+      <div class="notif-item unread">
+        <span class="notif-dot"></span>
+        <div class="notif-body">
+          <strong>NYC Youth Works</strong> reviewed your application.
+          <div class="notif-time">2 hours ago</div>
+        </div>
+      </div>
+      <div class="notif-item unread">
+        <span class="notif-dot"></span>
+        <div class="notif-body">
+          <strong>Brooklyn Tech Internship</strong> wants to schedule an interview!
+          <div class="notif-time">1 day ago</div>
+        </div>
+      </div>
+      <div class="notif-item unread">
+        <span class="notif-dot"></span>
+        <div class="notif-body">
+          <strong>GreenFuture Program</strong> — Congrats! You've been selected.
+          <div class="notif-time">3 days ago</div>
+        </div>
+      </div>
+      <div class="notif-item">
+        <span class="notif-dot read"></span>
+        <div class="notif-body">
+          New jobs matching your profile in <strong>Tech</strong>.
+          <div class="notif-time">4 days ago</div>
+        </div>
+      </div>
+      <div class="notif-item">
+        <span class="notif-dot read"></span>
+        <div class="notif-body">
+          Resume Workshop lesson unlocked.
+          <div class="notif-time">1 week ago</div>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-ghost btn-sm" id="markAllRead" style="margin-top:1rem;width:100%;">
+      Mark all as read
+    </button>
+  </div>
+</div>
   </main><!-- /main -->
 
   <!-- ═══════════════════════════════════════
