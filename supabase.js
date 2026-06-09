@@ -65,7 +65,7 @@ function onAuthChange(callback) {
 /* ── Profiles ──────────────────────────────────────── */
 async function fetchProfile(userId) {
   const { data, error } = await db
-    .from('profiles')
+    .from('user_profiles')
     .select('*')
     .eq('id', userId)
     .single();
@@ -75,7 +75,7 @@ async function fetchProfile(userId) {
 
 async function updateProfile(userId, updates) {
   const { data, error } = await db
-    .from('profiles')
+    .from('user_profiles')
     .update({ ...updates, updated_at: new Date().toISOString() })
     .eq('id', userId)
     .select()
@@ -86,7 +86,7 @@ async function updateProfile(userId, updates) {
 
 async function upsertProfile(userId, updates) {
   const { data, error } = await db
-    .from('profiles')
+    .from('user_profiles')
     .upsert({ id: userId, ...updates, updated_at: new Date().toISOString() })
     .select()
     .single();
@@ -302,7 +302,7 @@ async function awardBadge(userId, badgeId) {
 async function fetchMessages(userId) {
   const { data, error } = await db
     .from('messages')
-    .select('sender_id, receiver_id, body, sent_at, is_read')
+    .select('id, sender_id, receiver_id, body, sent_at, is_read')
     .or(`sender_id.eq.${userId},receiver_id.eq.${userId}`)
     .order('sent_at', { ascending: true });
   if (error) throw error;
