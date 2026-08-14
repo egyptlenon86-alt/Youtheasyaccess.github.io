@@ -1325,6 +1325,52 @@ function initMessages() {
 /* ── Scholarships View (Supabase) ────────────── */
 
 function renderScholarshipCard(s) {
+   async function loadScholarships(filters = {}) {
+  const loadingEl = $('#scholarshipsLoading');
+  const errorEl   = $('#scholarshipsError');
+  const gridEl    = $('#scholarshipsGrid');
+  if (!gridEl) return;
+
+  loadingEl.style.display = '';
+  errorEl.style.display   = 'none';
+  gridEl.style.display    = 'none';
+
+  try {
+    let query = db.from('scholarships').select('*');
+    if (filters.borough)  query = query.eq('borough', filters.borough);
+    if (filters.industry) query = query.contains('tags', [filters.industry]);
+    if (filters.keyword) {
+      query = query.or(`title.ilike.%${filters.keyword}%,organization.ilike.%${filters.keyword}%`);
+    }
+
+    const { data, error } = await query;
+    if (error) throw error;
+
+    loadingEl.style.display = 'none';
+    gridEl.style.display = '';
+
+    if (!data || data.length === 0) {
+      gridEl.innerHTML = '<p class="empty-state">No scholarships match your filters.</p>';
+      return;
+    }
+
+    gridEl.innerHTML = data.map(renderScholarshipCard).join('');
+    initScholarshipInteractions();
+  } catch (err) {
+    console.error('loadScholarships error:', err);
+    loadingEl.style.display = 'none';
+    errorEl.style.display = '';
+  }
+}
+
+async function applyToScholarship(id) {
+  if (!state.user) throw new Error('Not signed in');
+  const { error } = await db.from('scholarship_applications').insert({
+    user_id: state.user.id,
+    scholarship_id: id,
+  });
+  if (error) throw error;
+}
   const deadlineStr = s.deadline
     ? new Date(s.deadline).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
     : s.deadline_label || 'Open now';
