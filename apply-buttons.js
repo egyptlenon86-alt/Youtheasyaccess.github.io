@@ -1,25 +1,37 @@
-// Add per-card Apply buttons for jobs and scholarships.
-// This script augments existing rendered cards by inserting an "Apply" button
-// that calls applyToJob/applyToScholarship and updates UI/state.
+// Add per-card Apply buttons for jobs and scholarships and style them like the reference (Apply Now, green pill on the right)
+// This file was updated to set button text to "Apply Now" and to inject a small CSS file into <head> if missing.
 
 (function () {
+  // inject CSS file if not present
+  const cssHref = 'apply-buttons.css';
+  if (!document.querySelector(`link[href="${cssHref}"]`)) {
+    const l = document.createElement('link');
+    l.rel = 'stylesheet';
+    l.href = cssHref;
+    document.head.appendChild(l);
+  }
+
   function addApplyButtonsToJobs(root = document) {
     root.querySelectorAll('.job-card').forEach(card => {
       if (card.querySelector('.card-apply-btn')) return; // already added
       const jobId = card.dataset.jobId;
       if (!jobId) return;
 
-      // create button
       const btn = document.createElement('button');
-      btn.className = 'btn btn-primary btn-sm card-apply-btn';
-      btn.textContent = 'Apply';
-      btn.dataset.jobId = jobId;
+      btn.className = 'card-apply-btn';
+      btn.setAttribute('data-apply-job', jobId);
+      btn.type = 'button';
+      btn.textContent = 'Apply Now';
 
       btn.addEventListener('click', async (e) => {
         e.stopPropagation();
-        const id = parseInt(btn.dataset.jobId);
+        const id = parseInt(btn.dataset.applyJob);
+        if (!id) return;
+
         if (state.appliedJobs && state.appliedJobs.includes(id)) {
           showToast('You have already applied for this job.', 'info');
+          btn.disabled = true;
+          btn.textContent = '✓ Applied';
           return;
         }
         if (!state.user) {
@@ -27,36 +39,50 @@
           openModal && openModal('signInModal');
           return;
         }
-        try {
-          // optimistic update
-          state.appliedJobs = state.appliedJobs || [];
-          state.appliedJobs.push(id);
-          updateDashboardStats && updateDashboardStats();
-          showToast('Application submitted! 🎉', 'success');
 
-          // persist to Supabase
+        try {
+          btn.disabled = true;
+          btn.textContent = 'Applying…';
+
+          // optimistic UI update
+          state.appliedJobs = state.appliedJobs || [];
+          if (!state.appliedJobs.includes(id)) state.appliedJobs.push(id);
+          updateDashboardStats && updateDashboardStats();
+
           if (typeof applyToJob === 'function') {
             await applyToJob(state.user.id, id);
           }
 
-          // update visuals
           btn.textContent = '✓ Applied';
-          btn.disabled = true;
-          // refresh lists if functions exist
+          showToast('Application submitted! Good luck 🎉', 'success');
+
+          // update visuals
           renderAllJobs && renderAllJobs(JOBS);
           renderFeaturedJobs && renderFeaturedJobs();
         } catch (err) {
           console.error('applyToJob error:', err);
+          btn.disabled = false;
+          btn.textContent = 'Apply Now';
           showToast((err && err.message) || 'Could not submit application. See console.', 'error');
         }
       });
 
-      // attach to footer if exists otherwise append to card
-      const footer = card.querySelector('.job-footer') || card;
-      const wrapper = document.createElement('div');
-      wrapper.style.marginLeft = '8px';
-      wrapper.appendChild(btn);
-      footer.appendChild(wrapper);
+      // attach button: for list-style cards position absolute to right; otherwise add to footer
+      const footer = card.querySelector('.job-footer');
+      if (footer) {
+        // create actions wrapper
+        let actions = footer.querySelector('.job-actions');
+        if (!actions) {
+          actions = document.createElement('div');
+          actions.className = 'job-actions';
+          actions.style.marginLeft = '12px';
+          footer.appendChild(actions);
+        }
+        actions.appendChild(btn);
+      } else {
+        // fallback: append to card
+        card.appendChild(btn);
+      }
     });
   }
 
@@ -67,9 +93,10 @@
       if (!id) return;
 
       const btn = document.createElement('button');
-      btn.className = 'btn btn-primary btn-sm card-apply-btn';
-      btn.textContent = 'Apply';
-      btn.dataset.scholarshipId = id;
+      btn.className = 'card-apply-btn';
+      btn.setAttribute('data-apply-scholarship', id);
+      btn.type = 'button';
+      btn.textContent = 'Apply Now';
 
       btn.addEventListener('click', async (e) => {
         e.stopPropagation();
@@ -79,23 +106,30 @@
           return;
         }
         try {
+          btn.disabled = true;
+          btn.textContent = 'Applying…';
           if (typeof applyToScholarship === 'function') {
             await applyToScholarship(id);
           }
-          showToast('Scholarship application recorded! ✅', 'success');
           btn.textContent = '✓ Applied';
-          btn.disabled = true;
+          showToast('Scholarship application recorded! ✅', 'success');
         } catch (err) {
           console.error('applyToScholarship error:', err);
+          btn.disabled = false;
+          btn.textContent = 'Apply Now';
           showToast((err && err.message) || 'Could not apply. See console.', 'error');
         }
       });
 
       const footer = card.querySelector('.program-footer') || card;
-      const wrapper = document.createElement('div');
-      wrapper.style.marginLeft = '8px';
-      wrapper.appendChild(btn);
-      footer.appendChild(wrapper);
+      let actions = footer.querySelector('.job-actions');
+      if (!actions) {
+        actions = document.createElement('div');
+        actions.className = 'job-actions';
+        actions.style.marginLeft = '12px';
+        footer.appendChild(actions);
+      }
+      actions.appendChild(btn);
     });
   }
 
@@ -105,19 +139,13 @@
     addApplyButtonsToScholarships(document);
 
     // observe changes to job/scholarship containers so buttons are added when lists re-render
-    const jobsContainer = document.getElementById('allJobs') || document.getElementById('featuredJobs');
-    const scholarshipsContainer = document.getElementById('scholarshipsList') || document.getElementById('featuredScholarships') || document.getElementById('scholarships');
-
     const obsConfig = { childList: true, subtree: true };
     const jobsObserver = new MutationObserver(() => addApplyButtonsToJobs(document));
     const schObserver = new MutationObserver(() => addApplyButtonsToScholarships(document));
-    if (jobsContainer) jobsObserver.observe(jobsContainer, obsConfig);
-    else jobsObserver.observe(document.body, obsConfig);
+    jobsObserver.observe(document.body, obsConfig);
+    schObserver.observe(document.body, obsConfig);
 
-    if (scholarshipsContainer) schObserver.observe(scholarshipsContainer, obsConfig);
-    else schObserver.observe(document.body, obsConfig);
-
-    // also re-run after auth changes to enable/disable buttons
+    // re-run after auth changes to enable/disable buttons
     if (typeof onAuthChange === 'function') {
       onAuthChange(() => {
         setTimeout(() => {
@@ -127,7 +155,6 @@
       });
     }
 
-    // also run once after DOMContentLoaded if script injected before content
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', () => {
         addApplyButtonsToJobs(document);
@@ -136,8 +163,6 @@
     }
   }
 
-  // expose for debugging
   window.__applyButtonsInit = init;
-  // auto init
   try { init(); } catch (e) { console.error('apply-buttons init error', e); }
 })();
